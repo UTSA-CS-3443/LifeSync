@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LifeSync">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LifeSync.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
