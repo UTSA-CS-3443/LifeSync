@@ -2,11 +2,18 @@ package edu.utsa.cs3443.lifesync.model;
 
 public class Account {
     private String name;
-    private String age;
+    private int age;
     private String occupation;
     private String address;
+    private String gender;
 
-    public Account(String name, String address, String occupation, String age) {
+    public Account(String name, String address, String occupation, int age) {
+        this.name = name;
+        this.address = address;
+        this.occupation = occupation;
+        this.age = age;
+    }
+    public Account(String name, String address, String occupation, int age, String gender) {
         this.name = name;
         this.address = address;
         this.occupation = occupation;
@@ -25,11 +32,14 @@ public class Account {
         return occupation;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
+    public String getGender() {
+        return gender;
+    }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -45,13 +55,18 @@ public class Account {
         this.address = address;
     }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "name='" + name + '\'' +
-                ", age='" + age + '\'' +
+                ", age=" + age +
                 ", occupation='" + occupation + '\'' +
                 ", address='" + address + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }
