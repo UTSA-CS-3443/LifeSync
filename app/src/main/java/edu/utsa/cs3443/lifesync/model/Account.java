@@ -6,6 +6,8 @@ public class Account {
     private String occupation;
     private String address;
     private String gender;
+    private String biography;
+    private String hobby;
 
     public Account(String name, String address, String occupation, int age) {
         this.name = name;
@@ -13,11 +15,15 @@ public class Account {
         this.occupation = occupation;
         this.age = age;
     }
-    public Account(String name, String address, String occupation, int age, String gender) {
+
+    public Account(String name, int age, String occupation, String address, String gender, String biography, String hobby) {
         this.name = name;
-        this.address = address;
-        this.occupation = occupation;
         this.age = age;
+        this.occupation = occupation;
+        this.address = address;
+        this.gender = gender;
+        this.biography = biography;
+        this.hobby = hobby;
     }
 
     public String getName() {
@@ -67,6 +73,8 @@ public class Account {
                 ", occupation='" + occupation + '\'' +
                 ", address='" + address + '\'' +
                 ", gender='" + gender + '\'' +
+                ", biography='" + biography + '\'' +
+                ", hobby='" + hobby + '\'' +
                 '}';
     }
 }
