@@ -65,6 +65,22 @@ public class Account {
         this.gender = gender;
     }
 
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
