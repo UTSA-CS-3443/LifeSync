@@ -10,8 +10,18 @@ public class Task implements Journal{
     private String date;
     private String location;
     private boolean repeat;
+    private String repeatTime;
 
-    public Task(String name, String getName, String location, String date, String time, String description, ArrayList<String> guests, boolean repeat) {
+    public Task(String name, String getName, String location, String date, String time, String description, ArrayList<String> guests) {
+        this.name = name;
+        this.location = location;
+        this.date = date;
+        this.time = time;
+        this.description = description;
+        this.guests = guests;
+    }
+
+    public Task(String name, String getName, String location, String date, String time, String description, ArrayList<String> guests, boolean repeat ,String repeatTime) {
         this.name = name;
         this.location = location;
         this.date = date;
@@ -19,6 +29,7 @@ public class Task implements Journal{
         this.description = description;
         this.guests = guests;
         this.repeat = repeat;
+        this.repeatTime = repeatTime;
     }
 
     @Override
