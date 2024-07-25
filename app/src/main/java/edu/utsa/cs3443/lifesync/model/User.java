@@ -6,7 +6,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class User {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String biography;
@@ -15,7 +15,7 @@ public class User {
     private ArrayList<Notification> notifications;
 
     // Constructor
-    public User(int id, String name, String email, String biography, String gender) {
+    public User(String id, String name, String email, String biography, String gender) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,11 +25,11 @@ public class User {
     }
 
     // Getters and Setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

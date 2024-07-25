@@ -9,9 +9,9 @@ public class Task extends Widget {
     private long startTime;
     private long endTime;
 
-    public Task(String id, String title, String description, String color, String type,
+    public Task(String id, String title, String color, String description,
                 String reminderDayBefore, String reminderTimeBefore, String repeatDay, String repeatTime, long startTime, long endTime) {
-        super(id, title, description, color);
+        super(id, title, color, description);
         this.reminderDayBefore = reminderDayBefore;
         this.reminderTimeBefore = reminderTimeBefore;
         this.repeatDay = repeatDay;

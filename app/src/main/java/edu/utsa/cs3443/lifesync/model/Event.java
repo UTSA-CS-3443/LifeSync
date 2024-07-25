@@ -5,24 +5,23 @@ import java.util.ArrayList;
 public class Event extends Widget {
     private String location;
     private ArrayList<String> guests;
-    private String reminderDayBefore;
+    private String eventDate;
     private String reminderTimeBefore;
     private String repeatDay;
-    private String repeatTime;
     private long startTime;
     private long endTime;
+    private Notification notification;
 
-    public Event(int id, String title, String description, String color, String location, ArrayList<String> guests,
-                 String reminderDayBefore, String reminderTimeBefore, String repeatDay, String repeatTime, long startTime, long endTime) {
-        super(id, title, description, color);
+    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests,  String eventDate, String reminderTimeBefore, String repeatDay, long startTime, long endTime) {
+        super(id, title, color, description);
         this.location = location;
         this.guests = guests;
-        this.reminderDayBefore = reminderDayBefore;
+        this.eventDate = eventDate;
         this.reminderTimeBefore = reminderTimeBefore;
         this.repeatDay = repeatDay;
-        this.repeatTime = repeatTime;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.notification = new Notification(id, title, eventDate);
     }
 
     // Getters and Setters
@@ -42,12 +41,12 @@ public class Event extends Widget {
         this.guests = guests;
     }
 
-    public String getReminderDayBefore() {
-        return reminderDayBefore;
+    public String getEventDate() {
+        return eventDate;
     }
 
-    public void setReminderDayBefore(String reminderDayBefore) {
-        this.reminderDayBefore = reminderDayBefore;
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
     public String getReminderTimeBefore() {
@@ -64,14 +63,6 @@ public class Event extends Widget {
 
     public void setRepeatDay(String repeatDay) {
         this.repeatDay = repeatDay;
-    }
-
-    public String getRepeatTime() {
-        return repeatTime;
-    }
-
-    public void setRepeatTime(String repeatTime) {
-        this.repeatTime = repeatTime;
     }
 
     public long getStartTime() {

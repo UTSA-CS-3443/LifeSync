@@ -3,15 +3,14 @@ package edu.utsa.cs3443.lifesync.model;
 public abstract class Widget {
     private String id;
     private String title;
-    private String description;
     private String color;
-    private String type; // Common attribute to differentiate the widget type
+    private String description;
 
-    public Widget(String id, String title, String description, String color) {
+    public Widget(String id, String title, String color, String description) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.color = color;
+        this.description = description;
     }
 
     public String getId() {
@@ -30,20 +29,21 @@ public abstract class Widget {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getColor() {
         return color;
     }
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public abstract String getType();
