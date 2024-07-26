@@ -2,16 +2,18 @@ package edu.utsa.cs3443.lifesync;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
     private RadioGroup typeSelector, repeatTaskChoice;
-    private EditText addGuests, description, time, location, date, repeatTime;
+    private EditText title, addGuests, description, time, location, date, repeatTime;
     private LinearLayout detailsContainer;
 
     @Override
@@ -20,6 +22,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.event_layout);
 
         // Initialize views
+        title = findViewById(R.id.title);
         typeSelector = findViewById(R.id.type_selector);
         addGuests = findViewById(R.id.add_guests);
         description = findViewById(R.id.description);
@@ -70,5 +73,57 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+        Button completeButton = findViewById(R.id.complete_button);
+        completeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedTypeId = typeSelector.getCheckedRadioButtonId();
+                String newTitle = title.getText().toString().trim();
+                String newDescription = description.getText().toString().trim();
+
+                if (selectedTypeId == R.id.task_radio_button) {
+                    // Collect task attributes
+                    String taskTime = time.getText().toString().trim();
+                    String taskLocation = location.getText().toString().trim();
+                    String taskDate = date.getText().toString().trim();
+                    String taskRepeatTime = repeatTime.getText().toString().trim();
+                    boolean isRepeating = repeatTaskChoice.getCheckedRadioButtonId() == R.id.Task_repeat;
+
+                    // Handle task data
+                    handleTaskData(newTitle, newDescription, taskTime, taskLocation, taskDate, taskRepeatTime, isRepeating);
+
+                } else if (selectedTypeId == R.id.event_radio_button) {
+                    // Collect event attributes
+                    String eventTime = time.getText().toString().trim();
+                    String eventLocation = location.getText().toString().trim();
+                    String eventDate = date.getText().toString().trim();
+                    String eventGuests = addGuests.getText().toString().trim();
+
+                    // Handle event data
+                    handleEventData(newTitle, newDescription, eventTime, eventLocation, eventDate, eventGuests);
+
+                } else if (selectedTypeId == R.id.note_radio_button) {
+                    // Handle note data
+                    handleNoteData(newTitle, newDescription);
+                }
+            }
+        });
     }
+
+    private void handleTaskData(String title, String description, String time, String location, String date, String repeatTime, boolean isRepeating) {
+        // Handle task data
+
+        Toast.makeText(this, "Task saved: " + title, Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleEventData(String title, String description, String time, String location, String date, String guests) {
+        //Handle event data
+        Toast.makeText(this, "Event saved: " + title, Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleNoteData(String title, String description) {
+        //Handle note data
+        Toast.makeText(this, "Note saved: " + title, Toast.LENGTH_SHORT).show();
+    }
+    
 }
