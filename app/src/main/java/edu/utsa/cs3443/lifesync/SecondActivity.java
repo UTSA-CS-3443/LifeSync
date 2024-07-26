@@ -56,6 +56,7 @@ public class SecondActivity extends AppCompatActivity {
                     } else {
                         repeatTime.setVisibility(View.GONE);
                     }
+
                 } else if (checkedId == R.id.event_radio_button) {
                     detailsContainer.setVisibility(View.VISIBLE);
                     addGuests.setVisibility(View.VISIBLE);
