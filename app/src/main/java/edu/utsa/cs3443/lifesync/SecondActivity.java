@@ -83,15 +83,20 @@ public class SecondActivity extends AppCompatActivity {
 
                 if (selectedTypeId == R.id.task_radio_button) {
                     // Collect task attributes
+                    int repeatChoice = repeatTaskChoice.getCheckedRadioButtonId();
                     String taskTime = time.getText().toString().trim();
                     String taskLocation = location.getText().toString().trim();
                     String taskDate = date.getText().toString().trim();
-                    String taskRepeatTime = repeatTime.getText().toString().trim();
-                    boolean isRepeating = repeatTaskChoice.getCheckedRadioButtonId() == R.id.Task_repeat;
 
-                    // Handle task data
-                    handleTaskData(newTitle, newDescription, taskTime, taskLocation, taskDate, taskRepeatTime, isRepeating);
+                    if( repeatChoice == R.id.Task_repeat){
+                        String taskRepeatTime = repeatTime.getText().toString().trim();
+                        handleTaskDataRepeat(newTitle, newDescription, taskTime, taskLocation, taskDate, taskRepeatTime);
+                    }
 
+                    else {
+                        // Handle task data
+                        handleTaskDataNoRepeat(newTitle, newDescription, taskTime, taskLocation, taskDate);
+                    }
                 } else if (selectedTypeId == R.id.event_radio_button) {
                     // Collect event attributes
                     String eventTime = time.getText().toString().trim();
@@ -110,10 +115,16 @@ public class SecondActivity extends AppCompatActivity {
         });
     }
 
-    private void handleTaskData(String title, String description, String time, String location, String date, String repeatTime, boolean isRepeating) {
+    private void handleTaskDataRepeat(String title, String description, String time, String location, String date, String repeatTime) {
         // Handle task data
 
-        Toast.makeText(this, "Task saved: " + title, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Repeat Task saved: " + title , Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleTaskDataNoRepeat(String title, String description, String time, String location, String date) {
+        // Handle task data
+
+        Toast.makeText(this, "Non Repeat Task saved: " + title , Toast.LENGTH_SHORT).show();
     }
 
     private void handleEventData(String title, String description, String time, String location, String date, String guests) {
