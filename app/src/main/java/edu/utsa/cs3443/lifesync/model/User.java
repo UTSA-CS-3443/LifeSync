@@ -95,8 +95,9 @@ public class User {
                 String address;
                 ArrayList<String> guests;
                 String eventDate;
-                String reminderTimeBefore;
-                String repeatDay;
+                LocalTime reminderTimeBefore;
+                boolean repeatDay;
+                LocalTime repeatTime;
                 LocalTime startTime;
                 String taskDate;
 
@@ -109,7 +110,7 @@ public class User {
                         address = scan.nextLine().trim();
                         guests = new ArrayList<>(Arrays.asList(scan.nextLine().trim().split(", ")));
                         eventDate = scan.nextLine().trim();
-                        reminderTimeBefore = scan.nextLine().trim();
+                        reminderTimeBefore = LocalTime.parse(scan.nextLine().trim());
                         startTime = LocalTime.parse(scan.nextLine().trim());
 
 
@@ -123,11 +124,19 @@ public class User {
                         color = scan.nextLine().trim();
                         description = scan.nextLine().trim();
                         taskDate = scan.nextLine().trim();
-                        reminderTimeBefore = scan.nextLine().trim();
-                        repeatDay = scan.nextLine().trim();
-                        startTime = LocalTime.parse(scan.nextLine().trim());
+                        reminderTimeBefore = LocalTime.parse(scan.nextLine().trim());
+                        repeatDay = Boolean.parseBoolean(scan.nextLine().trim());
+                        Task task;
+                        if(repeatDay == true){
+                            repeatTime = LocalTime.parse(scan.nextLine().trim());
+                            startTime = LocalTime.parse(scan.nextLine().trim());
+                            task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, repeatTime, startTime);
+                        }
+                        else {
+                            startTime = LocalTime.parse(scan.nextLine().trim());
 
-                        Task task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, repeatDay, startTime);
+                            task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, startTime);
+                        }
                         this.widgets.add(task);
                         break;
 

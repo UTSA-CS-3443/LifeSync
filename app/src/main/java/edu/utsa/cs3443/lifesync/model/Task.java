@@ -4,18 +4,25 @@ import java.time.LocalTime;
 
 public class Task extends Widget {
     private String taskDate;
-    private String repeatDay;
-    private String repeatTime;
+    private LocalTime reminderTimeBefore;
+    private LocalTime repeatTime;
     private LocalTime startTime;
     
 
-    public Task(String id, String title, String color, String description, String taskDate, String repeatDay, String repeatTime, LocalTime startTime) {
+    public Task(String id, String title, String color, String description, String taskDate, LocalTime reminderTimeBefore, LocalTime repeatTime, LocalTime startTime) {
         super(id, title, color, description);
         this.taskDate = taskDate;
-        this.repeatDay = repeatDay;
+        this.reminderTimeBefore =reminderTimeBefore;
         this.repeatTime = repeatTime;
         this.startTime = startTime;
     }
+    public Task(String id, String title, String color, String description, String taskDate,LocalTime reminderTimeBefore, LocalTime startTime) {
+        super(id, title, color, description);
+        this.taskDate = taskDate;
+        this.reminderTimeBefore =reminderTimeBefore;
+        this.startTime = startTime;
+    }
+
 
     public String getTaskDate() {
         return taskDate;
@@ -27,19 +34,11 @@ public class Task extends Widget {
 // Getters and Setters
 
 
-    public String getRepeatDay() {
-        return repeatDay;
-    }
-
-    public void setRepeatDay(String repeatDay) {
-        this.repeatDay = repeatDay;
-    }
-
-    public String getRepeatTime() {
+    public LocalTime getRepeatTime() {
         return repeatTime;
     }
 
-    public void setRepeatTime(String repeatTime) {
+    public void setRepeatTime(LocalTime repeatTime) {
         this.repeatTime = repeatTime;
     }
 

@@ -8,6 +8,15 @@ Aryan Stark, Aegon, Danerys
 30 minutes
 12:00
 
+Task
+title: hello world
+color: blue
+"Hello this is a description"
+taskdate: 07/24/2025
+30 minutes
+True
+24:00
+16:00
 
 Task
 title: hello world
@@ -15,9 +24,9 @@ color: blue
 "Hello this is a description"
 taskdate: 07/24/2025
 30 minutes
-repeatDay: TH
+False
+24:00
 16:00
-
 
 Note
 Project B

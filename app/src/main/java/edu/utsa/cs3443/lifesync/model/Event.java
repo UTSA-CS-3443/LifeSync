@@ -7,11 +7,11 @@ public class Event extends Widget {
     private String location;
     private ArrayList<String> guests;
     private String eventDate;
-    private String reminderTimeBefore;
+    private LocalTime reminderTimeBefore;
     private LocalTime startTime;
     private Notification notification;
 
-    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests, String eventDate, String reminderTimeBefore, LocalTime startTime) {
+    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests, String eventDate, LocalTime reminderTimeBefore, LocalTime startTime) {
         super(id, title, color, description);
         this.location = location;
         this.guests = guests;
@@ -46,11 +46,11 @@ public class Event extends Widget {
         this.eventDate = eventDate;
     }
 
-    public String getReminderTimeBefore() {
+    public LocalTime getReminderTimeBefore() {
         return reminderTimeBefore;
     }
 
-    public void setReminderTimeBefore(String reminderTimeBefore) {
+    public void setReminderTimeBefore(LocalTime reminderTimeBefore) {
         this.reminderTimeBefore = reminderTimeBefore;
     }
     public LocalTime getStartTime() {
