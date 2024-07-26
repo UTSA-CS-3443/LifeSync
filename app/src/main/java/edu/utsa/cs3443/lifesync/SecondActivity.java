@@ -28,7 +28,7 @@ public class SecondActivity extends AppCompatActivity {
         date = findViewById(R.id.date);
         detailsContainer = findViewById(R.id.details_container);
 
-        
+
         typeSelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
