@@ -1,24 +1,45 @@
 package edu.utsa.cs3443.lifesync;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class SecondActivity extends AppCompatActivity {
+
+    private RadioGroup typeSelector;
+    private EditText addGuests, description, time, location, date;
+    private LinearLayout detailsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_second);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        setContentView(R.layout.event_layout);
+
+        typeSelector = findViewById(R.id.type_selector);
+        addGuests = findViewById(R.id.add_guests);
+        description = findViewById(R.id.description);
+        time = findViewById(R.id.time);
+        location = findViewById(R.id.location);
+        date = findViewById(R.id.date);
+        detailsContainer = findViewById(R.id.details_container);
+
+        
+        typeSelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.note_radio_button) {
+                    detailsContainer.setVisibility(View.GONE);
+                    addGuests.setVisibility(View.GONE);
+                } else {
+                    detailsContainer.setVisibility(View.VISIBLE);
+                    addGuests.setVisibility(View.VISIBLE);
+                }
+            }
         });
     }
 }

@@ -43,6 +43,5 @@ public class CalendarActivity extends AppCompatActivity {
         calendar.set(Calendar.DAY_OF_MONTH, day);
         long milli = calendar.getTimeInMillis();
         calendarView.setDate(milli);
-
     }
 }
