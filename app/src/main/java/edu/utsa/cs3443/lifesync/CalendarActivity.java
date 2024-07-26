@@ -1,4 +1,5 @@
 package edu.utsa.cs3443.lifesync;
+import java.time.LocalDate;
 
 import android.os.Bundle;
 import android.widget.CalendarView;
@@ -16,6 +17,10 @@ import java.util.Calendar;
 public class CalendarActivity extends AppCompatActivity {
     CalendarView calendarView;
     Calendar calendar;
+    LocalDate today = LocalDate.now();
+    int currentDate = today.getDayOfMonth();
+    int month = today.getMonthValue();
+    int year = today.getYear();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +28,11 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         calendarView = findViewById(R.id.calendarView);
         calendar = Calendar.getInstance();
-            setDate(1,7,2024);
+        setDate(currentDate,month,year);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                Toast.makeText(CalendarActivity.this,day +"/" +month +"/"+year , Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this,month+1 + "/" +day +"/"+year , Toast.LENGTH_SHORT).show();
 
             }
         });

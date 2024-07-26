@@ -1,23 +1,32 @@
 package edu.utsa.cs3443.lifesync.model;
 
-import java.util.ArrayList;
-public class Task extends Widget {
+import java.time.LocalTime;
 
+public class Task extends Widget {
+    private String taskDate;
     private String repeatDay;
     private String repeatTime;
-    private long startTime;
-    private long endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    
 
-    public Task(String id, String title, String color, String description, String repeatDay, String repeatTime, long startTime, long endTime) {
+    public Task(String id, String title, String color, String description, String taskDate, String repeatDay, String repeatTime, LocalTime startTime, LocalTime endTime) {
         super(id, title, color, description);
-
+        this.taskDate = taskDate;
         this.repeatDay = repeatDay;
         this.repeatTime = repeatTime;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    // Getters and Setters
+    public String getTaskDate() {
+        return taskDate;
+    }
+
+    public void setTaskDate(String taskDate) {
+        this.taskDate = taskDate;
+    }
+// Getters and Setters
 
 
     public String getRepeatDay() {
@@ -36,19 +45,20 @@ public class Task extends Widget {
         this.repeatTime = repeatTime;
     }
 
-    public long getStartTime() {
+
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public long getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 

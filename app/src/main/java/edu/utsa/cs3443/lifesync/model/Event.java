@@ -1,4 +1,5 @@
 package edu.utsa.cs3443.lifesync.model;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 
@@ -8,11 +9,11 @@ public class Event extends Widget {
     private String eventDate;
     private String reminderTimeBefore;
     private String repeatDay;
-    private long startTime;
-    private long endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private Notification notification;
 
-    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests,  String eventDate, String reminderTimeBefore, String repeatDay, long startTime, long endTime) {
+    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests, String eventDate, String reminderTimeBefore, String repeatDay, LocalTime startTime, LocalTime endTime) {
         super(id, title, color, description);
         this.location = location;
         this.guests = guests;
@@ -65,19 +66,19 @@ public class Event extends Widget {
         this.repeatDay = repeatDay;
     }
 
-    public long getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public long getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 

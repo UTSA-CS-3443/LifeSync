@@ -1,0 +1,26 @@
+Event
+title: concert
+color: black
+description: very cool concert
+address: "8035 Ferndale Oaks Rd, San Antonio, TX 78249"
+guests: Aryan Stark, Aegon, Danerys
+eventDate: 07/24/2025
+reminderTimeBefore: 30 minutes
+Repeat day: Monday, Wednesday, Friday
+startTime: 12:00
+startTime: 14:00
+
+Task
+title: hello world
+color: blue
+"Hello this is a description"
+taskdate: 07/24/2025
+30 minutes
+repeatDay: TH, 16:00, 17:30
+startTime: 16:00
+startTime: 17:30
+
+Note
+title: Project B
+color: #FFFFFF
+description: ur suck7
