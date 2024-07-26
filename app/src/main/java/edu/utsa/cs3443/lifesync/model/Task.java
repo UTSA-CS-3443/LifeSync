@@ -7,16 +7,14 @@ public class Task extends Widget {
     private String repeatDay;
     private String repeatTime;
     private LocalTime startTime;
-    private LocalTime endTime;
     
 
-    public Task(String id, String title, String color, String description, String taskDate, String repeatDay, String repeatTime, LocalTime startTime, LocalTime endTime) {
+    public Task(String id, String title, String color, String description, String taskDate, String repeatDay, String repeatTime, LocalTime startTime) {
         super(id, title, color, description);
         this.taskDate = taskDate;
         this.repeatDay = repeatDay;
         this.repeatTime = repeatTime;
         this.startTime = startTime;
-        this.endTime = endTime;
     }
 
     public String getTaskDate() {
@@ -52,14 +50,6 @@ public class Task extends Widget {
 
     public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
     }
 
     @Override

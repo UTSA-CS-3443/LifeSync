@@ -98,7 +98,6 @@ public class User {
                 String reminderTimeBefore;
                 String repeatDay;
                 LocalTime startTime;
-                LocalTime endTime;
                 String taskDate;
 
                 switch (widgetType) {
@@ -111,11 +110,10 @@ public class User {
                         guests = new ArrayList<>(Arrays.asList(scan.nextLine().trim().split(", ")));
                         eventDate = scan.nextLine().trim();
                         reminderTimeBefore = scan.nextLine().trim();
-                        repeatDay = scan.nextLine().trim();
                         startTime = LocalTime.parse(scan.nextLine().trim());
-                        endTime = LocalTime.parse(scan.nextLine().trim());
 
-                        Event event = new Event(generatedID,title, color, description, address, guests, eventDate, reminderTimeBefore, repeatDay, startTime, endTime);
+
+                        Event event = new Event(generatedID,title, color, description, address, guests, eventDate, reminderTimeBefore, startTime);
                         this.widgets.add(event);
                         break;
 
@@ -128,9 +126,8 @@ public class User {
                         reminderTimeBefore = scan.nextLine().trim();
                         repeatDay = scan.nextLine().trim();
                         startTime = LocalTime.parse(scan.nextLine().trim());
-                        endTime = LocalTime.parse(scan.nextLine().trim());
 
-                        Task task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, repeatDay, startTime, endTime);
+                        Task task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, repeatDay, startTime);
                         this.widgets.add(task);
                         break;
 

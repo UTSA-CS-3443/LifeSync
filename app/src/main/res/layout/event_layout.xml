@@ -75,7 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Time"
+                android:hint="Start time"
                 android:padding="8dp" />
 
             <EditText
@@ -87,20 +87,64 @@
                 android:padding="8dp"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/date"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date"
-            android:padding="8dp"
-            android:layout_marginTop="8dp" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Reminder_before"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Reminder before"
+                android:padding="8dp" />
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Date"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
+    <RadioGroup
+    android:id="@+id/repeatTaskChoice"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="8dp">
+
+    <RadioButton
+        android:id="@+id/Task_repeat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:checked="true"
+        android:text="Repeat" />
+
+    <RadioButton
+        android:id="@+id/one_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="One time" />
+</RadioGroup>
+    <EditText
+        android:id="@+id/repeat_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="repeat time"
+        android:padding="8dp" />
     <Button
         android:id="@+id/complete_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Complete"
         android:layout_marginTop="16dp" />
+
 </LinearLayout>

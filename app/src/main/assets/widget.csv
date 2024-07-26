@@ -6,9 +6,8 @@ very cool concert
 Aryan Stark, Aegon, Danerys
 07/24/2025
 30 minutes
-Monday, Wednesday, Friday
 12:00
-14:00
+
 
 Task
 title: hello world
@@ -16,9 +15,9 @@ color: blue
 "Hello this is a description"
 taskdate: 07/24/2025
 30 minutes
-repeatDay: TH, 16:00, 17:30
+repeatDay: TH
 16:00
-17:30
+
 
 Note
 Project B
