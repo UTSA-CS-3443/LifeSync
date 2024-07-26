@@ -20,6 +20,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_layout);
 
+
         typeSelector = findViewById(R.id.type_selector);
         addGuests = findViewById(R.id.add_guests);
         description = findViewById(R.id.description);
