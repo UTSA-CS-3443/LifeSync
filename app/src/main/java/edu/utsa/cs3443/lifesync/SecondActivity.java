@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +19,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_layout);
 
-
+        // Initialize views
         typeSelector = findViewById(R.id.type_selector);
         addGuests = findViewById(R.id.add_guests);
         description = findViewById(R.id.description);
@@ -29,6 +28,9 @@ public class SecondActivity extends AppCompatActivity {
         date = findViewById(R.id.date);
         detailsContainer = findViewById(R.id.details_container);
         repeatTaskChoice = findViewById(R.id.repeatTaskChoice);
+        repeatTime = findViewById(R.id.repeat_time);
+
+        // Handle repeatTaskChoice RadioGroup
         repeatTaskChoice.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int repeatOption) {
@@ -39,32 +41,31 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
-        repeatTime = findViewById(R.id.repeat_time);
 
-
+        // Handle typeSelector RadioGroup
         typeSelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.task_radio_button) {
+                if (checkedId == R.id.task_radio_button) {
                     detailsContainer.setVisibility(View.VISIBLE);
-                    addGuests.setVisibility(View.VISIBLE);
+                    addGuests.setVisibility(View.GONE);
                     repeatTaskChoice.setVisibility(View.VISIBLE);
-
-
-
-                }else if(checkedId == R.id.event_radio_button){
+                    // Set repeatTime visibility based on repeatTaskChoice
+                    if (repeatTaskChoice.getCheckedRadioButtonId() == R.id.Task_repeat) {
+                        repeatTime.setVisibility(View.VISIBLE);
+                    } else {
+                        repeatTime.setVisibility(View.GONE);
+                    }
+                } else if (checkedId == R.id.event_radio_button) {
                     detailsContainer.setVisibility(View.VISIBLE);
                     addGuests.setVisibility(View.VISIBLE);
                     repeatTaskChoice.setVisibility(View.GONE);
                     repeatTime.setVisibility(View.GONE);
-                }
-                else if (checkedId == R.id.note_radio_button) {
+                } else if (checkedId == R.id.note_radio_button) {
                     detailsContainer.setVisibility(View.GONE);
                     addGuests.setVisibility(View.GONE);
                     repeatTaskChoice.setVisibility(View.GONE);
                     repeatTime.setVisibility(View.GONE);
-
-
                 }
             }
         });
