@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
     public User LoadingUserAccount(Activity activity){
         AssetManager manager = activity.getAssets();

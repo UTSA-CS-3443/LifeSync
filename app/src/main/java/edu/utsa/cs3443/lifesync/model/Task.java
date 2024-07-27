@@ -1,23 +1,25 @@
 package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 public class Task extends Widget implements Serializable {
-    private String taskDate;
+    private Date taskDate;
     private LocalTime reminderTimeBefore;
     private LocalTime repeatTime;
     private LocalTime startTime;
     
 
-    public Task(String id, String title, String color, String description, String taskDate, LocalTime reminderTimeBefore, LocalTime repeatTime, LocalTime startTime) {
+    public Task(String id, String title, String color, String description, Date taskDate, LocalTime reminderTimeBefore, LocalTime repeatTime, LocalTime startTime) {
         super(id, title, color, description);
         this.taskDate = taskDate;
         this.reminderTimeBefore =reminderTimeBefore;
         this.repeatTime = repeatTime;
         this.startTime = startTime;
     }
-    public Task(String id, String title, String color, String description, String taskDate,LocalTime reminderTimeBefore, LocalTime startTime) {
+    public Task(String id, String title, String color, String description, Date taskDate,LocalTime reminderTimeBefore, LocalTime startTime) {
         super(id, title, color, description);
         this.taskDate = taskDate;
         this.reminderTimeBefore =reminderTimeBefore;
@@ -25,11 +27,11 @@ public class Task extends Widget implements Serializable {
     }
 
 
-    public String getTaskDate() {
+    public Date getTaskDate() {
         return taskDate;
     }
 
-    public void setTaskDate(String taskDate) {
+    public void setTaskDate(Date taskDate) {
         this.taskDate = taskDate;
     }
 // Getters and Setters

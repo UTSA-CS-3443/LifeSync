@@ -4,14 +4,22 @@ import android.app.Activity;
 import android.content.res.AssetManager;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 public class User implements Serializable {
     private String id;
     private String name;
@@ -194,22 +202,31 @@ public class User implements Serializable {
     public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatTime,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
+        Date taskDateConverted = new Date();
         String taskId= IDGenerator("Task");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            taskDateConverted = dateFormat.parse(taskDate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if(color.equals("")){
             color = "black";
         }
         if(repeatTime.equals("")){
-            Task task = new Task(taskId, title, color, description, taskDate, reminderTimeConverted, startTimeConverted);
+            Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, startTimeConverted);
             this.addWidget(task);
         }else{
             LocalTime repeatTimeConverted = LocalTime.parse(repeatTime);
-            Task task = new Task(taskId, title, color, description, taskDate, reminderTimeConverted, repeatTimeConverted, startTimeConverted);
+            Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, repeatTimeConverted, startTimeConverted);
             this.addWidget(task);
         }
     }
     public void createNewEvent(String title,String color,String description,String address, ArrayList<String> guests,String eventDate,String reminderTimeBefore,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
+
         String EventId= IDGenerator("Event");
         if(color.equals("")){
             color = "black";
