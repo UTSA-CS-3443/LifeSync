@@ -27,13 +27,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="76dp"
-        android:layout_height="34dp"
+        android:layout_width="142dp"
+        android:layout_height="53dp"
         android:text="Journal"
-        android:textSize="20sp"
+        android:textSize="40sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="26dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="26dp" />
 
     <ScrollView
         android:layout_width="406dp"
@@ -44,7 +44,7 @@
 
         <LinearLayout
 
-            android:id="@+id/textview"
+            android:id="@+id/userInfoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
