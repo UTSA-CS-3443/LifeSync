@@ -10,14 +10,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SecondActivity extends AppCompatActivity {
+import edu.utsa.cs3443.lifesync.model.Task;
+import edu.utsa.cs3443.lifesync.model.User;
 
+public class SecondActivity extends AppCompatActivity {
+    private User user;
     private RadioGroup typeSelector, repeatTaskChoice;
     private EditText title, addGuests, description, time, location, date, repeatTime;
     private LinearLayout detailsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        user= (User) getIntent().getSerializableExtra("user");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_layout);
 
@@ -117,7 +121,8 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleTaskDataRepeat(String title, String description, String time, String location, String date, String repeatTime) {
         // Handle task data
-
+//        Task task = new Task(title, description, time, location, date, repeatTime);
+//        user.addWidget();
         Toast.makeText(this, "Repeat Task saved: " + title , Toast.LENGTH_SHORT).show();
     }
 

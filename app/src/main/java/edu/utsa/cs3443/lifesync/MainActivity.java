@@ -21,7 +21,7 @@ import java.util.Scanner;
 import edu.utsa.cs3443.lifesync.model.User;
 
 public class MainActivity extends AppCompatActivity {
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,18 +33,20 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         try {  // Load Zone from the CSV file into the fleet
-            User user = LoadingUserAccount(this);
+            user = LoadingUserAccount(this);
             Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             // Display a Toast message indicating an error loading zone
             Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
         };
+
         Button button1 =findViewById(R.id.test);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create an Intent to start ZoneActivity
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

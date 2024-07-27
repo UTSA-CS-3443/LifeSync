@@ -1,6 +1,8 @@
 package edu.utsa.cs3443.lifesync.model;
 
-public abstract class Widget {
+import java.io.Serializable;
+
+public abstract class Widget implements Serializable {
     private String id;
     private String title;
     private String color;

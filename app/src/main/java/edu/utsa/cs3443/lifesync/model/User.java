@@ -6,12 +6,13 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class User {
+public class User implements Serializable {
     private String id;
     private String name;
     private String email;
@@ -167,6 +168,8 @@ public class User {
             Toast.makeText(activity, "Error loading widget " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+    public void createWidget(){
+    }
     public String IDGenerator(String type){
         String id;
         switch (type) {
@@ -188,6 +191,40 @@ public class User {
     // Methods to manage events
     public void addWidget(Widget widget) {
         this.widgets.add(widget);
+    }
+    public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatTime,String startTime){
+        LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
+        LocalTime startTimeConverted = LocalTime.parse(startTime);
+        String taskId= IDGenerator("Task");
+        if(color.equals("")){
+            color = "black";
+        }
+        if(repeatTime.equals("")){
+            Task task = new Task(taskId, title, color, description, taskDate, reminderTimeConverted, startTimeConverted);
+            this.addWidget(task);
+        }else{
+            LocalTime repeatTimeConverted = LocalTime.parse(repeatTime);
+            Task task = new Task(taskId, title, color, description, taskDate, reminderTimeConverted, repeatTimeConverted, startTimeConverted);
+            this.addWidget(task);
+        }
+    }
+    public void createNewEvent(String title,String color,String description,String address, ArrayList<String> guests,String eventDate,String reminderTimeBefore,String startTime){
+        LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
+        LocalTime startTimeConverted = LocalTime.parse(startTime);
+        String EventId= IDGenerator("Event");
+        if(color.equals("")){
+            color = "black";
+        }
+        Event event = new Event(EventId,title, color, description, address, guests, eventDate, reminderTimeConverted, startTimeConverted);
+        this.addWidget(event);
+    }
+    public void createNewNote(String title, String color,String description){
+        String NoteId= IDGenerator("Note");
+        if(color.equals("")){
+            color = "black";
+        }
+        Note note = new Note(NoteId,title, color, description);
+        this.addWidget(note);
     }
 
 
