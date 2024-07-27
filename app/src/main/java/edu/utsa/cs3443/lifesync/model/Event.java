@@ -1,9 +1,10 @@
 package edu.utsa.cs3443.lifesync.model;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 
-public class Event extends Widget {
+public class Event extends Widget implements Serializable {
     private String location;
     private ArrayList<String> guests;
     private String eventDate;

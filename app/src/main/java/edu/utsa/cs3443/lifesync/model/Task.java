@@ -1,8 +1,9 @@
 package edu.utsa.cs3443.lifesync.model;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Task extends Widget {
+public class Task extends Widget implements Serializable {
     private String taskDate;
     private LocalTime reminderTimeBefore;
     private LocalTime repeatTime;

@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             // Display a Toast message indicating an error loading zone
             Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
         };
+        Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
 
         Button button1 =findViewById(R.id.test);
         button1.setOnClickListener(new View.OnClickListener() {

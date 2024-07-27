@@ -77,9 +77,10 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
+
     public void loadWidget(Activity activity) {
         AssetManager manager = activity.getAssets();
-        String fileName = "AccountInfo.csv";
+        String fileName = "widget.csv";
         try {
             // Open the CSV file from the assets folder
             InputStream file = manager.open(fileName);
@@ -89,66 +90,64 @@ public class User implements Serializable {
                 if (widgetType.isEmpty()) {
                     break;
                 }
-                String generatedID;
                 String title;
                 String color;
                 String description;
                 String address;
                 ArrayList<String> guests;
                 String eventDate;
-                LocalTime reminderTimeBefore;
+                String reminderTimeBefore;
                 boolean repeatDay;
-                LocalTime repeatTime;
-                LocalTime startTime;
+                String repeatTime;
+                String startTime;
                 String taskDate;
 
                 switch (widgetType) {
                     case "Event":
-                        generatedID =  IDGenerator(widgetType);
+
                         title = scan.nextLine().trim();
+                        //Toast.makeText(activity, "title" + title, Toast.LENGTH_LONG).show();
                         color = scan.nextLine().trim();
+                        //Toast.makeText(activity, "color" + color, Toast.LENGTH_LONG).show();
                         description = scan.nextLine().trim();
+                        //Toast.makeText(activity, "description" + description, Toast.LENGTH_LONG).show();
                         address = scan.nextLine().trim();
+                        //Toast.makeText(activity, "address" + address, Toast.LENGTH_LONG).show();
                         guests = new ArrayList<>(Arrays.asList(scan.nextLine().trim().split(", ")));
                         eventDate = scan.nextLine().trim();
-                        reminderTimeBefore = LocalTime.parse(scan.nextLine().trim());
-                        startTime = LocalTime.parse(scan.nextLine().trim());
+                        //Toast.makeText(activity, "eventDate" + eventDate, Toast.LENGTH_LONG).show();
+                        reminderTimeBefore = (scan.nextLine().trim());
+                        //Toast.makeText(activity, "reminderTimeBefore" + reminderTimeBefore, Toast.LENGTH_LONG).show();
+                        startTime = (scan.nextLine().trim());
+                        //Toast.makeText(activity, "startTime" + startTime, Toast.LENGTH_LONG).show();
+                        this.createNewEvent(title,color,description,address,guests,eventDate,reminderTimeBefore,startTime);
 
-
-                        Event event = new Event(generatedID,title, color, description, address, guests, eventDate, reminderTimeBefore, startTime);
-                        this.widgets.add(event);
                         break;
 
                     case "Task":
-                        generatedID =  IDGenerator(widgetType);
                         title = scan.nextLine().trim();
                         color = scan.nextLine().trim();
                         description = scan.nextLine().trim();
                         taskDate = scan.nextLine().trim();
-                        reminderTimeBefore = LocalTime.parse(scan.nextLine().trim());
+                        reminderTimeBefore = (scan.nextLine().trim());
                         repeatDay = Boolean.parseBoolean(scan.nextLine().trim());
                         Task task;
                         if(repeatDay == true){
-                            repeatTime = LocalTime.parse(scan.nextLine().trim());
-                            startTime = LocalTime.parse(scan.nextLine().trim());
-                            task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, repeatTime, startTime);
+                            repeatTime =(scan.nextLine().trim());
+                            startTime = (scan.nextLine().trim());
+                            this.createNewTask( title, color, description, taskDate, reminderTimeBefore, repeatTime, startTime);
                         }
                         else {
-                            startTime = LocalTime.parse(scan.nextLine().trim());
-
-                            task = new Task(generatedID, title, color, description, taskDate, reminderTimeBefore, startTime);
+                            startTime = (scan.nextLine().trim());
+                            this.createNewTask( title, color, description, taskDate, reminderTimeBefore, "", startTime);
                         }
-                        this.widgets.add(task);
                         break;
 
                     case "Note":
-                        generatedID =  IDGenerator(widgetType);
                         title = scan.nextLine().trim();
                         color = scan.nextLine().trim();
                         description = scan.nextLine().trim();
-
-                        Note note = new Note(generatedID,title, color, description);
-                        this.widgets.add(note);
+                        this.createNewNote(title, color, description);
                         break;
                 }
 
@@ -156,7 +155,6 @@ public class User implements Serializable {
                 if (scan.hasNextLine()) {
                     scan.nextLine();
                 }
-                Toast.makeText(activity, "Loading widget successful", Toast.LENGTH_LONG).show();
 
             }
             scan.close();
@@ -191,6 +189,7 @@ public class User implements Serializable {
     // Methods to manage events
     public void addWidget(Widget widget) {
         this.widgets.add(widget);
+
     }
     public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatTime,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
@@ -227,7 +226,9 @@ public class User implements Serializable {
         this.addWidget(note);
     }
 
-
+    public int getNumberOfWidget(){
+        return this.widgets.size();
+    }
     public void removeWidget(Widget widget) {
         this.widgets.remove(widget);
     }

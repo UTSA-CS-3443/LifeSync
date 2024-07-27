@@ -1,6 +1,8 @@
 package edu.utsa.cs3443.lifesync.model;
 
-public class Notification {
+import java.io.Serializable;
+
+public class Notification implements Serializable {
     private String id;
     private String title;
     private String eventDate;
