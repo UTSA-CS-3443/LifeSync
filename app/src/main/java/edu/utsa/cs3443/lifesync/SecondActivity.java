@@ -1,19 +1,22 @@
 package edu.utsa.cs3443.lifesync;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import edu.utsa.cs3443.lifesync.model.Task;
 import edu.utsa.cs3443.lifesync.model.User;
 
 public class SecondActivity extends AppCompatActivity {
+    private MainActivity activity;
     private User user;
     private RadioGroup typeSelector, repeatTaskChoice;
     private EditText title, addGuests, description, StartTime,reminderTime, location, date, repeatTime;
@@ -23,7 +26,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         user= (User) getIntent().getSerializableExtra("user");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_layout);
+        setContentView(R.layout.widgetcreation_layout);
 
         // Initialize views
         title = findViewById(R.id.title);
@@ -117,6 +120,39 @@ public class SecondActivity extends AppCompatActivity {
                     // Handle note data
                     handleNoteData(newTitle, newDescription);
                 }
+            }
+        });
+        createNavigationBar(); //createNavigationBar
+    }
+    public void createNavigationBar(){
+        ImageButton create =findViewById(R.id.create);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), SecondActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        ImageButton home =findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        ImageButton calendar =findViewById(R.id.calendar);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
             }
         });
     }

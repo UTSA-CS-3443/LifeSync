@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -41,17 +42,41 @@ public class MainActivity extends AppCompatActivity {
         };
         Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
 
-        Button button1 =findViewById(R.id.test);
-        button1.setOnClickListener(new View.OnClickListener() {
+
+        createNavigationBar();
+
+    }
+    public void createNavigationBar(){
+        ImageButton create =findViewById(R.id.create);
+        create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create an Intent to start ZoneActivity
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(getBaseContext(), SecondActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-
+        ImageButton home =findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        ImageButton calendar =findViewById(R.id.calendar);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
     }
     public User LoadingUserAccount(Activity activity){
         AssetManager manager = activity.getAssets();
