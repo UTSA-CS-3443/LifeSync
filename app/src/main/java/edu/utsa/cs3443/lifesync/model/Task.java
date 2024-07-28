@@ -28,10 +28,15 @@ public class Task extends Widget implements Serializable {
     }
 
     @Override
-    public String getDate() {
+    public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String formattedDate = dateFormat.format(taskDate);
         return formattedDate;
+    }
+
+    @Override
+    public Date getDate() {
+        return taskDate;
     }
 
     public void setDate(Date taskDate) {

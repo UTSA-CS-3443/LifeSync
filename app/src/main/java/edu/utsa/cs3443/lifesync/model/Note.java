@@ -16,11 +16,14 @@ public class Note extends Widget implements Serializable {
         return "Note";
     }
     @Override
-    public String getDate() {
+    public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         return dateFormat.format(noteDate);
     }
-
+    @Override
+    public Date getDate() {
+        return noteDate;
+    }
     public void setDate(Date noteDate) {
         this.noteDate = noteDate;
     }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         for(Widget widget: user.getWidgets()){
             View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
             TextView Date = widgetView.findViewById(R.id.Date) ;
-            Date.setText(widget.getDate() + widget.getType());
+            Date.setText(widget.getFormattedDate() + widget.getType());
             widgetContainer.addView(widgetView);
         }
 

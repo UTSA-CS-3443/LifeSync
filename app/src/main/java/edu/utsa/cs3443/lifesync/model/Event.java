@@ -42,12 +42,16 @@ public class Event extends Widget implements Serializable {
     }
 
     @Override
-    public String getDate() {
+    public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String formattedDate = dateFormat.format(eventDate);
         return formattedDate;
     }
 
+    @Override
+    public Date getDate(){
+        return eventDate;
+    }
     public void setDate(Date eventDate) {
         this.eventDate = eventDate;
     }
