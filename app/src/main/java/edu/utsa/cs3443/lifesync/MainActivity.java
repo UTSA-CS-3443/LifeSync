@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         };
         Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
 
-
+        user.sortWidgetByDate();
         createNavigationBar();
 
     }

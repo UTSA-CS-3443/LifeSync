@@ -2,17 +2,18 @@ package edu.utsa.cs3443.lifesync.model;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Event extends Widget implements Serializable {
     private String location;
     private ArrayList<String> guests;
-    private String eventDate;
+    private Date eventDate;
     private LocalTime reminderTimeBefore;
     private LocalTime startTime;
     private Notification notification;
 
-    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests, String eventDate, LocalTime reminderTimeBefore, LocalTime startTime) {
+    public Event(String id, String title, String color, String description, String location, ArrayList<String> guests, Date eventDate, LocalTime reminderTimeBefore, LocalTime startTime) {
         super(id, title, color, description);
         this.location = location;
         this.guests = guests;
@@ -39,11 +40,12 @@ public class Event extends Widget implements Serializable {
         this.guests = guests;
     }
 
-    public String getEventDate() {
+    @Override
+    public Date getDate() {
         return eventDate;
     }
 
-    public void setEventDate(String eventDate) {
+    public void setDate(Date eventDate) {
         this.eventDate = eventDate;
     }
 

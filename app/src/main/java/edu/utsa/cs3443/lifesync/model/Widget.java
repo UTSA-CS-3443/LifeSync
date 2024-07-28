@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public abstract class Widget implements Serializable {
     private String id;
@@ -50,5 +51,6 @@ public abstract class Widget implements Serializable {
 
     public abstract String getType();
 
+    public abstract Date getDate();
 }
 

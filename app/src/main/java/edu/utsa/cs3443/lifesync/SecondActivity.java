@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.utsa.cs3443.lifesync.model.User;
@@ -27,7 +28,7 @@ public class SecondActivity extends AppCompatActivity {
         user= (User) getIntent().getSerializableExtra("user");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widgetcreation_layout);
-
+        EdgeToEdge.enable(this);
         // Initialize views
         title = findViewById(R.id.title);
         typeSelector = findViewById(R.id.type_selector);

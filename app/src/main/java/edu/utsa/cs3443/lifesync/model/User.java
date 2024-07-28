@@ -20,6 +20,9 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import kotlin.jvm.internal.CollectionToArray;
+
 public class User implements Serializable {
     private String id;
     private String name;
@@ -226,12 +229,19 @@ public class User implements Serializable {
     public void createNewEvent(String title,String color,String description,String address, ArrayList<String> guests,String eventDate,String reminderTimeBefore,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
-
         String EventId= IDGenerator("Event");
+        Date eventDateConverted = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            eventDateConverted = dateFormat.parse(eventDate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if(color.equals("")){
             color = "black";
         }
-        Event event = new Event(EventId,title, color, description, address, guests, eventDate, reminderTimeConverted, startTimeConverted);
+        Event event = new Event(EventId,title, color, description, address, guests, eventDateConverted, reminderTimeConverted, startTimeConverted);
         this.addWidget(event);
     }
     public void createNewNote(String title, String color,String description){
@@ -259,6 +269,14 @@ public class User implements Serializable {
         Toast.makeText(activity, "Widget with ID " + id + " not found", Toast.LENGTH_LONG).show();
     }
 
+    public  void sortWidgetByDate() {
+        Collections.sort(this.widgets, new Comparator<Widget>() {
+            @Override
+            public int compare(Widget widget1, Widget widget2) {
+                return widget1.getDate().compareTo(widget2.getDate());
+            }
+        });
+    }
     // Methods to manage notifications
 
 }

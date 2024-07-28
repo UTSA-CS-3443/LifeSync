@@ -26,12 +26,12 @@ public class Task extends Widget implements Serializable {
         this.startTime = startTime;
     }
 
-
-    public Date getTaskDate() {
+    @Override
+    public Date getDate() {
         return taskDate;
     }
 
-    public void setTaskDate(Date taskDate) {
+    public void setDate(Date taskDate) {
         this.taskDate = taskDate;
     }
 // Getters and Setters

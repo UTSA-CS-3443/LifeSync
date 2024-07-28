@@ -24,13 +24,13 @@ public class CalendarActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private Calendar calendar;
     private LocalDate today = LocalDate.now();
-    int currentDate = today.getDayOfMonth();
-    int month = today.getMonthValue();
-    int year = today.getYear();
+    private int currentDate = today.getDayOfMonth();
+    private int month = today.getMonthValue();
+    private int year = today.getYear();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_calendar);
         calendarView = findViewById(R.id.calendarView);
         user= (User) getIntent().getSerializableExtra("user");
@@ -43,7 +43,7 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
-        //createNavigationBar();
+        createNavigationBar();
 
     }
     public void setDate(int day, int month, int year){
