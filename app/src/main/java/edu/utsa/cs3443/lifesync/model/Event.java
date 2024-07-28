@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.lifesync.model;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,8 +42,10 @@ public class Event extends Widget implements Serializable {
     }
 
     @Override
-    public Date getDate() {
-        return eventDate;
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = dateFormat.format(eventDate);
+        return formattedDate;
     }
 
     public void setDate(Date eventDate) {

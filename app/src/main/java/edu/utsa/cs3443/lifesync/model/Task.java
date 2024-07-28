@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
@@ -27,8 +28,10 @@ public class Task extends Widget implements Serializable {
     }
 
     @Override
-    public Date getDate() {
-        return taskDate;
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = dateFormat.format(taskDate);
+        return formattedDate;
     }
 
     public void setDate(Date taskDate) {

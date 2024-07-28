@@ -51,6 +51,6 @@ public abstract class Widget implements Serializable {
 
     public abstract String getType();
 
-    public abstract Date getDate();
+    public abstract String getDate();
 }
 

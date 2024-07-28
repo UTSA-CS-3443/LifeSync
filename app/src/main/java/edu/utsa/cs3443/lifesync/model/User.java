@@ -88,6 +88,13 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
+    public ArrayList<Widget> getWidgets() {
+        return widgets;
+    }
+
+    public void setWidgets(ArrayList<Widget> widgets) {
+        this.widgets = widgets;
+    }
 
     public void loadWidget(Activity activity) {
         AssetManager manager = activity.getAssets();

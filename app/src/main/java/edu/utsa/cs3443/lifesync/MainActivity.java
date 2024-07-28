@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +23,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import edu.utsa.cs3443.lifesync.model.User;
+import edu.utsa.cs3443.lifesync.model.Widget;
 
 public class MainActivity extends AppCompatActivity {
     private User user;
@@ -28,22 +32,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        try {  // Load Zone from the CSV file into the fleet
-            user = LoadingUserAccount(this);
-            Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            // Display a Toast message indicating an error loading zone
-            Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        };
-        Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+        LinearLayout widgetContainer = findViewById(R.id.widget_container);
+        user = (User) getIntent().getSerializableExtra("user");
 
+        if(user == null) {
+            try {  // Load Zone from the CSV file into the fleet
+                user = LoadingUserAccount(this);
+                Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                // Display a Toast message indicating an error loading zone
+                Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+        }
         user.sortWidgetByDate();
         createNavigationBar();
+
+        for(Widget widget: user.getWidgets()){
+            View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+            TextView Date = widgetView.findViewById(R.id.Date) ;
+            Date.setText(widget.getDate() + widget.getType());
+            widgetContainer.addView(widgetView);
+        }
 
     }
     public void createNavigationBar(){

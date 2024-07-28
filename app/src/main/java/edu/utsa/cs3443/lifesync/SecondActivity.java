@@ -177,7 +177,7 @@ public class SecondActivity extends AppCompatActivity {
         try {  // Load Zone from the CSV file into the fleet
             user.createNewTask(title,"",description,taskDate,ReminderTimebefore,"",startTime);
             Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
-            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Number of widget: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             // Display a Toast message indicating an error loading zone

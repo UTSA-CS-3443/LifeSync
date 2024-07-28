@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Note extends Widget implements Serializable {
@@ -15,8 +16,9 @@ public class Note extends Widget implements Serializable {
         return "Note";
     }
     @Override
-    public Date getDate() {
-        return noteDate;
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        return dateFormat.format(noteDate);
     }
 
     public void setDate(Date noteDate) {
