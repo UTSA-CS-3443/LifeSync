@@ -22,6 +22,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 import edu.utsa.cs3443.lifesync.model.User;
@@ -56,41 +58,52 @@ public class MainActivity extends AppCompatActivity {
     public void displayWidgets(LinearLayout widgetContainer) {
         String previousDate = "";
         LinearLayout widgets = null;
+        Date today = new Date();
+
+        // Create a calendar instance and set it to the current date
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        // Subtract one day to get yesterday's date
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date yesterday = calendar.getTime();
+
 
         for (Widget widget : user.getWidgets()) {
-            String currentDate = widget.getFormattedDate();
+            if(widget.getDate().after(yesterday)) {
+                String currentDate = widget.getFormattedDate();
+                if (!currentDate.equals(previousDate)) {
+                    // Add the previous group of widgets to the widgetView
+                    if (widgets != null) {
+                        View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+                        TextView dateTextView = widgetView.findViewById(R.id.Date);
+                        dateTextView.setText(previousDate);
+                        LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
+                        widgetGroupContainer.addView(widgets);
+                        widgetContainer.addView(widgetView);
+                    }
 
-            if (!currentDate.equals(previousDate)) {
-                // Add the previous group of widgets to the widgetView
-                if (widgets != null) {
-                    View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
-                    TextView dateTextView = widgetView.findViewById(R.id.Date);
-                    dateTextView.setText(previousDate);
-                    LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
-                    widgetGroupContainer.addView(widgets);
-                    widgetContainer.addView(widgetView);
+                    // Create a new LinearLayout for the new date group
+                    widgets = new LinearLayout(this);
+                    widgets.setOrientation(LinearLayout.VERTICAL);
+                    previousDate = currentDate;
                 }
 
-                // Create a new LinearLayout for the new date group
-                widgets = new LinearLayout(this);
-                widgets.setOrientation(LinearLayout.VERTICAL);
-                previousDate = currentDate;
-            }
-
-            // Add the current widget to the current date group
-            View announcement = LayoutInflater.from(this).inflate(R.layout.widget_type_display_layout, widgets, false);
-            TextView widgetText = announcement.findViewById(R.id.widgetText);
-            ImageView widgetImage = announcement.findViewById(R.id.widgetType);
-            String image ="@drawable/" + widget.getType().toLowerCase();
-            int imageResource = getResources().getIdentifier(image, null, getPackageName());
-            Drawable res = getResources().getDrawable(imageResource);
-            widgetImage.setImageDrawable(res);
-            if(widget.getType() == "Note"){
-                widgetText.setText(widget.getType() + ": " + widget.getTitle());
-                widgets.addView(announcement);
-            }else{
-                widgetText.setText(widget.getType() + ": " + widget.getTitle() + " "+widget.getStartTime());
-                widgets.addView(announcement);
+                // Add the current widget to the current date group
+                View announcement = LayoutInflater.from(this).inflate(R.layout.widget_type_display_layout, widgets, false);
+                TextView widgetText = announcement.findViewById(R.id.widgetText);
+                ImageView widgetImage = announcement.findViewById(R.id.widgetType);
+                String image = "@drawable/" + widget.getType().toLowerCase();
+                int imageResource = getResources().getIdentifier(image, null, getPackageName());
+                Drawable res = getResources().getDrawable(imageResource);
+                widgetImage.setImageDrawable(res);
+                if (widget.getType() == "Note") {
+                    widgetText.setText(widget.getType() + ": " + widget.getTitle());
+                    widgets.addView(announcement);
+                } else {
+                    widgetText.setText(widget.getType() + ": " + widget.getTitle() + " " + widget.getStartTime());
+                    widgets.addView(announcement);
+                }
             }
         }
 

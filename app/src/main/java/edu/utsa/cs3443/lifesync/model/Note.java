@@ -33,6 +33,6 @@ public class Note extends Widget implements Serializable {
         return "";
     }
     public LocalTime getStartTime(){
-        return  LocalTime.parse("00:00");
+        return  LocalTime.parse("23:59");
     }
 }
