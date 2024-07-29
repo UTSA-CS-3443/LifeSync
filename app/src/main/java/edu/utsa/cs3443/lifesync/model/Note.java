@@ -2,6 +2,7 @@ package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Note extends Widget implements Serializable {
@@ -26,5 +27,12 @@ public class Note extends Widget implements Serializable {
     }
     public void setDate(Date noteDate) {
         this.noteDate = noteDate;
+    }
+    @Override
+    public String getFormattedStartTime(){
+        return "";
+    }
+    public LocalTime getStartTime(){
+        return  LocalTime.parse("00:00");
     }
 }

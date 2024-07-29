@@ -20,12 +20,13 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/widgetContainer"
+    <LinearLayout
+        android:id="@+id/widgets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_weight="1">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>

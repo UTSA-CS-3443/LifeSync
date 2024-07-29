@@ -53,7 +53,10 @@ public class Task extends Widget implements Serializable {
         this.repeatTime = repeatTime;
     }
 
-
+    @Override
+    public String getFormattedStartTime() {
+        return startTime.toString();
+    }
     public LocalTime getStartTime() {
         return startTime;
     }

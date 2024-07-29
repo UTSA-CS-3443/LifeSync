@@ -3,11 +3,13 @@ package edu.utsa.cs3443.lifesync;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         LinearLayout widgetContainer = findViewById(R.id.widget_container);
+
         user = (User) getIntent().getSerializableExtra("user");
 
         if(user == null) {
@@ -46,17 +49,62 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
         }
-        user.sortWidgetByDate();
+        user.sortWidgetsByDateTime();
         createNavigationBar();
+        displayWidgets(widgetContainer);
+    }
+    public void displayWidgets(LinearLayout widgetContainer) {
+        String previousDate = "";
+        LinearLayout widgets = null;
 
-        for(Widget widget: user.getWidgets()){
-            View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
-            TextView Date = widgetView.findViewById(R.id.Date) ;
-            Date.setText(widget.getFormattedDate() + widget.getType());
-            widgetContainer.addView(widgetView);
+        for (Widget widget : user.getWidgets()) {
+            String currentDate = widget.getFormattedDate();
+
+            if (!currentDate.equals(previousDate)) {
+                // Add the previous group of widgets to the widgetView
+                if (widgets != null) {
+                    View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+                    TextView dateTextView = widgetView.findViewById(R.id.Date);
+                    dateTextView.setText(previousDate);
+                    LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
+                    widgetGroupContainer.addView(widgets);
+                    widgetContainer.addView(widgetView);
+                }
+
+                // Create a new LinearLayout for the new date group
+                widgets = new LinearLayout(this);
+                widgets.setOrientation(LinearLayout.VERTICAL);
+                previousDate = currentDate;
+            }
+
+            // Add the current widget to the current date group
+            View announcement = LayoutInflater.from(this).inflate(R.layout.widget_type_display_layout, widgets, false);
+            TextView widgetText = announcement.findViewById(R.id.widgetText);
+            ImageView widgetImage = announcement.findViewById(R.id.widgetType);
+            String image ="@drawable/" + widget.getType().toLowerCase();
+            int imageResource = getResources().getIdentifier(image, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageResource);
+            widgetImage.setImageDrawable(res);
+            if(widget.getType() == "Note"){
+                widgetText.setText(widget.getType() + ": " + widget.getTitle());
+                widgets.addView(announcement);
+            }else{
+                widgetText.setText(widget.getType() + ": " + widget.getTitle() + " "+widget.getStartTime());
+                widgets.addView(announcement);
+            }
         }
 
+        // Add the last group of widgets to the widgetView
+        if (widgets != null) {
+            View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+            TextView dateTextView = widgetView.findViewById(R.id.Date);
+            dateTextView.setText(previousDate);
+            LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
+            widgetGroupContainer.addView(widgets);
+            widgetContainer.addView(widgetView);
+        }
     }
+
     public void createNavigationBar(){
         ImageButton create =findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {

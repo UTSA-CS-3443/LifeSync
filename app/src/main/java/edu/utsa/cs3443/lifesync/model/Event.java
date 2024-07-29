@@ -63,10 +63,15 @@ public class Event extends Widget implements Serializable {
     public void setReminderTimeBefore(LocalTime reminderTimeBefore) {
         this.reminderTimeBefore = reminderTimeBefore;
     }
+    @Override
+    public String getFormattedStartTime() {
+        return startTime.toString();
+    }
+
+    @Override
     public LocalTime getStartTime() {
         return startTime;
     }
-
     public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }

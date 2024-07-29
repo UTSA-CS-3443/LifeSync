@@ -276,11 +276,16 @@ public class User implements Serializable {
         Toast.makeText(activity, "Widget with ID " + id + " not found", Toast.LENGTH_LONG).show();
     }
 
-    public  void sortWidgetByDate() {
+    public void sortWidgetsByDateTime() {
         Collections.sort(this.widgets, new Comparator<Widget>() {
             @Override
             public int compare(Widget widget1, Widget widget2) {
-                return widget1.getDate().compareTo(widget2.getDate());
+                int dateComparison = widget1.getDate().compareTo(widget2.getDate());
+                if (dateComparison != 0) {
+                    return dateComparison;
+                } else {
+                    return widget1.getStartTime().compareTo(widget2.getStartTime());
+                }
             }
         });
     }

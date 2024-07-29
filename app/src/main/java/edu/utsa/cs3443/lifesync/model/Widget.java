@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 
 public abstract class Widget implements Serializable {
@@ -49,6 +50,8 @@ public abstract class Widget implements Serializable {
         this.description = description;
     }
 
+    public abstract String getFormattedStartTime();
+    public abstract LocalTime getStartTime();
     public abstract String getType();
     public abstract Date getDate();
     public abstract String getFormattedDate();
