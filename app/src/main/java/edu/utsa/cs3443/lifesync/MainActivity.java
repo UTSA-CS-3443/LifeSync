@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             widgetContainer.addView(widgetView);
         }
     }
-    //create navigatuin bar
+    //create navigation bar
     public void createNavigationBar(){
         ImageButton create =findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         ImageButton home =findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
