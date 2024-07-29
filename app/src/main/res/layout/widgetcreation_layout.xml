@@ -29,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="537dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/paperback"
         android:orientation="vertical"
         android:padding="16dp"
@@ -37,8 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/title"
@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:buttonTint="#AA9F98"
             android:orientation="horizontal">
 
             <RadioButton
@@ -60,6 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:buttonTint="#AA9F98"
                 android:checked="true"
                 android:text="Task" />
 
@@ -68,6 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:buttonTint="#AA9F98"
                 android:text="Event" />
 
             <RadioButton
@@ -75,6 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:buttonTint="#AA9F98"
                 android:text="Note" />
         </RadioGroup>
 
@@ -167,15 +171,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:buttonTint="#AA9F98"
                 android:checked="true"
-                android:text="Repeat" />
+                android:text="Repeat"
+                android:textColorLink="#B1A6A3" />
 
             <RadioButton
                 android:id="@+id/one_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="One time" />
+                android:buttonTint="#AA9F98"
+                android:drawableTint="#B1A6A3"
+                android:text="One time"
+                android:textColorLink="#B1A6A3" />
         </RadioGroup>
 
         <EditText

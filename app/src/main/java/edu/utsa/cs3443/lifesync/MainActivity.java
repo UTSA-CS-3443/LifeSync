@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void displayWidgets(LinearLayout widgetContainer) {
         String previousDate = "";
+        String previousWeekday = "";
         LinearLayout widgets = null;
         Date today = new Date();
 
@@ -71,12 +73,16 @@ public class MainActivity extends AppCompatActivity {
         for (Widget widget : user.getWidgets()) {
             if(widget.getDate().after(yesterday)) {
                 String currentDate = widget.getFormattedDate();
+                String currentWeekday = new SimpleDateFormat("EEEE").format(widget.getDate());
                 if (!currentDate.equals(previousDate)) {
                     // Add the previous group of widgets to the widgetView
                     if (widgets != null) {
+
                         View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
                         TextView dateTextView = widgetView.findViewById(R.id.Date);
+                        TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
                         dateTextView.setText(previousDate);
+                        weekDateTextView.setText(previousWeekday);
                         LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
                         widgetGroupContainer.addView(widgets);
                         widgetContainer.addView(widgetView);
@@ -86,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     widgets = new LinearLayout(this);
                     widgets.setOrientation(LinearLayout.VERTICAL);
                     previousDate = currentDate;
+                    previousWeekday = currentWeekday;
                 }
 
                 // Add the current widget to the current date group
@@ -110,7 +117,10 @@ public class MainActivity extends AppCompatActivity {
         if (widgets != null) {
             View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
             TextView dateTextView = widgetView.findViewById(R.id.Date);
+            TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
             dateTextView.setText(previousDate);
+            weekDateTextView.setText(previousWeekday);
+
             LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
             widgetGroupContainer.addView(widgets);
             widgetContainer.addView(widgetView);
