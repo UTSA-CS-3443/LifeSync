@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.add(Calendar.DAY_OF_YEAR, -1);
         Date yesterday = calendar.getTime();
 
-
         for (Widget widget : user.getWidgets()) {
             if(widget.getDate().after(yesterday)) {
                 String currentDate = widget.getFormattedDate();
