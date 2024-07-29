@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             widgetContainer.addView(widgetView);
         }
     }
-
+    //create navigatuin bar
     public void createNavigationBar(){
         ImageButton create =findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
