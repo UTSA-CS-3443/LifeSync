@@ -8,11 +8,37 @@
     android:background="@drawable/paperback"
     tools:context=".SecondActivity">
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="83dp"
+        android:background="#ABA099"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:text="Activity"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="537dp"
         android:background="@drawable/paperback"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <EditText
             android:id="@+id/title"
@@ -26,8 +52,8 @@
             android:id="@+id/type_selector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/task_radio_button"
@@ -56,27 +82,27 @@
             android:id="@+id/add_guests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Add guests"
-            android:padding="8dp"
             android:layout_marginTop="8dp"
+            android:hint="Add guests"
             android:inputType="text"
+            android:padding="8dp"
             android:visibility="gone" />
 
         <EditText
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:hint="Description..."
-            android:padding="8dp"
             android:inputType="text"
-            android:layout_marginTop="8dp" />
+            android:padding="8dp" />
 
         <LinearLayout
             android:id="@+id/details_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,12 +122,13 @@
                     android:id="@+id/location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:hint="Location"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:layout_marginStart="8dp" />
+                    android:padding="8dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,36 +147,37 @@
                     android:id="@+id/date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:hint="Date"
-                    android:padding="8dp"
-                    android:layout_marginStart="8dp"/>
+                    android:padding="8dp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <RadioGroup
-        android:id="@+id/repeatTaskChoice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
-
-        <RadioButton
-            android:id="@+id/Task_repeat"
-            android:layout_width="0dp"
+            android:id="@+id/repeatTaskChoice"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="Repeat" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/one_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="One time" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/Task_repeat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Repeat" />
+
+            <RadioButton
+                android:id="@+id/one_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="One time" />
+        </RadioGroup>
+
         <EditText
             android:id="@+id/repeat_time"
             android:layout_width="match_parent"
@@ -163,28 +191,29 @@
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="#B2A7A4"
             android:text="Complete" />
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
+        android:background="#ABA099"
         android:gravity="center"
         android:orientation="horizontal"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="20dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/home"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="40dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/home" />
@@ -194,7 +223,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="40dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/edit" />
@@ -203,7 +232,7 @@
             android:id="@+id/calendar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/calendar" />

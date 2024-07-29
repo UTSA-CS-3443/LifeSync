@@ -7,16 +7,37 @@
     android:background="@drawable/paperback"
     android:resizeableActivity="true"
     tools:context=".CalendarActivity">
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="#ABA099"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:text="Calendar"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="640dp"
+        android:layout_width="match_parent"
+        android:layout_height="536dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -32,26 +53,25 @@
             android:text="Selected Date"
             android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:background="#ABA099"
         android:gravity="center"
         android:orientation="horizontal"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:padding="20dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/home"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="40dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/home" />
@@ -61,7 +81,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="40dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/edit" />
@@ -70,7 +90,7 @@
             android:id="@+id/calendar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/paperback"
+            android:background="#ABA099"
             android:padding="3dp"
             android:scaleType="fitCenter"
             android:src="@drawable/calendar" />
