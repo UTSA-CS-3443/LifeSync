@@ -1,29 +1,202 @@
 package edu.utsa.cs3443.lifesync;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
+
+import edu.utsa.cs3443.lifesync.model.User;
+import edu.utsa.cs3443.lifesync.model.Widget;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    private ListView lvNotifications;
 
-    @Override
+    User user;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        LinearLayout widgetContainer = findViewById(R.id.widget_container);
 
-        lvNotifications = findViewById(R.id.lv_notifications);
+        user = (User) getIntent().getSerializableExtra("user");
 
-        // Example data, replace with our own data
-        ArrayList<String> notifications = new ArrayList<>();
-        notifications.add("Notification 1");
-        notifications.add("Notification 2");
-        notifications.add("Notification 3");
+        if(user == null) {
+            try {  // Load Zone from the CSV file into the fleet
+                user = LoadingUserAccount(this);
+                Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                // Display a Toast message indicating an error loading zone
+                Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notifications);
-        lvNotifications.setAdapter(adapter);
+            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+        }
+        user.sortWidgetsByDateTime();
+        createNavigationBar();
+        displayWidgets(widgetContainer);
+    }
+
+    public void displayWidgets(LinearLayout widgetContainer) {
+        String previousDate = "";
+        String previousWeekday = "";
+        LinearLayout widgets = null;
+        Date today = new Date();
+
+        // Create a calendar instance and set it to the current date
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        // Subtract one day to get yesterday's date
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date yesterday = calendar.getTime();
+
+        for (Widget widget : user.getWidgets()) {
+            if(widget.getDate().after(yesterday)) {
+                String currentDate = widget.getFormattedDate();
+                String currentWeekday = new SimpleDateFormat("EEEE").format(widget.getDate());
+                if (!currentDate.equals(previousDate)) {
+                    // Add the previous group of widgets to the widgetView
+                    if (widgets != null) {
+
+                        View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+                        TextView dateTextView = widgetView.findViewById(R.id.Date);
+                        TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
+                        dateTextView.setText(previousDate);
+                        weekDateTextView.setText(previousWeekday);
+                        LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
+                        widgetGroupContainer.addView(widgets);
+                        widgetContainer.addView(widgetView);
+                    }
+
+                    // Create a new LinearLayout for the new date group
+                    widgets = new LinearLayout(this);
+                    widgets.setOrientation(LinearLayout.VERTICAL);
+                    previousDate = currentDate;
+                    previousWeekday = currentWeekday;
+                }
+
+                // Add the current widget to the current date group
+                View announcement = LayoutInflater.from(this).inflate(R.layout.widget_type_display_layout, widgets, false);
+                TextView widgetText = announcement.findViewById(R.id.widgetText);
+                ImageView widgetImage = announcement.findViewById(R.id.widgetType);
+                String image = "@drawable/" + widget.getType().toLowerCase();
+                int imageResource = getResources().getIdentifier(image, null, getPackageName());
+                Drawable res = getResources().getDrawable(imageResource);
+                widgetImage.setImageDrawable(res);
+                if (widget.getType() == "Note") {
+                    widgetText.setText(widget.getType() + ": " + widget.getTitle());
+                    widgets.addView(announcement);
+                } else {
+                    widgetText.setText(widget.getType() + ": " + widget.getTitle() + " " + widget.getStartTime());
+                    widgets.addView(announcement);
+                }
+            }
+        }
+
+        // Add the last group of widgets to the widgetView
+        if (widgets != null) {
+            View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
+            TextView dateTextView = widgetView.findViewById(R.id.Date);
+            TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
+            dateTextView.setText(previousDate);
+            weekDateTextView.setText(previousWeekday);
+
+            LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
+            widgetGroupContainer.addView(widgets);
+            widgetContainer.addView(widgetView);
+        }
+    }
+
+    public void createNavigationBar(){
+        ImageButton profile =findViewById(R.id.profile);
+        profile.setOnClickListener(v -> {
+            // Create an Intent to start ZoneActivity
+            Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
+
+            startActivity(intent);
+        });
+        ImageButton notification =findViewById(R.id.notification);
+        notification.setOnClickListener(v -> {
+            // Create an Intent to start ZoneActivity
+            Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
+
+            startActivity(intent);
+        });
+
+        ImageButton create =findViewById(R.id.create);
+        create.setOnClickListener(v -> {
+            // Create an Intent to start ZoneActivity
+            Intent intent = new Intent(getBaseContext(), SecondActivity.class);
+
+            startActivity(intent);
+        });
+
+        ImageButton home =findViewById(R.id.home);
+        home.setOnClickListener(v -> {
+            // Create an Intent to start ZoneActivity
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+
+            startActivity(intent);
+        });
+        ImageButton calendar =findViewById(R.id.calendar);
+        calendar.setOnClickListener(v -> {
+            // Create an Intent to start ZoneActivity
+            Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
+
+            startActivity(intent);
+        });
+    }
+
+    public User LoadingUserAccount(Activity activity){
+        AssetManager manager = activity.getAssets();
+        String fileName = "AccountInfo.csv";
+        try {
+            // Open the CSV file from the assets folder
+            InputStream file = manager.open(fileName);
+            Scanner scan = new Scanner(file);
+            // Iterate through each line of the CSV file
+            while (scan.hasNextLine()) {
+                // Read lines for each user's data
+                String name = scan.nextLine().trim();
+                String email = scan.nextLine().trim();
+                String gender = scan.nextLine().trim();
+                String biography = scan.nextLine().trim();
+
+                // Create a new User object
+
+                User user = new User(name, email, biography, gender);
+                user.loadWidget(activity);
+                return user;
+            }
+            scan.close();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle error accessing assets
+            Toast.makeText(activity, "Error accessing assets: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        return null;
     }
 }
+
