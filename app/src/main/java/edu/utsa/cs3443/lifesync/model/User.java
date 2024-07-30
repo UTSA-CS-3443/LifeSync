@@ -36,7 +36,6 @@ public class User implements Serializable {
     private int noteNum = 0;
     private int eventNum = 0;
 
-
     // Constructor
     public User( String name, String email, String biography, String gender) {
         this.name = name;
