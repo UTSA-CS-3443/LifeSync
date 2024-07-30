@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     widgetText.setText(widget.getType() + ": " + widget.getTitle());
                     widgets.addView(announcement);
                 } else {
-                    widgetText.setText(widget.getType() + ": " + widget.getTitle() + " " + widget.getStartTime());
+                    widgetText.setText(widget.getType() + ": " + widget.getTitle() + " at " + widget.getStartTime());
                     widgets.addView(announcement);
                 }
             }

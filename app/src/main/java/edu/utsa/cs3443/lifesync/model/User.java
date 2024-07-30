@@ -16,10 +16,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Set;
 
 import kotlin.jvm.internal.CollectionToArray;
 
@@ -209,7 +211,7 @@ public class User implements Serializable {
         this.widgets.add(widget);
 
     }
-    public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatTime,String startTime){
+    public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatDate,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
         Date taskDateConverted = new Date();
@@ -224,13 +226,31 @@ public class User implements Serializable {
         if(color.equals("")){
             color = "black";
         }
-        if(repeatTime.equals("")){
+        if(repeatDate.equals("")){
             Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, startTimeConverted);
             this.addWidget(task);
         }else{
-            LocalTime repeatTimeConverted = LocalTime.parse(repeatTime);
-            Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, repeatTimeConverted, startTimeConverted);
+            String [] repeatDates = repeatDate.split(",");
+            ArrayList<Date> repeatDateList = new ArrayList<Date>();
+            for(int x = 0; x < repeatDates.length;x++){
+                try {
+                    repeatDateList.add(dateFormat.parse(repeatDates[x].trim()));
+                }catch(ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            Set<Date> set = new HashSet<>(repeatDateList);
+            repeatDateList.clear();
+            repeatDateList.addAll(set);
+            Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, startTimeConverted);
             this.addWidget(task);
+            for(Date dates: repeatDateList){
+                if(!dates.equals(taskDateConverted)){
+                    taskId= IDGenerator("Task");
+                    Task repeatedTask = new Task(taskId, title, color, description, dates, reminderTimeConverted, startTimeConverted);
+                    this.addWidget(repeatedTask);}
+            }
+
         }
     }
     public void createNewEvent(String title,String color,String description,String address, String guests,String eventDate,String reminderTimeBefore,String startTime){

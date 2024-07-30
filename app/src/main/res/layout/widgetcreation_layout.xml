@@ -192,8 +192,8 @@
             android:id="@+id/repeat_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="repeat time"
-            android:inputType="text"
+            android:hint="Enter the dates you wish to repeat the task, separate by comma"
+            android:inputType="textMultiLine"
             android:padding="8dp" />
 
         <Button
