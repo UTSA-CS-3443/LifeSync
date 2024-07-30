@@ -90,4 +90,14 @@
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="283dp"
+        android:layout_height="38dp"
+        android:hint="Bio..."
+        android:inputType="text"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="270dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
