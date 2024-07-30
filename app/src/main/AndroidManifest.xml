@@ -13,10 +13,10 @@
         android:theme="@style/Theme.LifeSync"
         tools:targetApi="31">
         <activity
-            android:name=".CalendarActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".CalendarActivity"
             android:exported="false" />
         <activity
             android:name=".ThirdActivity"
