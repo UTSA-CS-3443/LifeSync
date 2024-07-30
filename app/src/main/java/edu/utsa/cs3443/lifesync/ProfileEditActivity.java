@@ -3,9 +3,9 @@ package edu.utsa.cs3443.lifesync;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,44 +13,40 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
-
 import edu.utsa.cs3443.lifesync.model.User;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileEditActivity extends AppCompatActivity {
     private User user;
+    private EditText editName, editEmail, editGender, editBio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_edit);
         user = (User) getIntent().getSerializableExtra("user");
-        String name = user.getName();
-        String email = user.getEmail();
-        String gender = user.getGender();
-        String biography = user.getBiography();
-        TextView userName = findViewById(R.id.name);
-        TextView userGender = findViewById(R.id.gender);
-        TextView userEmail = findViewById(R.id.email);
-        TextView userBio = findViewById(R.id.biography);
-        userName.setText(name);
-        userGender.setText(gender);
-        userEmail.setText(email);
-        userBio.setText(biography);
-        createNavigationBar();
-    }
-    //create navigation bar
-    public void createNavigationBar(){
-        ImageButton edit =findViewById(R.id.edit);
-        edit.setOnClickListener(new View.OnClickListener() {
+        editName = findViewById(R.id.edit_name);
+        editEmail = findViewById(R.id.edit_email);
+        editGender = findViewById(R.id.edit_gender);
+        editBio = findViewById(R.id.edit_biography);
+        Button updateButton = findViewById(R.id.update);
+        updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
-                Intent intent = new Intent(getBaseContext(), ProfileEditActivity.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
+                String newName = editName.getText().toString().trim();
+                String newEmail = editEmail.getText().toString().trim();
+                String newGender = editGender.getText().toString().trim();
+                String newBio = editBio.getText().toString().trim();
+                user.setName(newName);
+                user.setEmail(newEmail);
+                user.setGender(newGender);
+                user.setBiography(newBio);
             }
         });
+        createNavigationBar();
+
+    }
+    public void createNavigationBar(){
+
 
         ImageButton profile =findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
