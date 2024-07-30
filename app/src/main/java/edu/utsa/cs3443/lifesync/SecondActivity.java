@@ -59,6 +59,8 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.task_radio_button) {
+
+                    location.setVisibility(View.GONE);
                     detailsContainer.setVisibility(View.VISIBLE);
                     addGuests.setVisibility(View.GONE);
                     repeatTaskChoice.setVisibility(View.VISIBLE);
@@ -70,6 +72,7 @@ public class SecondActivity extends AppCompatActivity {
                     }
 
                 } else if (checkedId == R.id.event_radio_button) {
+                    location.setVisibility(View.VISIBLE);
                     detailsContainer.setVisibility(View.VISIBLE);
                     addGuests.setVisibility(View.VISIBLE);
                     repeatTaskChoice.setVisibility(View.GONE);
@@ -94,7 +97,7 @@ public class SecondActivity extends AppCompatActivity {
                     // Collect task attributes
                     int repeatChoice = repeatTaskChoice.getCheckedRadioButtonId();
                     String taskStartTime = StartTime.getText().toString().trim();
-                    String taskLocation = location.getText().toString().trim();
+
                     String taskDate = date.getText().toString().trim();
                     String taskReminderTime = reminderTime.getText().toString().trim();
 
@@ -109,13 +112,16 @@ public class SecondActivity extends AppCompatActivity {
                     }
                 } else if (selectedTypeId == R.id.event_radio_button) {
                     // Collect event attributes
-                    String eventTime = StartTime.getText().toString().trim();
                     String eventLocation = location.getText().toString().trim();
                     String eventDate = date.getText().toString().trim();
                     String eventGuests = addGuests.getText().toString().trim();
+                    String eventStartTime = StartTime.getText().toString().trim();
+                    String eventReminderTime = reminderTime.getText().toString().trim();
 
                     // Handle event data
-                    handleEventData(newTitle, newDescription, eventTime, eventLocation, eventDate, eventGuests);
+                    handleEventData(user,newTitle, newDescription, eventLocation, eventGuests,  eventDate, eventReminderTime, eventStartTime);
+
+                        //handleEventData(user, newTitle, newDescription, eventDate,   eventTime, eventLocation, eventDate, eventGuests);
 
                 } else if (selectedTypeId == R.id.note_radio_button) {
                     // Handle note data
@@ -174,7 +180,7 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleTaskDataNoRepeat(User user, String title, String description, String taskDate, String ReminderTimebefore, String startTime) {
         // Handle task data
-        try {  // Load Zone from the CSV file into the fleet
+        try {
             user.createNewTask(title,"",description,taskDate,ReminderTimebefore,"",startTime);
             Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Number of widget: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
@@ -187,15 +193,30 @@ public class SecondActivity extends AppCompatActivity {
         Toast.makeText(this, "Non Repeat Task saved: " + title , Toast.LENGTH_SHORT).show();
     }
 
-    private void handleEventData(String title, String description, String time, String location, String date, String guests) {
+    private void handleEventData(User user, String title, String description, String address, String guests, String eventDate, String reminderTimeBefore, String startTime) {
         //Handle event data
-        Toast.makeText(this, "Event saved: " + title, Toast.LENGTH_SHORT).show();
+        try {
+            user.createNewEvent(title,"",description,address,guests,eventDate,reminderTimeBefore, startTime);
+            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            // Display a Toast message indicating an error loading zone
+            Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
+        };
 
     }
 
+
     private void handleNoteData(String title, String description) {
         //Handle note data
-        Toast.makeText(this, "Note saved: " + title, Toast.LENGTH_SHORT).show();
+        try {
+            user.createNewNote(title,"",description);
+            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            // Display a Toast message indicating an error loading zone
+            Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
+        };
     }
     
 }

@@ -129,6 +129,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:hint="Location"
+                    android:visibility="gone"
                     android:inputType="text"
                     android:padding="8dp" />
             </LinearLayout>

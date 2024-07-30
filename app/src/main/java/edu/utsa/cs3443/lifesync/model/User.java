@@ -112,7 +112,7 @@ public class User implements Serializable {
                 String color;
                 String description;
                 String address;
-                ArrayList<String> guests;
+                String guests;
                 String eventDate;
                 String reminderTimeBefore;
                 boolean repeatDay;
@@ -131,7 +131,7 @@ public class User implements Serializable {
                         //Toast.makeText(activity, "description" + description, Toast.LENGTH_LONG).show();
                         address = scan.nextLine().trim();
                         //Toast.makeText(activity, "address" + address, Toast.LENGTH_LONG).show();
-                        guests = new ArrayList<>(Arrays.asList(scan.nextLine().trim().split(", ")));
+                        guests = scan.nextLine().trim();
                         eventDate = scan.nextLine().trim();
                         //Toast.makeText(activity, "eventDate" + eventDate, Toast.LENGTH_LONG).show();
                         reminderTimeBefore = (scan.nextLine().trim());
@@ -233,12 +233,17 @@ public class User implements Serializable {
             this.addWidget(task);
         }
     }
-    public void createNewEvent(String title,String color,String description,String address, ArrayList<String> guests,String eventDate,String reminderTimeBefore,String startTime){
+    public void createNewEvent(String title,String color,String description,String address, String guests,String eventDate,String reminderTimeBefore,String startTime){
         LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
         String EventId= IDGenerator("Event");
         Date eventDateConverted = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String [] guest = guests.split(",");
+        ArrayList<String> guestsList = new ArrayList<String>();
+        for(int x = 0; x < guest.length;x++){
+            guestsList.add(guest[x]);
+        }
         try {
             eventDateConverted = dateFormat.parse(eventDate);
 
@@ -248,7 +253,7 @@ public class User implements Serializable {
         if(color.equals("")){
             color = "black";
         }
-        Event event = new Event(EventId,title, color, description, address, guests, eventDateConverted, reminderTimeConverted, startTimeConverted);
+        Event event = new Event(EventId,title, color, description, address, guestsList, eventDateConverted, reminderTimeConverted, startTimeConverted);
         this.addWidget(event);
     }
     public void createNewNote(String title, String color,String description){
