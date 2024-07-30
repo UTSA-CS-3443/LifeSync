@@ -15,18 +15,36 @@
         android:layout_height="83dp"
         android:background="#ABA099"
         android:orientation="horizontal"
-        android:padding="20dp"
+        android:padding="15dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/topbar"
-            android:layout_width="wrap_content"
+            android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:text="Journal"
+            android:layout_marginEnd="100dp"
             android:textSize="40sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
+        <ImageButton
+            android:id="@+id/profile"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="10dp"
+            android:background="#ABA099"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profile" />
+
+        <ImageButton
+            android:id="@+id/notification"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#ABA099"
+
+            android:scaleType="fitCenter"
+            android:src="@drawable/notification" />
     </LinearLayout>
 
 
