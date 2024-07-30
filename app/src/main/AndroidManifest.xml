@@ -16,7 +16,7 @@
             android:name=".CalendarActivity"
             android:exported="false" />
         <activity
-            android:name=".ForthActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ThirdActivity"
