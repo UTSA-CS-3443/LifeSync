@@ -53,6 +53,27 @@ public class CalendarActivity extends AppCompatActivity {
         calendarView.setDate(milli);
     }
     public void createNavigationBar(){
+        ImageButton profile =findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        ImageButton notification =findViewById(R.id.notification);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+
         ImageButton create =findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +84,7 @@ public class CalendarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         ImageButton home =findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override

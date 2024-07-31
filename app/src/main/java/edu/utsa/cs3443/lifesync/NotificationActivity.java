@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,8 +34,15 @@ public class NotificationActivity extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("user");
         user.sortWidgetsByDateTime();
+        Date today = new Date();
+        String weekDateString = new SimpleDateFormat("EEEE").format(today);
         displayWidgets(notificationContainer);
-
+        String dateString = new SimpleDateFormat("MM/dd/yyyy").format(today);
+        TextView weekDate = findViewById(R.id.weekdate);
+        TextView date = findViewById(R.id.date);
+        weekDate.setText(weekDateString);
+        date.setText(dateString);
+        createNavigationBar();
     }
 
     public void displayWidgets(LinearLayout notificationContainer) {
@@ -59,19 +67,23 @@ public class NotificationActivity extends AppCompatActivity {
                 if(widget.getType().equals("Event")){
                     address.setVisibility(View.VISIBLE);
                     guests.setVisibility(View.VISIBLE);
-                    address.setText(widget.getLocation());
-                    guests.setText(widget.getGuests().toString());
+                    address.setText("Address: " + widget.getLocation());
+                    guests.setText("Guests: " + widget.getGuests().toString());
                     widgetTypeAndTitle.setText(widget.getType()+": " +widget.getTitle());
                     startTime.setText("Start time: " + widget.getFormattedStartTime());
-                    description.setText(widget.getDescription());
+                    description.setText("Description: " + "\n" +widget.getDescription());
                     notificationContainer.addView(notificationView);
                 }else if(widget.getType().equals("Task")){
+                    guests.setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
                     widgetTypeAndTitle.setText(widget.getType()+": "+widget.getTitle());
-                    description.setText(widget.getDescription());
+                    description.setText("Descrition: " + "\n" +widget.getDescription());
                     notificationContainer.addView(notificationView);
                     startTime.setText("Start time: " + widget.getFormattedStartTime());
                 }else{
                     startTime.setVisibility(View.GONE);
+                    guests.setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
                     widgetTypeAndTitle.setText(widget.getType()+": "+widget.getTitle());
                     description.setText(widget.getDescription());
                     notificationContainer.addView(notificationView);
@@ -82,29 +94,57 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     public void createNavigationBar(){
-
+        ImageButton profile =findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        ImageButton notification =findViewById(R.id.notification);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
 
         ImageButton create =findViewById(R.id.create);
-        create.setOnClickListener(v -> {
-            // Create an Intent to start ZoneActivity
-            Intent intent = new Intent(getBaseContext(), SecondActivity.class);
-
-            startActivity(intent);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), SecondActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
         });
 
         ImageButton home =findViewById(R.id.home);
-        home.setOnClickListener(v -> {
-            // Create an Intent to start ZoneActivity
-            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-
-            startActivity(intent);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
         });
         ImageButton calendar =findViewById(R.id.calendar);
-        calendar.setOnClickListener(v -> {
-            // Create an Intent to start ZoneActivity
-            Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
-
-            startActivity(intent);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start ZoneActivity
+                Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
         });
     }
 

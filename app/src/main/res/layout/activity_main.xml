@@ -10,7 +10,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="83dp"
         android:background="#ABA099"
@@ -19,41 +19,52 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/topbar"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:text="Journal"
-            android:layout_marginEnd="100dp"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints" />
-        <ImageButton
-            android:id="@+id/profile"
-            android:layout_width="55dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
             android:layout_height="55dp"
-            android:layout_marginEnd="10dp"
-            android:background="#ABA099"
-            android:scaleType="fitCenter"
-            android:src="@drawable/profile" />
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/notification"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="#ABA099"
+            <TextView
+                android:id="@+id/screen_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Journal"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
 
-            android:scaleType="fitCenter"
-            android:src="@drawable/notification" />
+            <ImageButton
+                android:id="@+id/profile"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:background="#ABA099"
+                android:scaleType="fitCenter"
+                android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/notification"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="10dp"
+                android:background="#ABA099"
+                android:scaleType="fitCenter"
+                android:src="@drawable/notification"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/profile"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="533dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
         tools:layout_editor_absoluteX="0dp">
 
 
