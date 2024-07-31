@@ -280,7 +280,7 @@ public class User implements Serializable {
         if(color.equals("")){
             color = "black";
         }
-        Note note = new Note(NoteId,title, color, description);
+        Note note = new Note(NoteId,title, description, color);
         this.addWidget(note);
     }
 

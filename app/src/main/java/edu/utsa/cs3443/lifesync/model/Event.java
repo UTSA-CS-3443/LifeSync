@@ -21,7 +21,6 @@ public class Event extends Widget implements Serializable {
         this.eventDate = eventDate;
         this.reminderTimeBefore = reminderTimeBefore;
         this.startTime = startTime;
-        this.notification = new Notification(id, title, eventDate);
     }
 
     // Getters and Setters

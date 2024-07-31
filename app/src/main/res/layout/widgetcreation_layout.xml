@@ -95,6 +95,7 @@
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
                 android:checked="true"
+                android:textSize="23sp"
                 android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Task" />
 
@@ -104,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
+                android:textSize="23sp"
                 android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Event" />
 
@@ -113,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
+                android:textSize="23sp"
                 android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Note" />
         </RadioGroup>
@@ -124,6 +127,7 @@
             android:layout_marginTop="8dp"
             android:hint="Add guests"
             android:inputType="text"
+            android:fontFamily="@font/uberhand_regular"
             android:padding="8dp"
             android:visibility="gone" />
 
@@ -166,6 +170,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:hint="Location"
+                    android:fontFamily="@font/uberhand_regular"
                     android:visibility="gone"
                     android:inputType="text"
                     android:padding="8dp" />
@@ -214,6 +219,7 @@
                 android:buttonTint="#AA9F98"
                 android:checked="true"
                 android:text="Repeat"
+                android:textSize="23sp"
                 android:fontFamily="@font/uberhandtextpro_bold"
                 android:textColorLink="#B1A6A3" />
 
@@ -224,6 +230,7 @@
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
                 android:drawableTint="#B1A6A3"
+                android:textSize="23sp"
                 android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="One time"
                 android:textColorLink="#B1A6A3" />
@@ -244,6 +251,7 @@
             android:layout_height="65dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#B2A7A4"
+            android:textSize="25sp"
             android:fontFamily="@font/uberhandtextpro_bold"
             android:text="Complete" />
 

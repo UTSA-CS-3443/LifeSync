@@ -52,7 +52,6 @@
                 android:layout_height="55dp"
                 android:layout_marginEnd="10dp"
                 android:background="#ABA099"
-                android:backgroundTint="#6F6864"
                 android:scaleType="fitCenter"
                 android:src="@drawable/notification"
                 app:layout_constraintBottom_toBottomOf="parent"
