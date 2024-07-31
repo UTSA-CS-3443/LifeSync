@@ -14,16 +14,18 @@
         android:layout_weight="1"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        android:fontFamily="@font/uberhandtextpro_bold"
         android:text="TextView"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/dayOfMonthView"
         android:layout_height="wrap_content"
         android:layout_width="213dp"
+        android:fontFamily="@font/uberhandtextpro_bold"
         android:text="TextView"
         android:gravity="end"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 

@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayWidgetByDay(String date)
     {
-
         String dayOfWeek = getDayOfWeek(date);
 
         // Inflate the widget container layout
@@ -88,13 +87,9 @@ public class MainActivity extends AppCompatActivity {
                         user.getWidgets().get(i).getDescription());
             }
         }
-
         dayOfWeekTextView.setText(dayOfWeek);
         dayOfMonthTextView.setText(date);
-
-
         weeklyWidgetList.addView(widgetContainer);
-
         for (Widget w : user.getWidgets() )
         {
             if(w.getFormattedDate().equals(date))
@@ -113,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 if(w.getType().equals("Task")) widgetTypeView.setImageResource(R.drawable.task);
                 if(w.getType().equals("Event")) widgetTypeView.setImageResource(R.drawable.event);
 
-                elementTextView.setText(w.getTitle() + ": " + w.getDescription());
+                elementTextView.setText(w.getTitle() + ": " + w.getDescription()+ " at " + w.getFormattedStartTime());
 
                 weeklyWidgetList.addView(elementsContainer);
             }

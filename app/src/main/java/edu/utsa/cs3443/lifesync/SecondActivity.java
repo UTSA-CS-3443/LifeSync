@@ -197,7 +197,7 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleTaskDataRepeat( User user, String title, String description, String taskDate, String reminderTimeBefore,  String repeatTime, String startTime) {
         // Handle task data
-        if(dateFormatValidation(taskDate)&& timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore)){
+        if(dateFormatValidation(taskDate)&& timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore) && repeatDateFormatValidation(repeatTime)){
             try {  // Load Zone from the CSV file into the fleet
                 user.createNewTask(title,"",description,taskDate,reminderTimeBefore,repeatTime, startTime);
                 Toast.makeText(this, "Number of widget: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
@@ -269,6 +269,15 @@ public class SecondActivity extends AppCompatActivity {
             return false;
         }
     }
+    private boolean repeatDateFormatValidation(String repeatDate){
+        String[] dates = repeatDate.split(",");
+        for(int x = 0; x < dates.length; x++){
+            if(!dateFormatValidation(dates[x])){
+                return false;
+            }
+        }
+        return true;
+    };
     private boolean timeFormatValidation(String time){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
         try{
