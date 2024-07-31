@@ -33,6 +33,7 @@ public class Event extends Widget implements Serializable {
         this.location = location;
     }
 
+    @Override
     public ArrayList<String> getGuests() {
         return guests;
     }

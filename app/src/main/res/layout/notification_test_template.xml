@@ -1,0 +1,81 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDE9E2"
+        android:backgroundTint="#EDE9E2"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/widget_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="widget Type: title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_time" />
+
+        <TextView
+            android:id="@+id/start_time"
+            android:layout_width="156dp"
+            android:layout_height="28dp"
+            android:layout_below="@id/description"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:text="Start time: "
+            app:layout_constraintStart_toStartOf="@+id/widget_type_title"
+            app:layout_constraintTop_toBottomOf="@+id/widget_type_title" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:text="Address: "
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="@+id/start_time"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        <TextView
+            android:id="@+id/guests"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_marginTop="24dp"
+            android:text="guests: "
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="@+id/address"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

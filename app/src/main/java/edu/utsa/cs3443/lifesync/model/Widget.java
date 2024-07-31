@@ -2,6 +2,7 @@ package edu.utsa.cs3443.lifesync.model;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Widget implements Serializable {
@@ -55,5 +56,9 @@ public abstract class Widget implements Serializable {
     public abstract String getType();
     public abstract Date getDate();
     public abstract String getFormattedDate();
+    public ArrayList<String> getGuests(){
+        return new ArrayList<String>();
+    }
+    public abstract String getLocation();
 }
 

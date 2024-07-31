@@ -29,6 +29,11 @@ public class Task extends Widget implements Serializable {
     }
 
     @Override
+    public String getLocation() {
+        return "";
+    }
+
+    @Override
     public Date getDate() {
         return taskDate;
     }

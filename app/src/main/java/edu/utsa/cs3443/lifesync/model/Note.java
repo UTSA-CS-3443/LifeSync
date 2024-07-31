@@ -11,7 +11,6 @@ public class Note extends Widget implements Serializable {
         super(id, title, color, description);
         this.noteDate = new Date();
     }
-
     @Override
     public String getType() {
         return "Note";
@@ -21,6 +20,12 @@ public class Note extends Widget implements Serializable {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         return dateFormat.format(noteDate);
     }
+
+    @Override
+    public String getLocation() {
+        return "";
+    }
+
     @Override
     public Date getDate() {
         return noteDate;
@@ -32,6 +37,7 @@ public class Note extends Widget implements Serializable {
     public String getFormattedStartTime(){
         return "";
     }
+
     public LocalTime getStartTime(){
         return  LocalTime.parse("23:59");
     }
