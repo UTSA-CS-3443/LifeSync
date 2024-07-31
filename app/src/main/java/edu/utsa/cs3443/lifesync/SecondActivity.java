@@ -224,7 +224,7 @@ public class SecondActivity extends AppCompatActivity {
                 // Display a Toast message indicating an error loading zone
                 Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }else {
+        }else{
             Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm ", Toast.LENGTH_SHORT).show();
         }
     }
@@ -243,10 +243,7 @@ public class SecondActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm ", Toast.LENGTH_SHORT).show();
         }
-
-
     }
-
 
     private void handleNoteData(String title, String description) {
         //Handle note data
@@ -259,6 +256,7 @@ public class SecondActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
         };
     }
+
     private boolean dateFormatValidation(String date){
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         format.setLenient(false);
