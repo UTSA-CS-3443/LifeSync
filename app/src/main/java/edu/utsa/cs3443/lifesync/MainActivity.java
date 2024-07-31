@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         }
         user.sortWidgetsByDateTime();
         createNavigationBar();
+        Date today = new Date();
+
         displayWidgetByDay("07/24/2025");
         displayWidgetByDay("07/25/2025");
         displayWidgetByDay("07/26/2025");
