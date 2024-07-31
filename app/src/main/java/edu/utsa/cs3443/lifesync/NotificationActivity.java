@@ -1,6 +1,5 @@
 package edu.utsa.cs3443.lifesync;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +13,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -63,7 +57,7 @@ public class NotificationActivity extends AppCompatActivity {
         for (Widget widget : user.getWidgets()) {
             if (widget.getDate().after(yesterday) && widget.getDate().before(today)) {
 
-                View notificationView = LayoutInflater.from(this).inflate(R.layout.notification_test_template, notificationContainer, false);
+                View notificationView = LayoutInflater.from(this).inflate(R.layout.notification_widget_display_template, notificationContainer, false);
                 TextView widgetTypeAndTitle = notificationView.findViewById(R.id.widget_type_title);
                 TextView description = notificationView.findViewById(R.id.description);
                 TextView startTime = notificationView.findViewById(R.id.start_time);
@@ -167,9 +161,8 @@ public class NotificationActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which){
                 user.removeWidget(widget);
                 Toast.makeText(NotificationActivity.this, "The widget has been deleted", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
+                finish();
+                startActivity(getIntent());
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener(){

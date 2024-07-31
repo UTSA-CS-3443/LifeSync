@@ -9,8 +9,6 @@
     tools:context=".ProfileActivity">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="83dp"
@@ -40,12 +38,13 @@
                 android:id="@+id/profile"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:background="#ABA099"
+                android:background="#AA9F98"
+                android:backgroundTint="#6F6763"
                 android:scaleType="fitCenter"
                 android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/notification"
