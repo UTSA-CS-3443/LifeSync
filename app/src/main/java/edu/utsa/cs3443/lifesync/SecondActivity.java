@@ -132,6 +132,7 @@ public class SecondActivity extends AppCompatActivity {
         createNavigationBar(); //createNavigationBar
     }
 
+
     public void createNavigationBar(){
         ImageButton profile =findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
