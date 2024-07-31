@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +23,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 import edu.utsa.cs3443.lifesync.model.User;
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        LinearLayout widgetContainer = findViewById(R.id.widget_container);
 
         user = (User) getIntent().getSerializableExtra("user");
 
@@ -54,9 +56,89 @@ public class MainActivity extends AppCompatActivity {
         }
         user.sortWidgetsByDateTime();
         createNavigationBar();
-        displayWidgets(widgetContainer);
+        displayWidgetByDay("07/24/2025");
+        displayWidgetByDay("07/25/2025");
+        displayWidgetByDay("07/26/2025");
+        displayWidgetByDay("07/27/2025");
+        displayWidgetByDay("07/28/2025");
+        displayWidgetByDay("07/29/2025");
+        displayWidgetByDay("07/30/2025");
     }
-    public void displayWidgets(LinearLayout widgetContainer) {
+
+    public void displayWidgetByDay(String date)
+    {
+
+        String dayOfWeek = getDayOfWeek(date);
+
+        // Inflate the widget container layout
+        LinearLayout weeklyWidgetList = findViewById(R.id.widgetsLayout);
+        LayoutInflater inflater = LayoutInflater.from(this);
+
+        // To create new elements
+        View widgetContainer = inflater.inflate(R.layout.widget_container, weeklyWidgetList, false);
+
+        TextView dayOfWeekTextView = (TextView) widgetContainer.findViewById(R.id.dayOfWeekView);
+        TextView dayOfMonthTextView = (TextView) widgetContainer.findViewById(R.id.dayOfMonthView);
+
+        for(int i = 0; i < user.getWidgets().toArray().length; i++)
+        {
+            if(user.getWidgets().get(i).getFormattedDate().equals(date))
+            {
+                Log.d("JMA", user.getWidgets().get(i).getTitle() +
+                        user.getWidgets().get(i).getDescription());
+            }
+        }
+
+        dayOfWeekTextView.setText(dayOfWeek);
+        dayOfMonthTextView.setText(date);
+
+
+        weeklyWidgetList.addView(widgetContainer);
+
+        for (Widget w : user.getWidgets() )
+        {
+            if(w.getFormattedDate().equals(date))
+            {
+                //Log.d("JMA", w.getTitle());
+                //Log.d("JMA", w.getDescription());
+                //Log.d("JMA", w.getId());
+                //Log.d("JMA", w.getFormattedDate());
+
+                View elementsContainer = inflater.inflate(R.layout.element_container, weeklyWidgetList, false);
+
+                TextView elementTextView = (TextView)elementsContainer.findViewById(R.id.ElementView);
+                ImageView widgetTypeView = (ImageView)elementsContainer.findViewById(R.id.WidgetTypeView);
+
+                if(w.getType().equals("Note")) widgetTypeView.setImageResource(R.drawable.note);
+                if(w.getType().equals("Task")) widgetTypeView.setImageResource(R.drawable.task);
+                if(w.getType().equals("Event")) widgetTypeView.setImageResource(R.drawable.event);
+
+                elementTextView.setText(w.getTitle() + ": " + w.getDescription());
+
+                weeklyWidgetList.addView(elementsContainer);
+            }
+        }
+    }
+
+    public static String getDayOfWeek(String dateStr) {
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        try {
+            // Parse the date string into a Date object
+            Date date = format.parse(dateStr);
+
+            // Create a Calendar object and set the date
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            // Get the day of the week
+            return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void displayWidgetsLegacy(LinearLayout widgetContainer) {
         String previousDate = "";
         String previousWeekday = "";
         LinearLayout widgets = null;
