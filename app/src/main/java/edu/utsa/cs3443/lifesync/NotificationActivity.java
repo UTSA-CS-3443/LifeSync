@@ -1,5 +1,7 @@
 package edu.utsa.cs3443.lifesync;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,8 +9,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -58,12 +62,20 @@ public class NotificationActivity extends AppCompatActivity {
 
         for (Widget widget : user.getWidgets()) {
             if (widget.getDate().after(yesterday) && widget.getDate().before(today)) {
+
                 View notificationView = LayoutInflater.from(this).inflate(R.layout.notification_test_template, notificationContainer, false);
                 TextView widgetTypeAndTitle = notificationView.findViewById(R.id.widget_type_title);
                 TextView description = notificationView.findViewById(R.id.description);
                 TextView startTime = notificationView.findViewById(R.id.start_time);
                 TextView address = notificationView.findViewById(R.id.address);
                 TextView guests = notificationView.findViewById(R.id.guests);
+                ImageButton deleteBtn = notificationView.findViewById(R.id.delete_button);
+                deleteBtn.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        CreateAlertDialog(user, widget);
+                    }
+                });
                 if(widget.getType().equals("Event")){
                     address.setVisibility(View.VISIBLE);
                     guests.setVisibility(View.VISIBLE);
@@ -147,6 +159,27 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void CreateAlertDialog(User user, Widget widget){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this widget?");
+        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                user.removeWidget(widget);
+                Toast.makeText(NotificationActivity.this, "The widget has been deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                Toast.makeText(NotificationActivity.this, "Go back", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create();
+        builder.show();
+    }
 
 }

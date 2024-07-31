@@ -290,14 +290,12 @@ public class User implements Serializable {
     public void removeWidget(Widget widget) {
         this.widgets.remove(widget);
     }
-    public void removeWidgetById(String id, Activity activity) {
+    public void removeWidgetById(String id) {
         for(Widget widget: this.widgets){
             if(id.equals(widget.getId())){
                 removeWidget(widget);
-                Toast.makeText(activity, "Removed " + widget.getType() +id, Toast.LENGTH_LONG).show();
             }
         }
-        Toast.makeText(activity, "Widget with ID " + id + " not found", Toast.LENGTH_LONG).show();
     }
 
     public void sortWidgetsByDateTime() {
