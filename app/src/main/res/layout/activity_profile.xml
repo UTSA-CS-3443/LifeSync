@@ -24,9 +24,10 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/top_bar"
+                android:id="@+id/screen_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/uberhand_regular"
                 android:text="Profile"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -102,6 +103,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="4dp"
                 android:layout_toEndOf="@id/profile_image"
+                android:fontFamily="@font/uberhand_regular"
                 android:text="User name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -114,6 +116,7 @@
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="@font/uberhand_regular"
                 android:layout_toEndOf="@id/profile_image"
                 android:text="Gender" />
 
@@ -126,6 +129,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="16dp"
                 android:layout_toEndOf="@id/profile_image"
+                android:fontFamily="@font/uberhand_regular"
                 android:text="email" />
 
         </RelativeLayout>
@@ -195,6 +199,7 @@
                 android:id="@+id/biography"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/uberhand_regular"
                 android:text="biography goes here" />
 
             <ImageButton

@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile edit"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -217,6 +218,7 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#9B928D"
         android:text="Update Info"
+        android:fontFamily="@font/uberhandtextpro_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />

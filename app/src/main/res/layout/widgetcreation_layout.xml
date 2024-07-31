@@ -26,6 +26,7 @@
                 android:id="@+id/screen_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Activity"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -74,6 +75,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/uberhand_regular"
             android:hint="Title"
             android:inputType="text"
             android:padding="8dp" />
@@ -93,6 +95,7 @@
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
                 android:checked="true"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Task" />
 
             <RadioButton
@@ -101,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Event" />
 
             <RadioButton
@@ -109,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="Note" />
         </RadioGroup>
 
@@ -128,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Description..."
+            android:fontFamily="@font/uberhand_regular"
             android:inputType="textMultiLine"
             android:padding="8dp" />
 
@@ -149,6 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Start time"
+                    android:fontFamily="@font/uberhand_regular"
                     android:inputType="text"
                     android:padding="8dp" />
 
@@ -175,6 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Reminder before"
+                    android:fontFamily="@font/uberhand_regular"
                     android:inputType="text"
                     android:padding="8dp" />
 
@@ -184,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/uberhand_regular"
                     android:hint="Date"
                     android:padding="8dp" />
             </LinearLayout>
@@ -205,6 +214,7 @@
                 android:buttonTint="#AA9F98"
                 android:checked="true"
                 android:text="Repeat"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:textColorLink="#B1A6A3" />
 
             <RadioButton
@@ -214,6 +224,7 @@
                 android:layout_weight="1"
                 android:buttonTint="#AA9F98"
                 android:drawableTint="#B1A6A3"
+                android:fontFamily="@font/uberhandtextpro_bold"
                 android:text="One time"
                 android:textColorLink="#B1A6A3" />
         </RadioGroup>
@@ -224,6 +235,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter the dates you wish to repeat the task, separate by comma"
             android:inputType="textMultiLine"
+            android:fontFamily="@font/uberhand_regular"
             android:padding="8dp" />
 
         <Button
@@ -232,6 +244,7 @@
             android:layout_height="65dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#B2A7A4"
+            android:fontFamily="@font/uberhandtextpro_bold"
             android:text="Complete" />
 
     </LinearLayout>
