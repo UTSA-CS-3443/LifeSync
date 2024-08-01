@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,9 +16,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,17 +61,8 @@ public class MainActivity extends AppCompatActivity {
         // Subtract one day to get yesterday's date
         calendar.add(Calendar.DAY_OF_YEAR, -1);
         Date yesterday = calendar.getTime();
-        displayWeekDate(yesterday);
-        /*
-        displayWidgetByDay("07/24/2025");
-        displayWidgetByDay("07/25/2025");
-        displayWidgetByDay("07/26/2025");
-        displayWidgetByDay("07/27/2025");
-        displayWidgetByDay("07/28/2025");
-        displayWidgetByDay("07/29/2025");
-        displayWidgetByDay("07/30/2025");
 
-         */
+        displayWeekDate(yesterday);
     }
 
     public void displayWidgetByDay(String date)
@@ -136,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat stringFormat = new SimpleDateFormat("MM/dd/yyyy");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today);
-        for(int x = 0; x <7; x++) {
+        for(int x = 0; x < 7; x++) {
             calendar.add(Calendar.DAY_OF_YEAR, +1);
             Date date = calendar.getTime();
             displayWidgetByDay(stringFormat.format(date));
