@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         int imageResource = getResources().getIdentifier(image, null, getPackageName());
         // If the image resource is not found, use the default image
         if( imageResource == 0){     // If not the image, use the default image
-            image ="@drawable/default_image";
+            image ="@drawable/default_profile";
             imageResource = getResources().getIdentifier(image, null, getPackageName());
         }
         Drawable res = getResources().getDrawable(imageResource);

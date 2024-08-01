@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
+    /*
     public void displayWidgetsLegacy(LinearLayout widgetContainer) {
         String previousDate = "";
         String previousWeekday = "";
@@ -218,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
             widgetContainer.addView(widgetView);
         }
     }
+    */
     //create navigation bar
     public void createNavigationBar(){
         ImageButton profile =findViewById(R.id.profile);
