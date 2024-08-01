@@ -3,6 +3,7 @@ package edu.utsa.cs3443.lifesync;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -74,7 +75,7 @@ public class NotificationActivity extends AppCompatActivity {
                     address.setVisibility(View.VISIBLE);
                     guests.setVisibility(View.VISIBLE);
                     address.setText("Address: " + widget.getLocation());
-                    guests.setText("Guests: " + widget.getGuests().toString());
+                    guests.setText("Guests: " + widget.getGuests().toString().replace("[", "").replace("]", ""));
                     widgetTypeAndTitle.setText(widget.getType()+": " +widget.getTitle());
                     startTime.setText("Start time: " + widget.getFormattedStartTime());
                     description.setText("Description: " + "\n" +widget.getDescription());

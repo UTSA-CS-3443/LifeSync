@@ -83,7 +83,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
-                app:srcCompat="@drawable/sample_profile" />
+                app:srcCompat="@drawable/default_profile" />
 
             <EditText
                 android:id="@+id/edit_name"
@@ -105,7 +105,7 @@
                 android:hint="Gender"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_name" />
@@ -118,7 +118,7 @@
                 android:hint="Email"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_gender" />
@@ -194,7 +194,7 @@
                 android:hint="biography"
                 android:inputType="textMultiLine"
                 android:padding="8dp"
-                android:textSize="10sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
