@@ -19,6 +19,16 @@ True
 16:00
 
 Task
+Grocery Shopping
+green
+Buy groceries for the week, including fruits, vegetables, and dairy products.
+08/01/2024
+01:00
+True
+08/02/2024,08/03/2024,08/04/2024
+10:00
+
+Task
 hello world 2
 color: blue
 "Hello this is a description"
@@ -33,13 +43,13 @@ black
 description: I super super hate coding lol
 
 Task
-Task1
-color: blue
-"Hello this is a description"
-07/24/2025
+Call with Client
+blue
+"Have a discussion with the client to review the project requirements and deliverables."
+08/05/2024
 00:30
 False
-16:00
+11:00
 
 Task
 Task2
@@ -50,14 +60,15 @@ color: blue
 False
 16:00
 
-Task
-task3
-color: blue
-"Hello this is a description"
-07/24/2025
+Event
+Book Club Meeting
+red
+Monthly book club meeting to discuss the selected book and share thoughts and insights.
+101 Library St, Booktown, MA 02120
+Sarah Connor, Jane Austen, Mark Twain
+08/10/2024
 00:30
-False
-16:00
+18:30
 
 Task
 task5
@@ -98,25 +109,24 @@ Aryan Stark, Aegon, Danerys
 00:30
 12:00
 
-Event
-final exam 123
-black
-programming
-8035 Ferndale Oaks Rd, San Antonio, TX 78249
-Aryan Stark, Aegon, Danerys
-07/24/2025
-00:30
-12:00
+Task
+Gym Workout
+green
+"Attend the scheduled gym session and follow the workout plan."
+08/04/2024
+01:30
+False
+07:00
 
 Event
-final exam 12
-black
-programming
-Apt. 303 4254 Sulema Extensions, Lake Tameka, TN 59737-6482
-Aryan Stark, Aegon, Danerys
-07/24/2025
-00:30
-12:00
+Art Exhibition
+white
+A showcase of contemporary art by local artists, including paintings, sculptures, and installations.
+321 Gallery Ave, Artville, CA 90210
+Emily Stone, Jackson Pollock, Vincent Van Gogh
+08/07/2024
+00:45
+19:00
 
 Event
 programing
@@ -156,3 +166,32 @@ Aryan Stark, Aegon, Danerys
 07/31/2024
 00:30
 12:00
+
+Event
+Company Meeting
+blue
+Quarterly company meeting to discuss the progress and future plans.
+456 Corporate Blvd, Metropolis, NY 10101
+CEO, Managers, Team Leads
+08/06/2024
+00:30
+09:00
+
+Event
+Birthday Party
+yellow
+Celebrate John's 30th birthday with friends and family at the downtown park.
+123 Main Street, Springfield, IL 62704
+ohn Doe, Jane Smith, Bob Johnson
+08/05/2024
+01:00
+18:00
+
+Task
+Laundry
+red
+"Do the laundry and fold the clothes."
+08/02/2024
+02:00
+False
+14:00

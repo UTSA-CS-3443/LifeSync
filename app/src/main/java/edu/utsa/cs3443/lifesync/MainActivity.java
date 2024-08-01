@@ -58,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
         createNavigationBar();
         Date today = new Date();
 
+        // Create a calendar instance and set it to the current date
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        // Subtract one day to get yesterday's date
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date yesterday = calendar.getTime();
+        displayWeekDate(yesterday);
+        /*
         displayWidgetByDay("07/24/2025");
         displayWidgetByDay("07/25/2025");
         displayWidgetByDay("07/26/2025");
@@ -65,12 +74,15 @@ public class MainActivity extends AppCompatActivity {
         displayWidgetByDay("07/28/2025");
         displayWidgetByDay("07/29/2025");
         displayWidgetByDay("07/30/2025");
+
+         */
     }
 
     public void displayWidgetByDay(String date)
     {
         String dayOfWeek = getDayOfWeek(date);
-
+        Log.d("dayOfWeek", dayOfWeek);
+        Log.d("date", date);
         // Inflate the widget container layout
         LinearLayout weeklyWidgetList = findViewById(R.id.widgetsLayout);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -96,27 +108,41 @@ public class MainActivity extends AppCompatActivity {
         {
             if(w.getFormattedDate().equals(date))
             {
-                //Log.d("JMA", w.getTitle());
-                //Log.d("JMA", w.getDescription());
-                //Log.d("JMA", w.getId());
-                //Log.d("JMA", w.getFormattedDate());
+                Log.d("startime", w.getFormattedStartTime());
+                Log.d("JMA", w.getTitle());
+                Log.d("JMA", w.getDescription());
+                Log.d("JMA", w.getId());
+                Log.d("JMA", w.getFormattedDate());
 
                 View elementsContainer = inflater.inflate(R.layout.element_container, weeklyWidgetList, false);
 
                 TextView elementTextView = (TextView)elementsContainer.findViewById(R.id.ElementView);
                 ImageView widgetTypeView = (ImageView)elementsContainer.findViewById(R.id.WidgetTypeView);
 
-                if(w.getType().equals("Note")) widgetTypeView.setImageResource(R.drawable.note);
-                if(w.getType().equals("Task")) widgetTypeView.setImageResource(R.drawable.task);
-                if(w.getType().equals("Event")) widgetTypeView.setImageResource(R.drawable.event);
-
-                elementTextView.setText(w.getTitle() + ": " + w.getDescription()+ " at " + w.getFormattedStartTime());
-
+                if(w.getType().equals("Note")) {widgetTypeView.setImageResource(R.drawable.note);
+                    elementTextView.setText(w.getTitle() + ": " + w.getDescription());
+                } else if(w.getType().equals("Task")) {
+                    widgetTypeView.setImageResource(R.drawable.task);
+                    elementTextView.setText(w.getTitle() + ": " + w.getDescription()+ " at " + w.getFormattedStartTime());
+                } else if(w.getType().equals("Event")){
+                    widgetTypeView.setImageResource(R.drawable.event);
+                    elementTextView.setText(w.getTitle() + ": " + w.getDescription()+ " at " + w.getFormattedStartTime());
+                }
                 weeklyWidgetList.addView(elementsContainer);
             }
         }
     }
-
+    public void displayWeekDate(Date today){
+        SimpleDateFormat stringFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        for(int x = 0; x <7; x++) {
+            calendar.add(Calendar.DAY_OF_YEAR, +1);
+            Date date = calendar.getTime();
+            displayWidgetByDay(stringFormat.format(date));
+            Log.d("date passes", stringFormat.format(date));
+        }
+    }
     public static String getDayOfWeek(String dateStr) {
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
         try {
