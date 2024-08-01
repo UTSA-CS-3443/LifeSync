@@ -1,197 +1,181 @@
 Event
-concert
-black
-very cool concert
-246 Bertha Key, West Catheyborough, OH 26543
-Aryan Stark, Aegon, Danerys
-06/24/2025
-00:30
-12:00
+summer festival
+purple
+Enjoy live music and food stalls
+123 Festival Ave, Los Angeles, CA
+John Doe, Jane Smith, Alice Johnson
+07/31/2024
+14:00
+20:00
 
 Task
-Exam reviewing
-color: blue
-Reviewing the final exam
-07/24/2035
-00:30
+weekly cleaning
+blue
+Clean the house thoroughly
+07/31/2024
+08:00
 True
-07/26/2035, 07/27/2035, 07/28/2035
-16:00
-
-Task
-Grocery Shopping
-green
-Buy groceries for the week, including fruits, vegetables, and dairy products.
-08/01/2024
-01:00
-True
-08/02/2024,08/03/2024,08/04/2024
+08/01/2024, 08/02/2024, 08/03/2024
 10:00
 
+Note
+New book ideas
+green
+Brainstorming new book plots and characters.
+
+Event
+movie night
+red
+Watch the latest blockbuster
+456 Cinema St, San Francisco, CA
+Eddard Stark, Cersei Lannister, Jaime Lannister
+07/31/2024
+19:00
+22:00
+
 Task
-hello world 2
-color: blue
-"Hello this is a description"
-07/24/2036
-00:30
+client meeting
+orange
+Discuss project milestones
+07/31/2024
+13:00
 False
 16:00
 
 Note
-Project B
-black
-description: I super super hate coding lol
+Weekend plans
+purple
+Planning for a relaxing weekend getaway.
 
-Task
-Call with Client
+Event
+art gallery opening
 blue
-"Have a discussion with the client to review the project requirements and deliverables."
-08/05/2024
-00:30
-False
-11:00
-
-Task
-Task2
-color: blue
-"Hello this is a description"
-07/24/2025
-00:30
-False
-16:00
-
-Event
-Book Club Meeting
-red
-Monthly book club meeting to discuss the selected book and share thoughts and insights.
-101 Library St, Booktown, MA 02120
-Sarah Connor, Jane Austen, Mark Twain
-08/10/2024
-00:30
-18:30
-
-Task
-task5
-color: blue
-"Hello this is a description"
-07/24/2025
-00:30
-False
-12:59
-
-Event
-group project
-black
-android design
-Apt. 303 4254 Sulema Extensions, Lake Tameka, TN 59737-6482
-Aryan Stark, Aegon, Danerys
-07/24/2025
-00:30
-13:00
-
-Event
-final exam
-black
-programming
-246 Bertha Key, West Catheyborough, OH 26543
-Aryan Stark, Aegon, Danerys
-07/25/2025
-00:30
-11:00
-
-Event
-final exam
-black
-programming
-246 Bertha Key, West Catheyborough, OH 26543
-Aryan Stark, Aegon, Danerys
-07/24/2025
-00:30
-12:00
-
-Task
-Gym Workout
-green
-"Attend the scheduled gym session and follow the workout plan."
-08/04/2024
-01:30
-False
-07:00
-
-Event
-Art Exhibition
-white
-A showcase of contemporary art by local artists, including paintings, sculptures, and installations.
-321 Gallery Ave, Artville, CA 90210
-Emily Stone, Jackson Pollock, Vincent Van Gogh
-08/07/2024
-00:45
-19:00
-
-Event
-programing
-black
-programming
-Apt. 303 4254 Sulema Extensions, Lake Tameka, TN 59737-6482
-Aryan Stark, Aegon, Danerys
-07/24/2025
-00:30
-12:00
-
-Event
-Assault on Malevelon Creek
-black
-Helldiver to hellpod, the super destroyer is yours, we need to launch an all-out attack on malevelon creek against the automatons
-246 Bertha Key, West Catheyborough, OH 26543
-Aryan Stark, Aegon, Danerys
-07/31/2024
-00:30
-12:00
-
-Task
-Task2
-color: blue
-"Hello this is a description"
-07/31/2024
-00:30
-False
-16:00
-
-Event
-Comic Con
-black
-The Greater Austin Comic Convention is a celebration that brings all things pop culture together with the Austin Vibe. It packs in two fun-filled days of entertainment that the whole family can enjoy at the beautiful H-E-B Center in Cedar Park!
-246 Bertha Key, West Catheyborough, OH 26543
-Aryan Stark, Aegon, Danerys
-07/31/2024
-00:30
-12:00
-
-Event
-Company Meeting
-blue
-Quarterly company meeting to discuss the progress and future plans.
-456 Corporate Blvd, Metropolis, NY 10101
-CEO, Managers, Team Leads
-08/06/2024
-00:30
-09:00
-
-Event
-Birthday Party
-yellow
-Celebrate John's 30th birthday with friends and family at the downtown park.
-123 Main Street, Springfield, IL 62704
-ohn Doe, Jane Smith, Bob Johnson
-08/05/2024
-01:00
+Attend the grand opening of a new art gallery
+789 Art Lane, New York, NY
+Claire Redfield, Leon Kennedy, Jill Valentine
+08/01/2024
 18:00
+21:00
 
 Task
-Laundry
+weekly report
+green
+Prepare and submit the weekly project report
+08/01/2024
+09:00
+True
+08/02/2024, 08/03/2024, 08/04/2024
+17:00
+
+Note
+Workout schedule
+yellow
+Plan workouts for the upcoming week.
+
+Event
+book club meeting
+orange
+Discuss the latest book in the series
+123 Book St, Chicago, IL
+Harry Potter, Hermione Granger, Ron Weasley
+08/01/2024
+15:00
+17:00
+
+Task
+grocery shopping
 red
-"Do the laundry and fold the clothes."
-08/02/2024
-02:00
+Buy groceries for the week
+08/01/2024
+11:00
 False
 14:00
+
+Note
+Meeting reminders
+blue
+Reminder for upcoming meetings and deadlines.
+
+Event
+community clean-up
+green
+Participate in the local community clean-up event
+456 Greenway Rd, Springfield, IL
+Lisa Simpson, Bart Simpson
+08/02/2024
+09:00
+12:00
+
+Task
+doctor's appointment
+purple
+Visit Dr. Smith for a routine check-up
+08/02/2024
+14:00
+False
+16:00
+
+Note
+Vacation plans
+red
+Outline plans for the upcoming vacation trip.
+
+Event
+charity run
+blue
+Join the charity run for local animal shelters
+789 Charity Ave, Denver, CO
+John Doe, Jane Doe
+08/02/2024
+07:00
+10:00
+
+Task
+submit assignment
+orange
+Submit the final assignment for the course
+08/02/2024
+16:00
+True
+08/03/2024, 08/04/2024
+20:00
+
+Event
+art exhibition
+white
+Attend the art exhibition at the city gallery
+123 Art St, New York, NY
+Emily Clark, Tom Sanders
+08/03/2024
+11:00
+15:00
+
+Task
+grocery shopping
+green
+Buy groceries for the upcoming week
+08/03/2024
+09:00
+True
+08/04/2024, 08/05/2024, 08/06/2024
+10:00
+
+Note
+Meeting notes
+blue
+Notes from the team meeting on project progress.
+
+Event
+summer concert
+yellow
+Enjoy a summer concert featuring local bands
+456 Music Blvd, Los Angeles, CA
+Sarah Lee, James Brown
+08/03/2024
+18:00
+21:00
+
+Note
+Weekly goals
+purple
+Set goals for the upcoming week.
