@@ -248,7 +248,7 @@
             android:backgroundTint="#B2A7A4"
             android:textSize="25sp"
             android:fontFamily="@font/uberhandtextpro_bold"
-            android:text="Complete" />
+            android:text="Add to Schedule" />
 
     </LinearLayout>
 
