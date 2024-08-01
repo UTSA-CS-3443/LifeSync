@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userEmail = findViewById(R.id.email);
         TextView userBio = findViewById(R.id.biography);
 
+
         ImageView userProfilePicture  = findViewById(R.id.profile_image);
         String image ="@drawable/" + user.getGender().toLowerCase() +"_profile";
         int imageResource = getResources().getIdentifier(image, null, getPackageName());
