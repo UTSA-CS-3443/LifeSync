@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.lifesync;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -33,11 +34,23 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userGender = findViewById(R.id.gender);
         TextView userEmail = findViewById(R.id.email);
         TextView userBio = findViewById(R.id.biography);
+
+        ImageView userProfilePicture  = findViewById(R.id.profile_image);
+        String image ="@drawable/" + user.getGender().toLowerCase() +"_profile";
+        int imageResource = getResources().getIdentifier(image, null, getPackageName());
+        // If the image resource is not found, use the default image
+        if( imageResource == 0){     // If not the image, use the default image
+            image ="@drawable/default_image";
+            imageResource = getResources().getIdentifier(image, null, getPackageName());
+        }
+        Drawable res = getResources().getDrawable(imageResource);
+        userProfilePicture.setImageDrawable(res);
         userName.setText(name);
         userGender.setText(gender);
         userEmail.setText(email);
         userBio.setText(biography);
         createNavigationBar();
+
     }
     //create navigation bar
     public void createNavigationBar(){
