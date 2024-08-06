@@ -28,10 +28,10 @@ LifeSync is an all-in-one daily planner application designed to help you stay or
 - **Comprehensive View:** View all your past activities by selecting a day from a given month.
 
 ## Contributors
-- Koa Nguyen
-- Joshua Aaron
-- Dylan Fernandez
-- Brandon Barnes
+- Khoa Nguyen - backend coder
+- Joshua Aaron - backend coder
+- Dylan Fernandez - layout designer
+- Brandon Barnes - tester and documentor
 
 ## Instructions for Running the Application
 
@@ -46,7 +46,7 @@ LifeSync is an all-in-one daily planner application designed to help you stay or
 4. **Run the Application:** Connect an Android device or start an emulator, then click the 'Run' button in Android Studio.
 
 ### Special Files
-Ensure you have internet access as some features may require online connectivity.
+Ensure you have internet access to clone the repository.
 
 ## Known Issues
 - Our program only reads and does not write.
