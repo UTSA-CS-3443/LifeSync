@@ -311,6 +311,6 @@ public class User implements Serializable {
             }
         });
     }
-    // Methods to manage notifications
+
 
 }

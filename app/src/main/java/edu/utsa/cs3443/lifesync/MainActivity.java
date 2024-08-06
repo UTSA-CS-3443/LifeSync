@@ -26,11 +26,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
+import edu.utsa.cs3443.lifesync.model.Admin;
 import edu.utsa.cs3443.lifesync.model.User;
 import edu.utsa.cs3443.lifesync.model.Widget;
 
 public class MainActivity extends AppCompatActivity {
     private User user;
+    private Admin admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
         if(user == null) {
             try {  // Load Zone from the CSV file into the fleet
-                user = LoadingUserAccount(this);
-                Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
+                admin = new Admin(this);
+
             } catch (Exception e) {
                 // Display a Toast message indicating an error loading zone
                 Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
-            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
         }
+        user = admin.getUser();
         user.sortWidgetsByDateTime();
         createNavigationBar();
         Date today = new Date();
@@ -273,35 +275,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    public User LoadingUserAccount(Activity activity){
-        AssetManager manager = activity.getAssets();
-        String fileName = "AccountInfo.csv";
-        try {
-            // Open the CSV file from the assets folder
-            InputStream file = manager.open(fileName);
-            Scanner scan = new Scanner(file);
-            // Iterate through each line of the CSV file
-            while (scan.hasNextLine()) {
-                // Read lines for each user's data
-                String name = scan.nextLine().trim();
-                String email = scan.nextLine().trim();
-                String gender = scan.nextLine().trim();
-                String biography = scan.nextLine().trim();
-
-                // Create a new User object
-
-                User user = new User(name, email, biography, gender);
-                user.loadWidget(activity);
-                return user;
-            }
-            scan.close();
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle error accessing assets
-            Toast.makeText(activity, "Error accessing assets: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        return null;
     }
 }
