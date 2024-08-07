@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         if(user == null) {
             try {  // Load Zone from the CSV file into the fleet
                 admin = new Admin(this);
-
+                user = admin.getUser();
             } catch (Exception e) {
                 // Display a Toast message indicating an error loading zone
                 Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
 
         }
-        user = admin.getUser();
+
         user.sortWidgetsByDateTime();
         createNavigationBar();
         Date today = new Date();
@@ -149,78 +149,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-    /*
-    public void displayWidgetsLegacy(LinearLayout widgetContainer) {
-        String previousDate = "";
-        String previousWeekday = "";
-        LinearLayout widgets = null;
-        Date today = new Date();
 
-        // Create a calendar instance and set it to the current date
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-
-        // Subtract one day to get yesterday's date
-        calendar.add(Calendar.DAY_OF_YEAR, -1);
-        Date yesterday = calendar.getTime();
-
-        for (Widget widget : user.getWidgets()) {
-            if(widget.getDate().after(yesterday)) {
-                String currentDate = widget.getFormattedDate();
-                String currentWeekday = new SimpleDateFormat("EEEE").format(widget.getDate());
-                if (!currentDate.equals(previousDate)) {
-                    // Add the previous group of widgets to the widgetView
-                    if (widgets != null) {
-
-                        View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
-                        TextView dateTextView = widgetView.findViewById(R.id.Date);
-                        TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
-                        dateTextView.setText(previousDate);
-                        weekDateTextView.setText(previousWeekday);
-                        LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
-                        widgetGroupContainer.addView(widgets);
-                        widgetContainer.addView(widgetView);
-                    }
-
-                    // Create a new LinearLayout for the new date group
-                    widgets = new LinearLayout(this);
-                    widgets.setOrientation(LinearLayout.VERTICAL);
-                    previousDate = currentDate;
-                    previousWeekday = currentWeekday;
-                }
-
-                // Add the current widget to the current date group
-                View announcement = LayoutInflater.from(this).inflate(R.layout.widget_type_display_layout, widgets, false);
-                TextView widgetText = announcement.findViewById(R.id.widgetText);
-                ImageView widgetImage = announcement.findViewById(R.id.widgetType);
-                String image = "@drawable/" + widget.getType().toLowerCase();
-                int imageResource = getResources().getIdentifier(image, null, getPackageName());
-                Drawable res = getResources().getDrawable(imageResource);
-                widgetImage.setImageDrawable(res);
-                if (widget.getType() == "Note") {
-                    widgetText.setText(widget.getType() + ": " + widget.getTitle());
-                    widgets.addView(announcement);
-                } else {
-                    widgetText.setText(widget.getType() + ": " + widget.getTitle() + " at " + widget.getStartTime());
-                    widgets.addView(announcement);
-                }
-            }
-        }
-
-        // Add the last group of widgets to the widgetView
-        if (widgets != null) {
-            View widgetView = LayoutInflater.from(this).inflate(R.layout.widget_container_layout, widgetContainer, false);
-            TextView dateTextView = widgetView.findViewById(R.id.Date);
-            TextView weekDateTextView = widgetView.findViewById(R.id.weekdate);
-            dateTextView.setText(previousDate);
-            weekDateTextView.setText(previousWeekday);
-
-            LinearLayout widgetGroupContainer = widgetView.findViewById(R.id.widgets);
-            widgetGroupContainer.addView(widgets);
-            widgetContainer.addView(widgetView);
-        }
-    }
-    */
     //create navigation bar
     public void createNavigationBar(){
         ImageButton profile =findViewById(R.id.profile);

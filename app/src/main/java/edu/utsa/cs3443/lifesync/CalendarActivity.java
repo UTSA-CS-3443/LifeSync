@@ -60,8 +60,6 @@ public class CalendarActivity extends AppCompatActivity {
                 String selectedYear = String.valueOf(year);
                 String selectedDate = selectedMonth + "/" + selectedDay + "/" + selectedYear;
 
-                //Current day of month in real time
-                //Log.d("JMA", String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
                 displayWidgetByDay(selectedDate);
             }
         });
@@ -101,10 +99,6 @@ public class CalendarActivity extends AppCompatActivity {
         {
             if(w.getFormattedDate().equals(date))
             {
-                //Log.d("JMA", w.getTitle());
-                //Log.d("JMA", w.getDescription());
-                //Log.d("JMA", w.getId());
-                //Log.d("JMA", w.getFormattedDate());
 
                 View elementsContainer = inflater.inflate(R.layout.element_container, weeklyWidgetList, false);
 
