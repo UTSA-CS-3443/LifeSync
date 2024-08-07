@@ -35,7 +35,6 @@ import edu.utsa.cs3443.lifesync.model.Widget;
 public class MainActivity extends AppCompatActivity {
     private User user;
 
-
     /**
      * Initializes the activity, sets up EdgeToEdge mode, and loads the user account.
      *
