@@ -50,5 +50,6 @@ Ensure you have internet access to clone the repository.
 
 ## Known Issues
 - Our program only reads and does not write.
+- Our program only has a selected amount of dates, if run after our range the application might be blank.
 
 
