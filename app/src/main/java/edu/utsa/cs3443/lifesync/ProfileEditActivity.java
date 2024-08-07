@@ -9,15 +9,24 @@ import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import edu.utsa.cs3443.lifesync.model.User;
 
+/**
+ * The ProfileEditActivity class allows the user to edit their profile information
+ * such as name, email, gender, and biography. It also sets up the navigation
+ * bar for navigating to other activities.
+ */
 public class ProfileEditActivity extends AppCompatActivity {
     private User user;
     private EditText editName, editEmail, editGender, editBio;
+
+    /**
+     * Initializes the activity, setting up the profile editing form and
+     * the navigation bar.
+     *
+     * @param savedInstanceState The saved state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +37,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         editEmail = findViewById(R.id.edit_email);
         editGender = findViewById(R.id.edit_gender);
         editBio = findViewById(R.id.edit_biography);
+
         Button updateButton = findViewById(R.id.update);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,58 +53,59 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
         });
         createNavigationBar();
-
     }
-    public void createNavigationBar(){
 
-
-        ImageButton profile =findViewById(R.id.profile);
+    /**
+     * Creates the navigation bar with buttons to navigate to different activities.
+     */
+    public void createNavigationBar() {
+        ImageButton profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start ProfileActivity
                 Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton notification =findViewById(R.id.notification);
+        ImageButton notification = findViewById(R.id.notification);
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start NotificationActivity
                 Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton create =findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start SecondActivity
                 Intent intent = new Intent(getBaseContext(), SecondActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton home =findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start MainActivity
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton calendar =findViewById(R.id.calendar);
+        ImageButton calendar = findViewById(R.id.calendar);
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start CalendarActivity
                 Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);

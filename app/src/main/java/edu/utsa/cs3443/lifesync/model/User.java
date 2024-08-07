@@ -11,20 +11,17 @@ import java.util.Comparator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Set;
 
-import kotlin.jvm.internal.CollectionToArray;
-
+/**
+ * The User class represents a user within the LifeSync application.
+ * It includes details such as the user's name, email, biography, gender, and a list of widgets.
+ */
 public class User implements Serializable {
     private String id;
     private String name;
@@ -36,67 +33,137 @@ public class User implements Serializable {
     private int noteNum = 0;
     private int eventNum = 0;
 
-    // Constructor
-    public User( String name, String email, String biography, String gender) {
+    /**
+     * Constructs a new User with the specified details.
+     *
+     * @param name      The name of the user.
+     * @param email     The email of the user.
+     * @param biography The biography of the user.
+     * @param gender    The gender of the user.
+     */
+    public User(String name, String email, String biography, String gender) {
         this.name = name;
         this.email = email;
         this.biography = biography;
         this.gender = gender;
-        this.widgets = new ArrayList<Widget>();
-        this.taskNum = 0;
-        this.noteNum = 0;
-        this.eventNum = 0;
+        this.widgets = new ArrayList<>();
     }
 
     // Getters and Setters
+
+    /**
+     * Gets the unique identifier for the user.
+     *
+     * @return The unique identifier for the user.
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets the unique identifier for the user.
+     *
+     * @param id The unique identifier for the user.
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * Gets the name of the user.
+     *
+     * @return The name of the user.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the user.
+     *
+     * @param name The name of the user.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the email of the user.
+     *
+     * @return The email of the user.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets the email of the user.
+     *
+     * @param email The email of the user.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets the biography of the user.
+     *
+     * @return The biography of the user.
+     */
     public String getBiography() {
         return biography;
     }
 
+    /**
+     * Sets the biography of the user.
+     *
+     * @param biography The biography of the user.
+     */
     public void setBiography(String biography) {
         this.biography = biography;
     }
 
+    /**
+     * Gets the gender of the user.
+     *
+     * @return The gender of the user.
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * Sets the gender of the user.
+     *
+     * @param gender The gender of the user.
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
+    /**
+     * Gets the list of widgets associated with the user.
+     *
+     * @return The list of widgets.
+     */
     public ArrayList<Widget> getWidgets() {
         return widgets;
     }
 
+    /**
+     * Sets the list of widgets associated with the user.
+     *
+     * @param widgets The list of widgets.
+     */
     public void setWidgets(ArrayList<Widget> widgets) {
         this.widgets = widgets;
     }
 
+    /**
+     * Loads widgets from a CSV file located in the assets folder.
+     *
+     * @param activity The activity context used to access assets.
+     */
     public void loadWidget(Activity activity) {
         AssetManager manager = activity.getAssets();
         String fileName = "widget.csv";
@@ -123,24 +190,15 @@ public class User implements Serializable {
 
                 switch (widgetType) {
                     case "Event":
-
                         title = scan.nextLine().trim();
-                        //Toast.makeText(activity, "title" + title, Toast.LENGTH_LONG).show();
                         color = scan.nextLine().trim();
-                        //Toast.makeText(activity, "color" + color, Toast.LENGTH_LONG).show();
                         description = scan.nextLine().trim();
-                        //Toast.makeText(activity, "description" + description, Toast.LENGTH_LONG).show();
                         address = scan.nextLine().trim();
-                        //Toast.makeText(activity, "address" + address, Toast.LENGTH_LONG).show();
                         guests = scan.nextLine().trim();
                         eventDate = scan.nextLine().trim();
-                        //Toast.makeText(activity, "eventDate" + eventDate, Toast.LENGTH_LONG).show();
-                        reminderTimeBefore = (scan.nextLine().trim());
-                        //Toast.makeText(activity, "reminderTimeBefore" + reminderTimeBefore, Toast.LENGTH_LONG).show();
-                        startTime = (scan.nextLine().trim());
-                        //Toast.makeText(activity, "startTime" + startTime, Toast.LENGTH_LONG).show();
-                        this.createNewEvent(title,color,description,address,guests,eventDate,reminderTimeBefore,startTime);
-
+                        reminderTimeBefore = scan.nextLine().trim();
+                        startTime = scan.nextLine().trim();
+                        this.createNewEvent(title, color, description, address, guests, eventDate, reminderTimeBefore, startTime);
                         break;
 
                     case "Task":
@@ -148,17 +206,15 @@ public class User implements Serializable {
                         color = scan.nextLine().trim();
                         description = scan.nextLine().trim();
                         taskDate = scan.nextLine().trim();
-                        reminderTimeBefore = (scan.nextLine().trim());
+                        reminderTimeBefore = scan.nextLine().trim();
                         repeatDay = Boolean.parseBoolean(scan.nextLine().trim());
-                        Task task;
-                        if(repeatDay == true){
-                            repeatTime =(scan.nextLine().trim());
-                            startTime = (scan.nextLine().trim());
-                            this.createNewTask( title, color, description, taskDate, reminderTimeBefore, repeatTime, startTime);
-                        }
-                        else {
-                            startTime = (scan.nextLine().trim());
-                            this.createNewTask( title, color, description, taskDate, reminderTimeBefore, "", startTime);
+                        if (repeatDay) {
+                            repeatTime = scan.nextLine().trim();
+                            startTime = scan.nextLine().trim();
+                            this.createNewTask(title, color, description, taskDate, reminderTimeBefore, repeatTime, startTime);
+                        } else {
+                            startTime = scan.nextLine().trim();
+                            this.createNewTask(title, color, description, taskDate, reminderTimeBefore, "", startTime);
                         }
                         break;
 
@@ -174,67 +230,84 @@ public class User implements Serializable {
                 if (scan.hasNextLine()) {
                     scan.nextLine();
                 }
-
             }
             scan.close();
             file.close();
-
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle error accessing assets
-            Toast.makeText(activity, "Error loading widget " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Error loading widget: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-    public void createWidget(){
-    }
-    public String IDGenerator(String type){
+
+    /**
+     * Generates a unique identifier for a widget of the specified type.
+     *
+     * @param type The type of the widget (Event, Task, Note).
+     * @return The generated unique identifier.
+     */
+    public String IDGenerator(String type) {
         String id;
         switch (type) {
             case "Event":
-                eventNum +=1;
+                eventNum += 1;
                 id = String.format("%s%03d", type.substring(0, 3).toUpperCase(), eventNum);
                 return id;
             case "Task":
-                taskNum +=1;
+                taskNum += 1;
                 id = String.format("%s%03d", type.substring(0, 3).toUpperCase(), taskNum);
                 return id;
             case "Note":
-                noteNum +=1;
+                noteNum += 1;
                 id = String.format("%s%03d", type.substring(0, 3).toUpperCase(), noteNum);
                 return id;
         }
         return null;
     }
-    // Methods to manage events
+
+    /**
+     * Adds a widget to the user's list of widgets.
+     *
+     * @param widget The widget to be added.
+     */
     public void addWidget(Widget widget) {
         this.widgets.add(widget);
-
     }
-    public void createNewTask(String title,String color,String description,String taskDate,String reminderTimeBefore,String repeatDate,String startTime){
-        LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
+
+    /**
+     * Creates a new task with the specified details and adds it to the user's list of widgets.
+     *
+     * @param title              The title of the task.
+     * @param color              The color associated with the task.
+     * @param description        The description of the task.
+     * @param taskDate           The date of the task.
+     * @param reminderTimeBefore The reminder time before the task.
+     * @param repeatDate         The repeat dates for the task.
+     * @param startTime          The start time of the task.
+     */
+    public void createNewTask(String title, String color, String description, String taskDate, String reminderTimeBefore, String repeatDate, String startTime) {
+        LocalTime reminderTimeConverted = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
         Date taskDateConverted = new Date();
-        String taskId= IDGenerator("Task");
+        String taskId = IDGenerator("Task");
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {
             taskDateConverted = dateFormat.parse(taskDate);
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(color.equals("")){
+        if (color.isEmpty()) {
             color = "black";
         }
-        if(repeatDate.equals("")){
+        if (repeatDate.isEmpty()) {
             Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, startTimeConverted);
             this.addWidget(task);
-        }else{
-            String [] repeatDates = repeatDate.split(",");
-            ArrayList<Date> repeatDateList = new ArrayList<Date>();
-            for(int x = 0; x < repeatDates.length;x++){
+        } else {
+            String[] repeatDates = repeatDate.split(",");
+            ArrayList<Date> repeatDateList = new ArrayList<>();
+            for (String repeatDateItem : repeatDates) {
                 try {
-                    repeatDateList.add(dateFormat.parse(repeatDates[x].trim()));
-                }catch(ParseException e) {
+                    repeatDateList.add(dateFormat.parse(repeatDateItem.trim()));
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
@@ -243,61 +316,102 @@ public class User implements Serializable {
             repeatDateList.addAll(set);
             Task task = new Task(taskId, title, color, description, taskDateConverted, reminderTimeConverted, startTimeConverted);
             this.addWidget(task);
-            for(Date dates: repeatDateList){
-                if(!dates.equals(taskDateConverted)){
-                    taskId= IDGenerator("Task");
-                    Task repeatedTask = new Task(taskId, title, color, description, dates, reminderTimeConverted, startTimeConverted);
-                    this.addWidget(repeatedTask);}
+            for (Date date : repeatDateList) {
+                if (!date.equals(taskDateConverted)) {
+                    taskId = IDGenerator("Task");
+                    Task repeatedTask = new Task(taskId, title, color, description, date, reminderTimeConverted, startTimeConverted);
+                    this.addWidget(repeatedTask);
+                }
             }
-
         }
     }
-    public void createNewEvent(String title,String color,String description,String address, String guests,String eventDate,String reminderTimeBefore,String startTime){
-        LocalTime reminderTimeConverted  = LocalTime.parse(reminderTimeBefore);
+
+    /**
+     * Creates a new event with the specified details and adds it to the user's list of widgets.
+     *
+     * @param title              The title of the event.
+     * @param color              The color associated with the event.
+     * @param description        The description of the event.
+     * @param address            The address of the event.
+     * @param guests             The guests attending the event.
+     * @param eventDate          The date of the event.
+     * @param reminderTimeBefore The reminder time before the event.
+     * @param startTime          The start time of the event.
+     */
+    public void createNewEvent(String title, String color, String description, String address, String guests, String eventDate, String reminderTimeBefore, String startTime) {
+        LocalTime reminderTimeConverted = LocalTime.parse(reminderTimeBefore);
         LocalTime startTimeConverted = LocalTime.parse(startTime);
-        String EventId= IDGenerator("Event");
+        String eventId = IDGenerator("Event");
         Date eventDateConverted = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        String [] guest = guests.split(",");
-        ArrayList<String> guestsList = new ArrayList<String>();
-        for(int x = 0; x < guest.length;x++){
-            guestsList.add(guest[x]);
+        String[] guestArray = guests.split(",");
+        ArrayList<String> guestsList = new ArrayList<>();
+        for (String guest : guestArray) {
+            guestsList.add(guest.trim());
         }
         try {
             eventDateConverted = dateFormat.parse(eventDate);
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(color.equals("")){
+        if (color.isEmpty()) {
             color = "black";
         }
-        Event event = new Event(EventId,title, color, description, address, guestsList, eventDateConverted, reminderTimeConverted, startTimeConverted);
+        Event event = new Event(eventId, title, color, description, address, guestsList, eventDateConverted, reminderTimeConverted, startTimeConverted);
         this.addWidget(event);
     }
-    public void createNewNote(String title, String color,String description){
-        String NoteId= IDGenerator("Note");
-        if(color.equals("")){
+
+    /**
+     * Creates a new note with the specified details and adds it to the user's list of widgets.
+     *
+     * @param title       The title of the note.
+     * @param color       The color associated with the note.
+     * @param description The description of the note.
+     */
+    public void createNewNote(String title, String color, String description) {
+        String noteId = IDGenerator("Note");
+        if (color.isEmpty()) {
             color = "black";
         }
-        Note note = new Note(NoteId,title, description, color);
+        Note note = new Note(noteId, title, description, color);
         this.addWidget(note);
     }
 
-    public int getNumberOfWidget(){
+    /**
+     * Gets the number of widgets associated with the user.
+     *
+     * @return The number of widgets.
+     */
+    public int getNumberOfWidget() {
         return this.widgets.size();
     }
+
+    /**
+     * Removes a widget from the user's list of widgets.
+     *
+     * @param widget The widget to be removed.
+     */
     public void removeWidget(Widget widget) {
         this.widgets.remove(widget);
     }
+
+    /**
+     * Removes a widget from the user's list of widgets by its unique identifier.
+     *
+     * @param id The unique identifier of the widget to be removed.
+     */
     public void removeWidgetById(String id) {
-        for(Widget widget: this.widgets){
-            if(id.equals(widget.getId())){
+        for (Widget widget : this.widgets) {
+            if (id.equals(widget.getId())) {
                 removeWidget(widget);
+                break;
             }
         }
     }
 
+    /**
+     * Sorts the user's list of widgets by date and time.
+     */
     public void sortWidgetsByDateTime() {
         Collections.sort(this.widgets, new Comparator<Widget>() {
             @Override
@@ -311,6 +425,4 @@ public class User implements Serializable {
             }
         });
     }
-
-
 }
