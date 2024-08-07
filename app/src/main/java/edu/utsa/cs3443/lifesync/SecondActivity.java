@@ -1,6 +1,5 @@
 package edu.utsa.cs3443.lifesync;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,19 +21,28 @@ import java.time.format.DateTimeParseException;
 
 import edu.utsa.cs3443.lifesync.model.User;
 
+/**
+ * The SecondActivity class allows users to create new widgets such as tasks, events, or notes.
+ * It also sets up the navigation bar for navigating to other activities.
+ */
 public class SecondActivity extends AppCompatActivity {
-    private MainActivity activity;
     private User user;
     private RadioGroup typeSelector, repeatTaskChoice;
-    private EditText title, addGuests, description, StartTime,reminderTime, location, date, repeatTime;
+    private EditText title, addGuests, description, StartTime, reminderTime, location, date, repeatTime;
     private LinearLayout detailsContainer;
 
+    /**
+     * Initializes the activity, setting up the widget creation form and the navigation bar.
+     *
+     * @param savedInstanceState The saved state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        user= (User) getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widgetcreation_layout);
         EdgeToEdge.enable(this);
+
         // Initialize views
         title = findViewById(R.id.title);
         typeSelector = findViewById(R.id.type_selector);
@@ -65,7 +73,6 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.task_radio_button) {
-
                     location.setVisibility(View.GONE);
                     detailsContainer.setVisibility(View.VISIBLE);
                     addGuests.setVisibility(View.GONE);
@@ -76,7 +83,6 @@ public class SecondActivity extends AppCompatActivity {
                     } else {
                         repeatTime.setVisibility(View.GONE);
                     }
-
                 } else if (checkedId == R.id.event_radio_button) {
                     location.setVisibility(View.VISIBLE);
                     detailsContainer.setVisibility(View.VISIBLE);
@@ -91,6 +97,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+
         Button completeButton = findViewById(R.id.complete_button);
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +105,9 @@ public class SecondActivity extends AppCompatActivity {
                 int selectedTypeId = typeSelector.getCheckedRadioButtonId();
                 String newTitle = title.getText().toString().trim();
                 String newDescription = description.getText().toString().trim();
-                if(newTitle.equals("") && newDescription.equals("")) {
+                if (newTitle.equals("") && newDescription.equals("")) {
                     Toast.makeText(SecondActivity.this, "Unable to create an empty widget! Try again!", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     if (selectedTypeId == R.id.task_radio_button) {
                         // Collect task attributes
                         int repeatChoice = repeatTaskChoice.getCheckedRadioButtonId();
@@ -114,7 +121,6 @@ public class SecondActivity extends AppCompatActivity {
                         } else {
                             // Handle task data
                             handleTaskDataNoRepeat(user, newTitle, newDescription, taskDate, taskReminderTime, taskStartTime);
-                            ;
                         }
                     } else if (selectedTypeId == R.id.event_radio_button) {
                         // Collect event attributes
@@ -126,9 +132,6 @@ public class SecondActivity extends AppCompatActivity {
 
                         // Handle event data
                         handleEventData(user, newTitle, newDescription, eventLocation, eventGuests, eventDate, eventReminderTime, eventStartTime);
-
-                        //handleEventData(user, newTitle, newDescription, eventDate,   eventTime, eventLocation, eventDate, eventGuests);
-
                     } else if (selectedTypeId == R.id.note_radio_button) {
                         // Handle note data
                         handleNoteData(newTitle, newDescription);
@@ -136,58 +139,60 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
-        createNavigationBar(); //createNavigationBar
+        createNavigationBar();
     }
 
-
-    public void createNavigationBar(){
-        ImageButton profile =findViewById(R.id.profile);
+    /**
+     * Creates the navigation bar with buttons to navigate to different activities.
+     */
+    public void createNavigationBar() {
+        ImageButton profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start ProfileActivity
                 Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton notification =findViewById(R.id.notification);
+        ImageButton notification = findViewById(R.id.notification);
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start NotificationActivity
                 Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton create =findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start SecondActivity
                 Intent intent = new Intent(getBaseContext(), SecondActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton home =findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start MainActivity
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton calendar =findViewById(R.id.calendar);
+        ImageButton calendar = findViewById(R.id.calendar);
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start CalendarActivity
                 Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
@@ -195,90 +200,139 @@ public class SecondActivity extends AppCompatActivity {
         });
     }
 
-    private void handleTaskDataRepeat( User user, String title, String description, String taskDate, String reminderTimeBefore,  String repeatTime, String startTime) {
-        // Handle task data
-        if(dateFormatValidation(taskDate)&& timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore) && repeatDateFormatValidation(repeatTime)){
-            try {  // Load Zone from the CSV file into the fleet
-                user.createNewTask(title,"",description,taskDate,reminderTimeBefore,repeatTime, startTime);
-                Toast.makeText(this, "Number of widget: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "create new Task successful", Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                // Display a Toast message indicating an error loading zone
-                Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
-            };
-        }else{
-            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm ", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    private void handleTaskDataNoRepeat(User user, String title, String description, String taskDate, String ReminderTimeBefore, String startTime) {
-        // Handle task data
-        if(dateFormatValidation(taskDate) && timeFormatValidation(startTime) && timeFormatValidation(ReminderTimeBefore)) {
+    /**
+     * Handles task data for tasks that repeat.
+     *
+     * @param user              The user object.
+     * @param title             The task title.
+     * @param description       The task description.
+     * @param taskDate          The task date.
+     * @param reminderTimeBefore The reminder time before the task.
+     * @param repeatTime        The repeat time for the task.
+     * @param startTime         The start time of the task.
+     */
+    private void handleTaskDataRepeat(User user, String title, String description, String taskDate, String reminderTimeBefore, String repeatTime, String startTime) {
+        if (dateFormatValidation(taskDate) && timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore) && repeatDateFormatValidation(repeatTime)) {
             try {
-                user.createNewTask(title, "", description, taskDate, ReminderTimeBefore, "", startTime);
-                Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "Number of widget: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
-
+                user.createNewTask(title, "", description, taskDate, reminderTimeBefore, repeatTime, startTime);
+                Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Create new task successful", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                // Display a Toast message indicating an error loading zone
-                Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Failed to create task: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }else{
-            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm ", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm", Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * Handles task data for tasks that do not repeat.
+     *
+     * @param user              The user object.
+     * @param title             The task title.
+     * @param description       The task description.
+     * @param taskDate          The task date.
+     * @param reminderTimeBefore The reminder time before the task.
+     * @param startTime         The start time of the task.
+     */
+    private void handleTaskDataNoRepeat(User user, String title, String description, String taskDate, String reminderTimeBefore, String startTime) {
+        if (dateFormatValidation(taskDate) && timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore)) {
+            try {
+                user.createNewTask(title, "", description, taskDate, reminderTimeBefore, "", startTime);
+                Toast.makeText(this, "Create new task successful", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "Failed to create task: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Handles event data.
+     *
+     * @param user              The user object.
+     * @param title             The event title.
+     * @param description       The event description.
+     * @param address           The event address.
+     * @param guests            The event guests.
+     * @param eventDate         The event date.
+     * @param reminderTimeBefore The reminder time before the event.
+     * @param startTime         The start time of the event.
+     */
     private void handleEventData(User user, String title, String description, String address, String guests, String eventDate, String reminderTimeBefore, String startTime) {
-        //Handle event data
-        if(dateFormatValidation(eventDate) && timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore) ) {
+        if (dateFormatValidation(eventDate) && timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore)) {
             try {
-                user.createNewEvent(title,"",description,address,guests,eventDate,reminderTimeBefore, startTime);
-                Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
+                user.createNewEvent(title, "", description, address, guests, eventDate, reminderTimeBefore, startTime);
+                Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Create new event successful", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
-                // Display a Toast message indicating an error loading zone
-                Toast.makeText(this, "Failed to create Event " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Failed to create event: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }else{
-            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm ", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Invalid format of date or time, please enter mm/dd/yyyy or hh:mm", Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * Handles note data.
+     *
+     * @param title       The note title.
+     * @param description The note description.
+     */
     private void handleNoteData(String title, String description) {
-        //Handle note data
         try {
-            user.createNewNote(title,"",description);
-            Toast.makeText(this, "Number of widget" + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
-            Toast.makeText(this, "create new Task successful", Toast.LENGTH_LONG).show();
+            user.createNewNote(title, "", description);
+            Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Create new note successful", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            // Display a Toast message indicating an error loading zone
-            Toast.makeText(this, "Failed to create Task " + e.getMessage(), Toast.LENGTH_LONG).show();
-        };
+            Toast.makeText(this, "Failed to create note: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
-    private boolean dateFormatValidation(String date){
+    /**
+     * Validates the date format.
+     *
+     * @param date The date string.
+     * @return true if the date is in the correct format, false otherwise.
+     */
+    private boolean dateFormatValidation(String date) {
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         format.setLenient(false);
-        try{
+        try {
             format.parse(date);
             return true;
         } catch (ParseException e) {
             return false;
         }
     }
-    private boolean repeatDateFormatValidation(String repeatDate){
+
+    /**
+     * Validates the repeat date format.
+     *
+     * @param repeatDate The repeat date string.
+     * @return true if all dates in the string are in the correct format, false otherwise.
+     */
+    private boolean repeatDateFormatValidation(String repeatDate) {
         String[] dates = repeatDate.split(",");
-        for(int x = 0; x < dates.length; x++){
-            if(!dateFormatValidation(dates[x])){
+        for (int x = 0; x < dates.length; x++) {
+            if (!dateFormatValidation(dates[x])) {
                 return false;
             }
         }
         return true;
-    };
-    private boolean timeFormatValidation(String time){
+    }
+
+    /**
+     * Validates the time format.
+     *
+     * @param time The time string.
+     * @return true if the time is in the correct format, false otherwise.
+     */
+    private boolean timeFormatValidation(String time) {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
-        try{
+        try {
             LocalTime.parse(time, format);
             return true;
         } catch (DateTimeParseException e) {

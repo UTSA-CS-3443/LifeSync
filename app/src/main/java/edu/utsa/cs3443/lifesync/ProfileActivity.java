@@ -10,16 +10,23 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import org.w3c.dom.Text;
 
 import edu.utsa.cs3443.lifesync.model.User;
 
+/**
+ * The ProfileActivity class displays the user's profile information including
+ * name, gender, email, and a personal biography. It also sets up the navigation
+ * bar for navigating to other activities.
+ */
 public class ProfileActivity extends AppCompatActivity {
     private User user;
+
+    /**
+     * Initializes the activity, setting up the profile information display and
+     * the navigation bar.
+     *
+     * @param savedInstanceState The saved state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +42,12 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userEmail = findViewById(R.id.email);
         TextView userBio = findViewById(R.id.biography);
 
-
-        ImageView userProfilePicture  = findViewById(R.id.profile_image);
-        String image ="@drawable/" + user.getGender().toLowerCase() +"_profile";
+        ImageView userProfilePicture = findViewById(R.id.profile_image);
+        String image = "@drawable/" + user.getGender().toLowerCase() + "_profile";
         int imageResource = getResources().getIdentifier(image, null, getPackageName());
         // If the image resource is not found, use the default image
-        if( imageResource == 0){     // If not the image, use the default image
-            image ="@drawable/default_profile";
+        if (imageResource == 0) {     // If not the image, use the default image
+            image = "@drawable/default_profile";
             imageResource = getResources().getIdentifier(image, null, getPackageName());
         }
         Drawable res = getResources().getDrawable(imageResource);
@@ -51,68 +57,70 @@ public class ProfileActivity extends AppCompatActivity {
         userEmail.setText(email);
         userBio.setText(biography);
         createNavigationBar();
-
     }
-    //create navigation bar
-    public void createNavigationBar(){
-        ImageButton edit =findViewById(R.id.edit);
+
+    /**
+     * Creates the navigation bar with buttons to navigate to different activities.
+     */
+    public void createNavigationBar() {
+        ImageButton edit = findViewById(R.id.edit);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start ProfileEditActivity
                 Intent intent = new Intent(getBaseContext(), ProfileEditActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton profile =findViewById(R.id.profile);
+        ImageButton profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start ProfileActivity
                 Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton notification =findViewById(R.id.notification);
+        ImageButton notification = findViewById(R.id.notification);
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start NotificationActivity
                 Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton create =findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start SecondActivity
                 Intent intent = new Intent(getBaseContext(), SecondActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton home =findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start MainActivity
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
-        ImageButton calendar =findViewById(R.id.calendar);
+        ImageButton calendar = findViewById(R.id.calendar);
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start ZoneActivity
+                // Create an Intent to start CalendarActivity
                 Intent intent = new Intent(getBaseContext(), CalendarActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
