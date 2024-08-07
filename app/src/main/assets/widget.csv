@@ -1,10 +1,11 @@
+
 Event
 summer festival
 purple
 Enjoy live music and food stalls
 123 Festival Ave, Los Angeles, CA
 John Doe, Jane Smith, Alice Johnson
-07/31/2024
+08/07/2024
 14:00
 20:00
 
@@ -12,10 +13,10 @@ Task
 weekly cleaning
 blue
 Clean the house thoroughly
-07/31/2024
+08/08/2024
 08:00
 True
-08/01/2024, 08/02/2024, 08/03/2024
+08/15/2024, 08/22/2024, 08/29/2024
 10:00
 
 Note
@@ -29,7 +30,7 @@ red
 Watch the latest blockbuster
 456 Cinema St, San Francisco, CA
 Eddard Stark, Cersei Lannister, Jaime Lannister
-07/31/2024
+08/10/2024
 19:00
 22:00
 
@@ -37,7 +38,7 @@ Task
 client meeting
 orange
 Discuss project milestones
-07/31/2024
+08/12/2024
 13:00
 False
 16:00
@@ -53,7 +54,7 @@ blue
 Attend the grand opening of a new art gallery
 789 Art Lane, New York, NY
 Claire Redfield, Leon Kennedy, Jill Valentine
-08/01/2024
+08/14/2024
 18:00
 21:00
 
@@ -61,10 +62,10 @@ Task
 weekly report
 green
 Prepare and submit the weekly project report
-08/01/2024
+08/15/2024
 09:00
 True
-08/02/2024, 08/03/2024, 08/04/2024
+08/22/2024, 08/29/2024, 09/05/2024
 17:00
 
 Note
@@ -78,7 +79,7 @@ orange
 Discuss the latest book in the series
 123 Book St, Chicago, IL
 Harry Potter, Hermione Granger, Ron Weasley
-08/01/2024
+08/17/2024
 15:00
 17:00
 
@@ -86,7 +87,7 @@ Task
 grocery shopping
 red
 Buy groceries for the week
-08/01/2024
+08/19/2024
 11:00
 False
 14:00
@@ -102,7 +103,7 @@ green
 Participate in the local community clean-up event
 456 Greenway Rd, Springfield, IL
 Lisa Simpson, Bart Simpson
-08/02/2024
+08/20/2024
 09:00
 12:00
 
@@ -110,7 +111,7 @@ Task
 doctor's appointment
 purple
 Visit Dr. Smith for a routine check-up
-08/02/2024
+08/22/2024
 14:00
 False
 16:00
@@ -126,7 +127,7 @@ blue
 Join the charity run for local animal shelters
 789 Charity Ave, Denver, CO
 John Doe, Jane Doe
-08/02/2024
+08/25/2024
 07:00
 10:00
 
@@ -134,10 +135,10 @@ Task
 submit assignment
 orange
 Submit the final assignment for the course
-08/02/2024
+08/27/2024
 16:00
 True
-08/03/2024, 08/04/2024
+08/29/2024, 09/01/2024
 20:00
 
 Event
@@ -146,7 +147,7 @@ white
 Attend the art exhibition at the city gallery
 123 Art St, New York, NY
 Emily Clark, Tom Sanders
-08/03/2024
+08/30/2024
 11:00
 15:00
 
@@ -154,10 +155,10 @@ Task
 grocery shopping
 green
 Buy groceries for the upcoming week
-08/03/2024
+09/01/2024
 09:00
 True
-08/04/2024, 08/05/2024, 08/06/2024
+09/08/2024, 09/15/2024, 09/22/2024
 10:00
 
 Note
@@ -171,7 +172,7 @@ yellow
 Enjoy a summer concert featuring local bands
 456 Music Blvd, Los Angeles, CA
 Sarah Lee, James Brown
-08/03/2024
+09/05/2024
 18:00
 21:00
 
