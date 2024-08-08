@@ -9,6 +9,21 @@ John Doe, Jane Smith, Alice Johnson
 20:00
 
 Task
+clean the garage
+green
+Organize and clean the garage
+08/07/2024
+09:00
+True
+08/14/2024, 08/21/2024
+12:00
+
+Note
+Meeting notes
+blue
+Notes from the team meeting on project progress.
+
+Task
 weekly cleaning
 blue
 Clean the house thoroughly
@@ -18,10 +33,44 @@ True
 08/15/2024, 08/22/2024, 08/29/2024
 10:00
 
+Event
+team lunch
+red
+Team lunch at the local restaurant
+456 Dine St, San Francisco, CA
+Sarah Connor, John Connor
+08/08/2024
+13:00
+14:30
+
 Note
 New book ideas
 green
 Brainstorming new book plots and characters.
+
+Task
+project update meeting
+orange
+Update team on project progress
+08/09/2024
+10:00
+False
+11:00
+
+Event
+networking event
+yellow
+Meet and network with industry professionals
+789 Business Rd, Los Angeles, CA
+Peter Parker, Bruce Wayne
+08/09/2024
+18:00
+20:00
+
+Note
+Weekend plans
+purple
+Planning for a relaxing weekend getaway.
 
 Event
 movie night
@@ -34,6 +83,44 @@ Eddard Stark, Cersei Lannister, Jaime Lannister
 22:00
 
 Task
+grocery shopping
+orange
+Buy groceries for the week
+08/10/2024
+11:00
+False
+14:00
+
+Note
+Workout schedule
+yellow
+Plan workouts for the upcoming week.
+
+Task
+sunday brunch
+blue
+Prepare brunch for the family
+08/11/2024
+09:00
+False
+11:00
+
+Event
+beach day
+green
+Spend the day at the beach
+123 Beach Blvd, Malibu, CA
+Tony Stark, Natasha Romanoff
+08/11/2024
+10:00
+16:00
+
+Note
+Reading list
+red
+Create a list of books to read.
+
+Task
 client meeting
 orange
 Discuss project milestones
@@ -42,10 +129,44 @@ Discuss project milestones
 False
 16:00
 
+Event
+office party
+yellow
+Annual office party at the headquarters
+789 Party Lane, New York, NY
+Bruce Wayne, Clark Kent
+08/12/2024
+18:00
+22:00
+
 Note
-Weekend plans
-purple
-Planning for a relaxing weekend getaway.
+Workout schedule
+yellow
+Plan workouts for the upcoming week.
+
+Task
+project review
+blue
+Review project deliverables with the team
+08/13/2024
+14:00
+False
+16:00
+
+Event
+gym session
+red
+Attend a gym session with friends
+456 Fitness St, Los Angeles, CA
+Steve Rogers, Bucky Barnes
+08/13/2024
+18:00
+19:30
+
+Note
+Grocery list
+green
+Make a list of groceries to buy.
 
 Event
 art gallery opening
@@ -58,6 +179,20 @@ Claire Redfield, Leon Kennedy, Jill Valentine
 21:00
 
 Task
+doctor's appointment
+purple
+Visit Dr. Smith for a routine check-up
+08/14/2024
+14:00
+False
+16:00
+
+Note
+Meeting reminders
+blue
+Reminder for upcoming meetings and deadlines.
+
+Task
 weekly report
 green
 Prepare and submit the weekly project report
@@ -67,10 +202,45 @@ True
 08/22/2024, 08/29/2024, 09/05/2024
 17:00
 
+Event
+birthday party
+orange
+Celebrate John's birthday
+123 Party St, Chicago, IL
+John Doe, Jane Doe
+08/15/2024
+18:00
+21:00
+
 Note
-Workout schedule
-yellow
-Plan workouts for the upcoming week.
+Vacation plans
+red
+Outline plans for the upcoming vacation trip.
+
+Task
+team catch-up
+blue
+Weekly catch-up meeting with the team
+08/16/2024
+10:00
+True
+08/23/2024, 08/30/2024
+11:00
+
+Event
+concert
+green
+Attend a live concert
+456 Music Ave, San Francisco, CA
+Matt Murdock, Jessica Jones
+08/16/2024
+19:00
+22:00
+
+Note
+Project ideas
+orange
+Brainstorming new project ideas.
 
 Event
 book club meeting
@@ -83,6 +253,44 @@ Harry Potter, Hermione Granger, Ron Weasley
 17:00
 
 Task
+submit assignment
+blue
+Submit the assignment for the course
+08/17/2024
+10:00
+False
+12:00
+
+Note
+Weekly goals
+purple
+Set goals for the upcoming week.
+
+Task
+family outing
+red
+Day out with the family
+08/18/2024
+10:00
+False
+14:00
+
+Event
+museum visit
+green
+Visit the new museum exhibition
+789 History Ln, New York, NY
+Sam Wilson, Bucky Barnes
+08/18/2024
+11:00
+15:00
+
+Note
+Plan meals
+yellow
+Plan meals for the upcoming week.
+
+Task
 grocery shopping
 red
 Buy groceries for the week
@@ -91,10 +299,20 @@ Buy groceries for the week
 False
 14:00
 
+Event
+office presentation
+green
+Present the quarterly results to the team
+456 Office Rd, Springfield, IL
+Michael Scott, Dwight Schrute
+08/19/2024
+14:00
+15:00
+
 Note
-Meeting reminders
-blue
-Reminder for upcoming meetings and deadlines.
+Team lunch
+orange
+Team lunch at the local cafe.
 
 Event
 community clean-up
@@ -107,75 +325,40 @@ Lisa Simpson, Bart Simpson
 12:00
 
 Task
+team meeting
+blue
+Discuss the project updates with the team
+08/20/2024
+10:00
+True
+08/27/2024, 09/03/2024
+11:00
+
+Note
+Project ideas
+green
+Brainstorming new project ideas and improvements.
+
+Task
 doctor's appointment
 purple
 Visit Dr. Smith for a routine check-up
-08/22/2024
+08/21/2024
 14:00
 False
 16:00
 
-Note
-Vacation plans
-red
-Outline plans for the upcoming vacation trip.
-
 Event
-charity run
-blue
-Join the charity run for local animal shelters
-789 Charity Ave, Denver, CO
-John Doe, Jane Doe
-08/25/2024
-07:00
-10:00
-
-Task
-submit assignment
-orange
-Submit the final assignment for the course
-08/27/2024
-16:00
-True
-08/29/2024, 09/01/2024
+family dinner
+red
+Dinner with the family at the new restaurant
+789 Dine Lane, Denver, CO
+Jane Doe, John Doe
+08/21/2024
+18:00
 20:00
 
-Event
-art exhibition
-white
-Attend the art exhibition at the city gallery
-123 Art St, New York, NY
-Emily Clark, Tom Sanders
-08/30/2024
-11:00
-15:00
-
-Task
-grocery shopping
-green
-Buy groceries for the upcoming week
-09/01/2024
-09:00
-True
-09/08/2024, 09/15/2024, 09/22/2024
-10:00
-
 Note
-Meeting notes
+Project deadline
 blue
-Notes from the team meeting on project progress.
-
-Event
-summer concert
-yellow
-Enjoy a summer concert featuring local bands
-456 Music Blvd, Los Angeles, CA
-Sarah Lee, James Brown
-09/05/2024
-18:00
-21:00
-
-Note
-Weekly goals
-purple
-Set goals for the upcoming week.
+Reminder for the project deadline.
