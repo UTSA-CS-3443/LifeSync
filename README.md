@@ -37,8 +37,7 @@ Fully customize your profile to make your experience even better.
 - Dylan Fernandez - layout designer
 - Brandon Barnes - tester and documentor
 
-## Instructions for Running the Application (Non-intuitive stuff)
-The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events. 
+## Instructions for Running the Application
 
 ### Requirements
 - Android Studio
@@ -52,6 +51,9 @@ The application will open directly to a page simulating the week. It will includ
 
 ### Special Files
 Ensure you have internet access to clone the repository.
+
+### How to Use
+The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events.
 
 ## Known Issues
 - Our program only reads and does not write.
