@@ -50,10 +50,10 @@ Fully customize your profile to make your experience even better.
 4. **Run the Application:** Connect an Android device or start an emulator, then click the 'Run' button in Android Studio.
 
 ### Special Files
-Ensure you have internet access to clone the repository.
+- Ensure you have internet access to clone the repository.
 
 ### How to Use
-The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events.
+- The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events.
 
 ## Known Issues
 - Our program only reads and does not write.
