@@ -54,7 +54,7 @@ Fully customize your profile to make your experience even better.
 
 ### How to Use
 - The application will open directly to a page simulating the week. It will include Tasks, Notes, and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type: Notes, Tasks, and Events.
-- When adding times to the app, user must follow HH:MM format and for dates the format to follow is MM/DD/YYYY. For adding multiple days at once please use a comma to seperate dates. For example MM/DD/YYYY, MM/DD/YYYY. Type it as a plaintext i.e. "10:00" "01/01/1999".
+- When adding times to the app, user must follow HH:MM format and for dates the format to follow is MM/DD/YYYY. For adding multiple days at once please use a comma to seperate dates. For example MM/DD/YYYY, MM/DD/YYYY. Type it as a plaintext i.e. "10:00" "01/01/1999". When specifying Reminder Before times in Tasks in Activity you need to use 00:00 format. So for 30 min before reminder you would write 00:30. 
 - Our app follows the 24-hour time format. 
 
 ## Known Issues
