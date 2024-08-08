@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("JMA", user.getWidgets().get(i).getTitle() + user.getWidgets().get(i).getDescription());
             }
         }
-
          */
         dayOfWeekTextView.setText(dayOfWeek);
         dayOfMonthTextView.setText(date);
