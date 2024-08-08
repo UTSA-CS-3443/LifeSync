@@ -6,22 +6,22 @@ LifeSync is an all-in-one daily planner application designed to help you stay or
 ### Features
 
 #### MainActivity Screen (Journal Screen)
-The journal is utilized for keeping track of your planned out events and reminders. 
+The journal is utilized for keeping track of your planned-out events and reminders. 
 - **Display Widgets:** Shows all widgets from today through to the next week, providing a clear view of your schedule and upcoming events.
 - **Dynamic Loading:** Widgets are dynamically loaded and sorted by date and time to help you stay on top of your activities.
 - **Time-Based Tracking:** Widgets are arranged chronologically, making it easy to track your activities by their scheduled time.
 
 #### Widget Creation Page (Activity Screen)
-Click on a day from the calender and use this menu to plan out future events.
+Click on a day from the calendar and use this menu to plan out future events.
 - **Task Creation:** Enter the title, description, start time, date, reminder, and repeat options for new tasks.
 - **Event Creation:** Enter the title, description, start time, reminder time, date, and add participants for new events.
 - **Note Creation:** Enter the title and description for new notes, which will automatically have the creation date as their default date.
 
-- #### Calendar (Calendar Screen)
+#### Calendar (Calendar Screen)
 - **Comprehensive View:** View all your past activities by selecting a day from a given month.
 
 #### Notifications Screen
-Check how long it is til your next event or recieve notifications the day of.
+Check how long it is till your next event or receive notifications the day of.
 - **Access Notifications:** Click the bell button at the top right corner to view upcoming events and deadlines.
 - **Details:** See detailed descriptions, locations, guest lists, and start times for your events, tasks, and notes.
 - **Deleting Widgets:** Easily delete a widget by clicking the trash can icon and confirming the deletion.
@@ -35,7 +35,7 @@ Fully customize your profile to make your experience even better.
 - Khoa Nguyen - backend coder
 - Joshua Aaron - backend coder
 - Dylan Fernandez - layout designer
-- Brandon Barnes - tester and documentor
+- Brandon Barnes - tester and documenter
 
 ## Instructions for Running the Application
 
@@ -53,10 +53,8 @@ Fully customize your profile to make your experience even better.
 - Ensure you have internet access to clone the repository.
 
 ### How to Use
-- The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events.
+- The application will open directly to a page simulating the week. It will include Tasks, Notes, and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type: Notes, Tasks, and Events.
 
 ## Known Issues
 - Our program only reads and does not write.
-- Our program only has a selected amount of dates, if run after our range the application might be blank.
-
-
+- Our program only has a selected amount of dates; if run after our range, the application might be blank.
