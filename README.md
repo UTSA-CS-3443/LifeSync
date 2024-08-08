@@ -11,11 +11,14 @@ The journal is utilized for keeping track of your planned out events and reminde
 - **Dynamic Loading:** Widgets are dynamically loaded and sorted by date and time to help you stay on top of your activities.
 - **Time-Based Tracking:** Widgets are arranged chronologically, making it easy to track your activities by their scheduled time.
 
-#### Widget Creation Page
+#### Widget Creation Page (Activity Screen)
 Click on a day from the calender and use this menu to plan out future events.
 - **Task Creation:** Enter the title, description, start time, date, reminder, and repeat options for new tasks.
 - **Event Creation:** Enter the title, description, start time, reminder time, date, and add participants for new events.
 - **Note Creation:** Enter the title and description for new notes, which will automatically have the creation date as their default date.
+
+- #### Calendar (Calendar Screen)
+- **Comprehensive View:** View all your past activities by selecting a day from a given month.
 
 #### Notifications Screen
 Check how long it is til your next event or recieve notifications the day of.
@@ -23,13 +26,10 @@ Check how long it is til your next event or recieve notifications the day of.
 - **Details:** See detailed descriptions, locations, guest lists, and start times for your events, tasks, and notes.
 - **Deleting Widgets:** Easily delete a widget by clicking the trash can icon and confirming the deletion.
 
-#### User Profile Management
+#### User Profile Management Screen
 Fully customize your profile to make your experience even better.
 - **Access Profile:** Click the user profile button at the top right corner to view basic user information.
 - **Editable Profile:** Edit your display name, email, and biography to personalize your profile.
-
-#### Calendar
-- **Comprehensive View:** View all your past activities by selecting a day from a given month.
 
 ## Contributors
 - Khoa Nguyen - backend coder
@@ -37,7 +37,8 @@ Fully customize your profile to make your experience even better.
 - Dylan Fernandez - layout designer
 - Brandon Barnes - tester and documentor
 
-## Instructions for Running the Application
+## Instructions for Running the Application (Non-intuitive stuff)
+The application will open directly to a page simulating the week. It will include Tasks, Notes and Events (roughly 3-5 for each). To add a new Activity, click on the middle-bottom button. It will open a page where you can add a new Activity. Each Activity is added by type; Notes, Tasks and Events. 
 
 ### Requirements
 - Android Studio
