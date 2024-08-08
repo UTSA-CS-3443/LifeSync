@@ -27,10 +27,6 @@ import edu.utsa.cs3443.lifesync.model.User;
  */
 public class SecondActivity extends AppCompatActivity {
     private User user; // User object representing the current user
-    private RadioGroup typeSelector, repeatTaskChoice; // RadioGroups for selecting type and repeat options
-    private EditText title, addGuests, description, StartTime, reminderTime, location, date, repeatTime; // EditText fields for widget details
-    private LinearLayout detailsContainer; // Container for additional details
-
     /**
      * Initializes the activity, setting up the widget creation form and the navigation bar.
      *
@@ -42,6 +38,10 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widgetcreation_layout);
         EdgeToEdge.enable(this); // Enable edge-to-edge display
+
+        RadioGroup typeSelector, repeatTaskChoice; // RadioGroups for selecting type and repeat options
+        EditText title, addGuests, description, StartTime, reminderTime, location, date, repeatTime; // EditText fields for widget details
+        LinearLayout detailsContainer; // Container for additional details
 
         // Initialize views
         title = findViewById(R.id.title);
@@ -245,7 +245,6 @@ public class SecondActivity extends AppCompatActivity {
             try {
                 user.createNewTask(title, "", description, taskDate, reminderTimeBefore, "", startTime);
                 Toast.makeText(this, "Create new task successful", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Toast.makeText(this, "Failed to create task: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -270,7 +269,6 @@ public class SecondActivity extends AppCompatActivity {
         if (dateFormatValidation(eventDate) && timeFormatValidation(startTime) && timeFormatValidation(reminderTimeBefore)) {
             try {
                 user.createNewEvent(title, "", description, address, guests, eventDate, reminderTimeBefore, startTime);
-                Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
                 Toast.makeText(this, "Create new event successful", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Toast.makeText(this, "Failed to create event: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -289,7 +287,6 @@ public class SecondActivity extends AppCompatActivity {
     private void handleNoteData(String title, String description) {
         try {
             user.createNewNote(title, "", description);
-            Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Create new note successful", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(this, "Failed to create note: " + e.getMessage(), Toast.LENGTH_LONG).show();
