@@ -58,4 +58,4 @@ Fully customize your profile to make your experience even better.
 ## Known Issues
 - Our program only reads and does not write.
 - Our program only has a selected amount of dates; if run after our range, the application might be blank.
-- Notes "Widgets" are out of order. There is no chronological listing. Instead they populate underneath the first day of the week.
+- Notes "Widgets" are out of order. There is no chronological listing. Instead they populate underneath the first day listed.
