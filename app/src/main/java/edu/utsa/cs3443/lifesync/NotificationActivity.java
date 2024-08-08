@@ -27,7 +27,7 @@ import edu.utsa.cs3443.lifesync.model.Widget;
  * or discarded.
  */
 public class NotificationActivity extends AppCompatActivity {
-    private User user;
+    private User user; // User object representing the current user
 
     /**
      * Initializes the activity, setting up the notifications list and displaying widgets.
@@ -39,19 +39,23 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_notification);
+
         LinearLayout notificationContainer = findViewById(R.id.notification_container);
 
-        user = (User) getIntent().getSerializableExtra("user");
-        user.sortWidgetsByDateTime();
-        Date today = new Date();
-        String weekDateString = new SimpleDateFormat("EEEE").format(today);
-        displayWidgets(notificationContainer);
-        String dateString = new SimpleDateFormat("MM/dd/yyyy").format(today);
-        TextView weekDate = findViewById(R.id.weekdate);
-        TextView date = findViewById(R.id.date);
+        user = (User) getIntent().getSerializableExtra("user"); // Get user object from intent
+        user.sortWidgetsByDateTime(); // Sort widgets by date and time
+        Date today = new Date(); // Get current date
+        String weekDateString = new SimpleDateFormat("EEEE").format(today); // Format for day of the week
+        String dateString = new SimpleDateFormat("MM/dd/yyyy").format(today); // Format for date
+
+        TextView weekDate = findViewById(R.id.weekdate); // TextView for day of the week
+        TextView date = findViewById(R.id.date); // TextView for date
+
         weekDate.setText(weekDateString);
         date.setText(dateString);
-        createNavigationBar();
+
+        displayWidgets(notificationContainer); // Display widgets as notifications
+        createNavigationBar(); // Set up navigation bar
     }
 
     /**
@@ -60,7 +64,7 @@ public class NotificationActivity extends AppCompatActivity {
      * @param notificationContainer The container to display the widgets in.
      */
     public void displayWidgets(LinearLayout notificationContainer) {
-        Date today = new Date();
+        Date today = new Date(); // Get current date
 
         // Create a calendar instance and set it to the current date
         Calendar calendar = Calendar.getInstance();
@@ -71,20 +75,24 @@ public class NotificationActivity extends AppCompatActivity {
         Date yesterday = calendar.getTime();
 
         for (Widget widget : user.getWidgets()) {
+            // Check if the widget's date is between yesterday and today
             if (widget.getDate().after(yesterday) && widget.getDate().before(today)) {
                 View notificationView = LayoutInflater.from(this).inflate(R.layout.notification_widget_display_template, notificationContainer, false);
-                TextView widgetTypeAndTitle = notificationView.findViewById(R.id.widget_type_title);
-                TextView description = notificationView.findViewById(R.id.description);
-                TextView startTime = notificationView.findViewById(R.id.start_time);
-                TextView address = notificationView.findViewById(R.id.address);
-                TextView guests = notificationView.findViewById(R.id.guests);
-                ImageButton deleteBtn = notificationView.findViewById(R.id.delete_button);
+
+                TextView widgetTypeAndTitle = notificationView.findViewById(R.id.widget_type_title); // TextView for widget type and title
+                TextView description = notificationView.findViewById(R.id.description); // TextView for description
+                TextView startTime = notificationView.findViewById(R.id.start_time); // TextView for start time
+                TextView address = notificationView.findViewById(R.id.address); // TextView for address
+                TextView guests = notificationView.findViewById(R.id.guests); // TextView for guests
+                ImageButton deleteBtn = notificationView.findViewById(R.id.delete_button); // Button for deleting the widget
+
                 deleteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CreateAlertDialog(user, widget);
+                        CreateAlertDialog(user, widget); // Create alert dialog to confirm deletion
                     }
                 });
+
                 if (widget.getType().equals("Event")) {
                     address.setVisibility(View.VISIBLE);
                     guests.setVisibility(View.VISIBLE);
@@ -93,13 +101,11 @@ public class NotificationActivity extends AppCompatActivity {
                     widgetTypeAndTitle.setText(widget.getType() + ": " + widget.getTitle());
                     startTime.setText("Start time: " + widget.getFormattedStartTime());
                     description.setText("Description: " + "\n" + widget.getDescription());
-                    notificationContainer.addView(notificationView);
                 } else if (widget.getType().equals("Task")) {
                     guests.setVisibility(View.GONE);
                     address.setVisibility(View.GONE);
                     widgetTypeAndTitle.setText(widget.getType() + ": " + widget.getTitle());
                     description.setText("Description: " + "\n" + widget.getDescription());
-                    notificationContainer.addView(notificationView);
                     startTime.setText("Start time: " + widget.getFormattedStartTime());
                 } else {
                     startTime.setVisibility(View.GONE);
@@ -107,8 +113,9 @@ public class NotificationActivity extends AppCompatActivity {
                     address.setVisibility(View.GONE);
                     widgetTypeAndTitle.setText(widget.getType() + ": " + widget.getTitle());
                     description.setText(widget.getDescription());
-                    notificationContainer.addView(notificationView);
                 }
+
+                notificationContainer.addView(notificationView); // Add the notification view to the container
             }
         }
     }
@@ -117,7 +124,7 @@ public class NotificationActivity extends AppCompatActivity {
      * Creates the navigation bar with buttons to navigate to different activities.
      */
     public void createNavigationBar() {
-        ImageButton profile = findViewById(R.id.profile);
+        ImageButton profile = findViewById(R.id.profile); // Profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,18 +134,19 @@ public class NotificationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton notification = findViewById(R.id.notification);
+
+        ImageButton notification = findViewById(R.id.notification); // Notification button
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start NotificationActivity
+                // Refresh the current activity
                 Intent intent = new Intent(getBaseContext(), NotificationActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton create = findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create); // Create button
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +157,7 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton home = findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home); // Home button
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +167,8 @@ public class NotificationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton calendar = findViewById(R.id.calendar);
+
+        ImageButton calendar = findViewById(R.id.calendar); // Calendar button
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,7 +193,7 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 user.removeWidget(widget);
-                Toast.makeText(NotificationActivity.this, "The widget has been deleted", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NotificationActivity.this, "The widget has been deleted", Toast.LENGTH_SHORT).show();
                 finish();
                 startActivity(getIntent());
             }
@@ -192,7 +201,7 @@ public class NotificationActivity extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(NotificationActivity.this, "Go back", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NotificationActivity.this, "Go back", Toast.LENGTH_SHORT).show();
             }
         });
         builder.create();

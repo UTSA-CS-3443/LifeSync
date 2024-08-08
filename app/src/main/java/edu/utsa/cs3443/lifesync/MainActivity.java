@@ -34,8 +34,8 @@ import edu.utsa.cs3443.lifesync.model.Widget;
  * It initializes the user, sets up the navigation bar, and displays widgets for the week.
  */
 public class MainActivity extends AppCompatActivity {
-    private User user;
-    private Admin admin;
+    private User user; // User object representing the current user
+    private Admin admin; // Admin object for managing user accounts
 
     /**
      * Initializes the activity, sets up EdgeToEdge mode, and loads the user account.
@@ -48,21 +48,22 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Retrieve user object from intent
         user = (User) getIntent().getSerializableExtra("user");
 
         if (user == null) {
             try {
-                admin = new Admin(this);
-                user = admin.getUser();
-                Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
+                admin = new Admin(this); // Initialize admin object
+                user = admin.getUser(); // Load user from admin
+                //Toast.makeText(this, "Loading user success", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 // Display a Toast message indicating an error loading user
-                Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
-        user.sortWidgetsByDateTime();
-        createNavigationBar();
-        Date today = new Date();
+        user.sortWidgetsByDateTime(); // Sort widgets by date and time
+        createNavigationBar(); // Set up navigation bar
+        Date today = new Date(); // Get current date
 
         // Create a calendar instance and set it to the current date
         Calendar calendar = Calendar.getInstance();
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         calendar.add(Calendar.DAY_OF_YEAR, -1);
         Date yesterday = calendar.getTime();
 
-        displayWeekDate(yesterday);
+        displayWeekDate(yesterday); // Display widgets for the week starting from yesterday
     }
 
     /**
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
      * @param date The date to display widgets for.
      */
     public void displayWidgetByDay(String date) {
-        String dayOfWeek = getDayOfWeek(date);
+        String dayOfWeek = getDayOfWeek(date); // Get day of the week for the date
         Log.d("dayOfWeek", dayOfWeek);
         Log.d("date", date);
 
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView dayOfWeekTextView = widgetContainer.findViewById(R.id.dayOfWeekView);
         TextView dayOfMonthTextView = widgetContainer.findViewById(R.id.dayOfMonthView);
+
         /*
         for (int i = 0; i < user.getWidgets().toArray().length; i++) {
             if (user.getWidgets().get(i).getFormattedDate().equals(date)) {
@@ -101,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
          */
+
         dayOfWeekTextView.setText(dayOfWeek);
         dayOfMonthTextView.setText(date);
         weeklyWidgetList.addView(widgetContainer);
+
         for (Widget w : user.getWidgets()) {
             if (w.getFormattedDate().equals(date)) {
-
-
                 View elementsContainer = inflater.inflate(R.layout.element_container, weeklyWidgetList, false);
 
                 TextView elementTextView = elementsContainer.findViewById(R.id.ElementView);
@@ -134,13 +136,14 @@ public class MainActivity extends AppCompatActivity {
      * @param today The starting date.
      */
     public void displayWeekDate(Date today) {
-        SimpleDateFormat stringFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
+        SimpleDateFormat stringFormat = new SimpleDateFormat("MM/dd/yyyy"); // Format for date string
+        Calendar calendar = Calendar.getInstance(); // Calendar instance for date manipulation
+        calendar.setTime(today); // Set calendar to the starting date
+
         for (int x = 0; x < 7; x++) {
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
-            Date date = calendar.getTime();
-            displayWidgetByDay(stringFormat.format(date));
+            calendar.add(Calendar.DAY_OF_YEAR, 1); // Move to the next day
+            Date date = calendar.getTime(); // Get the new date
+            displayWidgetByDay(stringFormat.format(date)); // Display widgets for the date
             Log.d("date passes", stringFormat.format(date));
         }
     }
@@ -152,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
      * @return The day of the week.
      */
     public static String getDayOfWeek(String dateStr) {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH); // Date format
         try {
             // Parse the date string into a Date object
             Date date = format.parse(dateStr);
@@ -173,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
      * Creates the navigation bar with buttons to navigate to different activities.
      */
     public void createNavigationBar() {
-        ImageButton profile = findViewById(R.id.profile);
+        ImageButton profile = findViewById(R.id.profile); // Profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton notification = findViewById(R.id.notification);
+
+        ImageButton notification = findViewById(R.id.notification); // Notification button
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton create = findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create); // Create button
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton home = findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home); // Home button
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -215,7 +219,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton calendar = findViewById(R.id.calendar);
+
+        ImageButton calendar = findViewById(R.id.calendar); // Calendar button
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,5 +231,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -26,10 +26,10 @@ import edu.utsa.cs3443.lifesync.model.User;
  * It also sets up the navigation bar for navigating to other activities.
  */
 public class SecondActivity extends AppCompatActivity {
-    private User user;
-    private RadioGroup typeSelector, repeatTaskChoice;
-    private EditText title, addGuests, description, StartTime, reminderTime, location, date, repeatTime;
-    private LinearLayout detailsContainer;
+    private User user; // User object representing the current user
+    private RadioGroup typeSelector, repeatTaskChoice; // RadioGroups for selecting type and repeat options
+    private EditText title, addGuests, description, StartTime, reminderTime, location, date, repeatTime; // EditText fields for widget details
+    private LinearLayout detailsContainer; // Container for additional details
 
     /**
      * Initializes the activity, setting up the widget creation form and the navigation bar.
@@ -38,10 +38,10 @@ public class SecondActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        user = (User) getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user"); // Retrieve user object from intent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widgetcreation_layout);
-        EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this); // Enable edge-to-edge display
 
         // Initialize views
         title = findViewById(R.id.title);
@@ -98,6 +98,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        // Handle complete button click
         Button completeButton = findViewById(R.id.complete_button);
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +140,8 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Set up the navigation bar
         createNavigationBar();
     }
 
@@ -146,7 +149,7 @@ public class SecondActivity extends AppCompatActivity {
      * Creates the navigation bar with buttons to navigate to different activities.
      */
     public void createNavigationBar() {
-        ImageButton profile = findViewById(R.id.profile);
+        ImageButton profile = findViewById(R.id.profile); // Profile button
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +159,8 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton notification = findViewById(R.id.notification);
+
+        ImageButton notification = findViewById(R.id.notification); // Notification button
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,18 +171,18 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton create = findViewById(R.id.create);
+        ImageButton create = findViewById(R.id.create); // Create button
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start SecondActivity
+                // Refresh the current activity
                 Intent intent = new Intent(getBaseContext(), SecondActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
 
-        ImageButton home = findViewById(R.id.home);
+        ImageButton home = findViewById(R.id.home); // Home button
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +192,8 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton calendar = findViewById(R.id.calendar);
+
+        ImageButton calendar = findViewById(R.id.calendar); // Calendar button
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,8 +321,8 @@ public class SecondActivity extends AppCompatActivity {
      */
     private boolean repeatDateFormatValidation(String repeatDate) {
         String[] dates = repeatDate.split(",");
-        for (int x = 0; x < dates.length; x++) {
-            if (!dateFormatValidation(dates[x])) {
+        for (String date : dates) {
+            if (!dateFormatValidation(date)) {
                 return false;
             }
         }
