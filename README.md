@@ -6,21 +6,25 @@ LifeSync is an all-in-one daily planner application designed to help you stay or
 ### Features
 
 #### MainActivity Screen (Journal Screen)
+The journal is utilized for keeping track of your planned out events and reminders. 
 - **Display Widgets:** Shows all widgets from today through to the next week, providing a clear view of your schedule and upcoming events.
 - **Dynamic Loading:** Widgets are dynamically loaded and sorted by date and time to help you stay on top of your activities.
 - **Time-Based Tracking:** Widgets are arranged chronologically, making it easy to track your activities by their scheduled time.
 
 #### Widget Creation Page
+Click on a day from the calender and use this menu to plan out future events.
 - **Task Creation:** Enter the title, description, start time, date, reminder, and repeat options for new tasks.
 - **Event Creation:** Enter the title, description, start time, reminder time, date, and add participants for new events.
 - **Note Creation:** Enter the title and description for new notes, which will automatically have the creation date as their default date.
 
 #### Notifications Screen
+Check how long it is til your next event or recieve notifications the day of.
 - **Access Notifications:** Click the bell button at the top right corner to view upcoming events and deadlines.
 - **Details:** See detailed descriptions, locations, guest lists, and start times for your events, tasks, and notes.
 - **Deleting Widgets:** Easily delete a widget by clicking the trash can icon and confirming the deletion.
 
 #### User Profile Management
+Fully customize your profile to make your experience even better.
 - **Access Profile:** Click the user profile button at the top right corner to view basic user information.
 - **Editable Profile:** Edit your display name, email, and biography to personalize your profile.
 

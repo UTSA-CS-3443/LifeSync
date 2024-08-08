@@ -107,11 +107,7 @@ public class MainActivity extends AppCompatActivity {
         weeklyWidgetList.addView(widgetContainer);
         for (Widget w : user.getWidgets()) {
             if (w.getFormattedDate().equals(date)) {
-                Log.d("startime", w.getFormattedStartTime());
-                Log.d("JMA", w.getTitle());
-                Log.d("JMA", w.getDescription());
-                Log.d("JMA", w.getId());
-                Log.d("JMA", w.getFormattedDate());
+
 
                 View elementsContainer = inflater.inflate(R.layout.element_container, weeklyWidgetList, false);
 
