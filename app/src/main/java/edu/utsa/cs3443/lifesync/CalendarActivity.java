@@ -46,9 +46,6 @@ public class CalendarActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
         calendar = Calendar.getInstance();
         setDate(currentDate,month,year);
-
-
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {

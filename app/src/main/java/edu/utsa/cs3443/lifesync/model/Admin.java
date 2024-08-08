@@ -9,26 +9,57 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Represents an admin responsible for managing user accounts.
+ */
 public class Admin {
     private User user;
-
+    /**
+     * Constructs an Admin with the specified user.
+     *
+     * @param user the user associated with this admin
+     */
     public Admin(User user) {
         this.user = user;
     }
+
+    /**
+     * Constructs an Admin by loading user account information from the assets folder.
+     *
+     * @param activity the activity context used to access the assets
+     * @throws FileNotFoundException if the account information file is not found
+     */
     public Admin(Activity activity) throws FileNotFoundException {
         this.user = LoadingUserAccount(activity);
     }
 
+    /**
+     * Returns the user associated with this admin.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets the user associated with this admin.
+     *
+     * @param user the user to be associated with this admin
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Loads user account information from the assets folder.
+     *
+     * @param activity the activity context used to access the assets
+     * @return the loaded user or null if an error occurs
+     * @throws FileNotFoundException if the account information file is not found
+     */
     public User LoadingUserAccount(Activity activity) throws FileNotFoundException {
+        // Get the AssetManager from the activity
         AssetManager manager = activity.getAssets();
         String fileName = "AccountInfo.csv";
         try {
@@ -47,6 +78,7 @@ public class Admin {
 
                 User user = new User(name, email, biography, gender);
                 user.loadWidget(activity);
+                // Return the created User object
                 return user;
 
             }

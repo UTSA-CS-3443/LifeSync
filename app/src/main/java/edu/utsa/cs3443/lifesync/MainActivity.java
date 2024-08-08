@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 // Display a Toast message indicating an error loading user
                 Toast.makeText(this, "Error loading user: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
-
-            Toast.makeText(this, "Number of widgets: " + user.getNumberOfWidget(), Toast.LENGTH_LONG).show();
         }
         user.sortWidgetsByDateTime();
         createNavigationBar();
@@ -96,12 +94,14 @@ public class MainActivity extends AppCompatActivity {
 
         TextView dayOfWeekTextView = widgetContainer.findViewById(R.id.dayOfWeekView);
         TextView dayOfMonthTextView = widgetContainer.findViewById(R.id.dayOfMonthView);
-
+        /*
         for (int i = 0; i < user.getWidgets().toArray().length; i++) {
             if (user.getWidgets().get(i).getFormattedDate().equals(date)) {
                 Log.d("JMA", user.getWidgets().get(i).getTitle() + user.getWidgets().get(i).getDescription());
             }
         }
+
+         */
         dayOfWeekTextView.setText(dayOfWeek);
         dayOfMonthTextView.setText(date);
         weeklyWidgetList.addView(widgetContainer);
