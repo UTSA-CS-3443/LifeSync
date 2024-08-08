@@ -153,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Start time"
+                    android:hint="Start time (HH:MM):"
                     android:fontFamily="@font/uberhand_regular"
                     android:inputType="text"
                     android:padding="8dp" />
@@ -193,7 +193,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/uberhand_regular"
-                    android:hint="Date"
+                    android:hint="Date(MM/DD/YYYY):"
                     android:padding="8dp" />
             </LinearLayout>
 
